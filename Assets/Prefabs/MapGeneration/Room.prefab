@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2985394137651894578}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_connectionPoints:
-  - {fileID: 4688031254719315783}
-  - {fileID: 329978048312559551}
-  - {fileID: 7448169972800356539}
-  - {fileID: 7799214474051454762}
+  - {fileID: 2835507764863952731}
+  - {fileID: 1359427815040133457}
+  - {fileID: 1470342852001262122}
+  - {fileID: 6239136665587892674}
 --- !u!1 &4102579676316834125
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_roomConnectionDir: {x: 1, y: 0, z: 0}
+  Connected: 0
 --- !u!1 &5479768890170557051
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_roomConnectionDir: {x: -1, y: 0, z: 0}
+  Connected: 0
 --- !u!1 &6590832267248180887
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_roomConnectionDir: {x: 0, y: 0, z: 1}
+  Connected: 0
 --- !u!1 &8412852006321666770
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,3 +532,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_roomConnectionDir: {x: 0, y: 0, z: -1}
+  Connected: 0
