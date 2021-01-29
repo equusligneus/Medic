@@ -11,7 +11,16 @@ public class MedicController : MonoBehaviour
     private InputAction move = default;
 
     [SerializeField]
-    private float moveSpeed = 5f;
+    private float speed = 5f;
+
+    [SerializeField]
+    private float loadModifier = .75f;
+
+    [SerializeField]
+    private Ref<bool> isLoaded = default;
+
+    [SerializeField]
+    private Ref<bool> isAwake = default;
 
     void Awake()
 	{
@@ -29,8 +38,14 @@ public class MedicController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // fainted, abort
+        if (!isAwake.Get())
+            return;
+
         var input = move.ReadValue<Vector2>();
 
-        characterController.Move((input * moveSpeed * Time.smoothDeltaTime).To3D());
+        var speed = this.speed * (isLoaded.Get() ? loadModifier : 1f); 
+
+        characterController.Move((input * speed * Time.smoothDeltaTime).To3D());
     }
 }
