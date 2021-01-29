@@ -2,17 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ref_Bool : MonoBehaviour
+[CreateAssetMenu(fileName = "Ref_Bool", menuName ="Medic/Ref/Bool")]
+public class Ref_Bool : WritableDefaultRef<bool>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
