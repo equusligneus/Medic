@@ -43,24 +43,29 @@ public class DungeonMapGenerator : MonoBehaviour
     // For now they will only connect connections pointing into the same direction
     private void ConnectRooms(DungeonRoom _existingRoom, DungeonRoom _newRoom)
     {
-        //foreach (DungeonRoomConnection existingRoomConnectionPoint in _existingRoom.m_connectionPoints)
-        DungeonRoomConnection existingRoomConnectionPoint = _existingRoom.m_connectionPoints[0];
+        // Get random active connection
+        List<DungeonRoomConnection> activeConnections = new List<DungeonRoomConnection>();
+        foreach (DungeonRoomConnection roomConnection in _existingRoom.m_connectionPoints)
         {
-            if (existingRoomConnectionPoint.gameObject.activeSelf && !existingRoomConnectionPoint.Connected)
+            if (roomConnection.gameObject.activeSelf && !roomConnection.Connected)
+                activeConnections.Add(roomConnection);
+        }
+        DungeonRoomConnection existingRoomConnectionPoint = activeConnections[Random.Range(0, activeConnections.Count)];
+
+        // New room connection point that is available
+        foreach (DungeonRoomConnection newRoomConnection in _newRoom.m_connectionPoints)
+        {
+            if (existingRoomConnectionPoint.gameObject.activeSelf && newRoomConnection.gameObject.activeSelf && !newRoomConnection.Connected &&
+                !existingRoomConnectionPoint.Connected && existingRoomConnectionPoint.GetRoomConnectionDir == newRoomConnection.GetRoomConnectionDir * -1)
             {
-                //foreach (DungeonRoomConnection newRoomConnectionPoint in _newRoom.m_connectionPoints)
-                DungeonRoomConnection newRoomConnectionPoint = _newRoom.m_connectionPoints[0];
-                {
-                    if (newRoomConnectionPoint.gameObject.activeSelf && !newRoomConnectionPoint.Connected &&
-                        existingRoomConnectionPoint.GetRoomConnectionDir == newRoomConnectionPoint.GetRoomConnectionDir)
-                    {
-                        // Assuming the rooms transform position is always at the center of the room
-                        _newRoom.SetPositionRelativeToConnectionPosition(existingRoomConnectionPoint);
-                        existingRoomConnectionPoint.Connected = true;
-                        //TODO: make connections of new rooms Connected=false
-                        return;
-                    }
-                }
+                // Set new room so both connections are on top of each other
+                newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnectionPoint.transform.position);
+                // Give the rooms some information
+                existingRoomConnectionPoint.Connected = true;
+                newRoomConnection.Connected = true;
+                existingRoomConnectionPoint.ConnectedDungeonRoom = _newRoom;
+                newRoomConnection.ConnectedDungeonRoom = _existingRoom;
+                break;
             }
         }
     }
