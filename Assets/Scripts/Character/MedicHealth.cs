@@ -33,9 +33,9 @@ public class MedicHealth : MonoBehaviour
     /// Hit sets the medic onto fainting condition and if still alife then in invulnarble condition
     /// </summary>
     [ContextMenu("Hit")]
-    public void Hit()
+    public void Hit(int damage)
     {
-        Hit(_faintedTime);
+        Hit(damage, _faintedTime);
     }
 
 
@@ -43,7 +43,7 @@ public class MedicHealth : MonoBehaviour
     /// Let the fainting condition last for given time
     /// </summary>
     /// <param name="faintedTime">The time in sec the fainting lasts</param>
-    public void Hit(float faintedTime)
+    public void Hit(int damage, float faintedTime)
     {
         if (_invulnerable)
         {
@@ -51,7 +51,7 @@ public class MedicHealth : MonoBehaviour
         }
 
         int currentHealth = _currentHealth.Get();
-        currentHealth--;
+        currentHealth -= damage;
 
 
         if(currentHealth <= 0)
