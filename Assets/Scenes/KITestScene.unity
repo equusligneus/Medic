@@ -299,8 +299,8 @@ MonoBehaviour:
   - {fileID: 1411370055}
   - {fileID: 1860593575}
   - {fileID: 1683641236}
-  range: 1
-  MovementSpeed: 5
+  range: 0.5
+  MovementSpeed: 3
 --- !u!4 &1423981347
 Transform:
   m_ObjectHideFlags: 0
