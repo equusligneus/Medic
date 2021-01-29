@@ -47,7 +47,6 @@ public class KIController : MonoBehaviour
 
     public void NextWaypoint()
     {
-        Debug.Log(index + " / " + Waypoints[index]);
         if(index < Waypoints.Count-1)
         {
             index++;
