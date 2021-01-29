@@ -10,12 +10,13 @@ public class DungeonMapGeneratorEditor : Editor
     {
         DrawDefaultInspector();
 
-        DungeonMapGenerator myTarget = (DungeonMapGenerator)target;
+        //DungeonMapGenerator myTarget = (DungeonMapGenerator)target;
 
-        if (GUILayout.Button("Generate new Dungeon"))
-        {
-            myTarget.GenerateRooms();
-        }
+        //if (Application.isPlaying && GUILayout.Button("Generate new Dungeon"))
+        //{
+        //    // For some reason doesn't work in editor, i guess its overriding the startRoom
+        //    myTarget.GenerateRooms();
+        //}
     }
 }
 #endif
