@@ -10,7 +10,7 @@ public class DungeonMapGenerator : MonoBehaviour
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
     [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms = new List<DungeonRoom>();
 
-    private void Awake()
+    private void Start()
     {
         GenerateRooms();
     }

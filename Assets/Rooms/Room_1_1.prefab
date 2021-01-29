@@ -380,6 +380,52 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4458303918173140341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4045049239108204432}
+  - component: {fileID: 7564928023142811891}
+  m_Layer: 0
+  m_Name: ConnectionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4045049239108204432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458303918173140341}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8237777388442303816}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7564928023142811891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458303918173140341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_roomConnectionDir: {x: 0, y: 0, z: 0}
+  Connected: 0
+  ConnectedDungeonRoom: {fileID: 0}
 --- !u!1 &5989045115094790430
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8237777388442303816}
+  - component: {fileID: 42554751609765021}
   m_Layer: 0
   m_Name: Room_1_1
   m_TagString: Untagged
@@ -413,9 +460,24 @@ Transform:
   - {fileID: 5570377418130322535}
   - {fileID: 5267951955773498384}
   - {fileID: 6573106968172363677}
+  - {fileID: 4045049239108204432}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &42554751609765021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5989045115094790430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_connectionPoints:
+  - {fileID: 7564928023142811891}
 --- !u!1 &6565578618090014233
 GameObject:
   m_ObjectHideFlags: 0

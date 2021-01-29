@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DungeonRoomConnection : MonoBehaviour
 {
-    [SerializeField] private Vector3 m_roomConnectionDir; // Should always be normalized
-    public bool Connected = false;
+    [SerializeField, Tooltip("Change only if not on the same axis as center")] private Vector3 m_roomConnectionDir;
+    [Header("For debugging, don't change")]
+    [HideInInspector] public bool Connected = false;
 
     public DungeonRoom ConnectedDungeonRoom; // Not used right now but might be useful
 
@@ -18,5 +19,14 @@ public class DungeonRoomConnection : MonoBehaviour
     public void SetRoomPositionFromConnectionPosition(Vector3 _position)
     {
         transform.parent.position = _position - (new Vector3(this.transform.localPosition.x * this.transform.parent.localScale.x ,this.transform.localPosition.y, this.transform.localPosition.z * this.transform.parent.localScale.z));
+    }
+
+
+
+    private void Awake()
+    {
+        if (m_roomConnectionDir == Vector3.zero)
+            m_roomConnectionDir = transform.localPosition;
+        m_roomConnectionDir.Normalize();
     }
 }

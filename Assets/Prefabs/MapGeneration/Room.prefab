@@ -243,8 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionDir: {x: 1, y: 0, z: 0}
+  m_roomConnectionDir: {x: 0, y: 0, z: 0}
   Connected: 0
+  ConnectedDungeonRoom: {fileID: 0}
 --- !u!1 &5479768890170557051
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,8 +340,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionDir: {x: -1, y: 0, z: 0}
+  m_roomConnectionDir: {x: 0, y: 0, z: 0}
   Connected: 0
+  ConnectedDungeonRoom: {fileID: 0}
 --- !u!1 &6590832267248180887
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,8 +437,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionDir: {x: 0, y: 0, z: 1}
+  m_roomConnectionDir: {x: 0, y: 0, z: 0}
   Connected: 0
+  ConnectedDungeonRoom: {fileID: 0}
 --- !u!1 &8412852006321666770
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,5 +534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionDir: {x: 0, y: 0, z: -1}
+  m_roomConnectionDir: {x: 0, y: 0, z: 0}
   Connected: 0
+  ConnectedDungeonRoom: {fileID: 0}

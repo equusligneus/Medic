@@ -243,9 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionDir: {x: 0, y: 0, z: -1}
+  m_roomConnectionDir: {x: 0, y: 0, z: 0}
   Connected: 0
-  ConnectedDungeonRooms: []
+  ConnectedDungeonRoom: {fileID: 0}
 --- !u!1 &7682275822897431616
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,9 +340,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionDir: {x: 0, y: 0, z: 1}
+  m_roomConnectionDir: {x: 0, y: 0, z: 0}
   Connected: 0
-  ConnectedDungeonRooms: []
+  ConnectedDungeonRoom: {fileID: 0}
 --- !u!1 &8390443409227121403
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,9 +437,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionDir: {x: 1, y: 0, z: 0}
+  m_roomConnectionDir: {x: 0, y: 0, z: 0}
   Connected: 0
-  ConnectedDungeonRooms: []
+  ConnectedDungeonRoom: {fileID: 0}
 --- !u!1 &9072421097613777068
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionDir: {x: -1, y: 0, z: 0}
+  m_roomConnectionDir: {x: 0, y: 0, z: 0}
   Connected: 0
-  ConnectedDungeonRooms: []
+  ConnectedDungeonRoom: {fileID: 0}
