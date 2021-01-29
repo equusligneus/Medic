@@ -327,11 +327,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee995558b2ffb9b40965856cca024931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fainted: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
-  _faintedTime: 3
+  _isAwake: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
+  _isAlive: {fileID: 11400000, guid: cbecef23febb1b8429429c01824c46c7, type: 2}
   _maxHealth: {fileID: 11400000, guid: 5270c2309f31d6a419915a6182f411ef, type: 2}
   _currentHealth: {fileID: 11400000, guid: 588e4296d28cf1d46b35d59fdd2afa89, type: 2}
-  _invulnabilityTime: 3
+  _faintedTime: 3
+  _invulnerabilityTime: 3
 --- !u!4 &1804843807
 Transform:
   m_ObjectHideFlags: 0

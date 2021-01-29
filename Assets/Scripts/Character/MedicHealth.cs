@@ -6,10 +6,10 @@ public class MedicHealth : MonoBehaviour
 {
 
     [SerializeField]
-    private Ref_Bool _fainted;
+    private Ref_Bool _isAwake;
 
     [SerializeField]
-    private float _faintedTime;
+    private Ref_Bool _isAlive;
 
     [SerializeField]
     private Ref_Int _maxHealth;
@@ -18,8 +18,11 @@ public class MedicHealth : MonoBehaviour
     private Ref_Int _currentHealth;
 
     [SerializeField]
-    private float _invulnabilityTime;
-    private bool _invulnable;
+    private float _faintedTime;
+
+    [SerializeField]
+    private float _invulnerabilityTime;
+    private bool _invulnerable;
 
     private void Awake()
     {
@@ -42,7 +45,7 @@ public class MedicHealth : MonoBehaviour
     /// <param name="faintedTime">The time in sec the fainting lasts</param>
     public void Hit(float faintedTime)
     {
-        if (_invulnable)
+        if (_invulnerable)
         {
             return;
         }
@@ -70,8 +73,8 @@ public class MedicHealth : MonoBehaviour
     /// </summary>
     private void PlayerDied()
     {
-        _fainted.Set(false);
-        Debug.Log("I'm dead!");
+        //_notFainted.Set(false);
+        _isAlive.Set(false);
     }
 
     /// <summary>
@@ -81,18 +84,18 @@ public class MedicHealth : MonoBehaviour
     /// <returns></returns>
     private IEnumerator FaintLoop(float faintTime)
     {
-        _invulnable = true;
+        _invulnerable = true;
 
-        _fainted.Set(true);
+        _isAwake.Set(false);
 
         yield return new WaitForSeconds(faintTime);
 
-        _fainted.Set(false);
+        _isAwake.Set(true);
 
 
-        yield return new WaitForSeconds(_invulnabilityTime);
+        yield return new WaitForSeconds(_invulnerabilityTime);
 
-        _invulnable = false;
+        _invulnerable = false;
     }
 
 
