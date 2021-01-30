@@ -17,7 +17,7 @@ public class DungeonMapGenerator : MonoBehaviour
     //debug
     public DungeonRoom currentRoom;
 
-    public void Start()
+    public void Awake()
     {
         GenerateDungeon();  
     }
@@ -58,7 +58,6 @@ public class DungeonMapGenerator : MonoBehaviour
         RemoveAllExistingRooms();
         // Create new Dungeon
         List<DungeonRoom> roomsWithOpenConnection = new List<DungeonRoom> { m_startingRoom };
-        //for (int i = 0; i < m_amountOfRooms; i++)
         //DungeonRoom currentRoom;
         while (roomsWithOpenConnection.Count > 0)
         {

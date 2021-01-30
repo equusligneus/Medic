@@ -66,6 +66,7 @@ public class DungeonRoomConnection : MonoBehaviour
         {
             this.transform.parent.RotateAround(this.transform.parent.position, Vector3.up, 90);
         }
+        //Additions.To3D(Additions.To2D(this.transform.position)) != Additions.To3D(Additions.To2D(_sourceConnection.transform.position)) // in case of y not matching for if
     }
 
     private void Awake()
