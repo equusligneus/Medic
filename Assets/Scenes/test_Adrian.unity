@@ -1296,6 +1296,10 @@ PrefabInstance:
       propertyPath: _Triggerables.Array.data[1]
       value: 
       objectReference: {fileID: 1344503451}
+    - target: {fileID: 6632312666816230899, guid: 2dc22b2adda55dc4288e3c33e9740ae7, type: 3}
+      propertyPath: _callUnTriggerOnTargets
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6632312666816230901, guid: 2dc22b2adda55dc4288e3c33e9740ae7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.86
@@ -1982,7 +1986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1151474231
 Transform:
   m_ObjectHideFlags: 0
@@ -8448,7 +8452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1809462846
 Transform:
   m_ObjectHideFlags: 0
@@ -8560,7 +8564,7 @@ Transform:
   m_GameObject: {fileID: 1921014480}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.51, y: 0.5, z: 21.91}
-  m_LocalScale: {x: 8, y: 1, z: 0.5}
+  m_LocalScale: {x: 8, y: 1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1151474231}
   m_RootOrder: 4
