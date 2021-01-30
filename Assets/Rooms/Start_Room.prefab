@@ -289,7 +289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4123da2ce9317d14ab767218d1cf8ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startGameTasks: []
+  startGameTasks:
+  - {fileID: 11400000, guid: dd7ebb0f4ff8ed5449e07dd6ab276f84, type: 2}
+  - {fileID: 11400000, guid: dc0020a7367ebcc428485ecf3dd1fccf, type: 2}
+  - {fileID: 11400000, guid: 898fedee84a228f4c8c9736696cc6efb, type: 2}
+  - {fileID: 11400000, guid: 667d23cde27622a47aa32c73d80c1cac, type: 2}
 --- !u!1001 &87710487940416589
 PrefabInstance:
   m_ObjectHideFlags: 0
