@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,10 @@ public class Adventurer : MonoBehaviour
 	private Sprite icon = default;
 
 	public Sprite Icon => icon;
+
+	public bool IsRescued { get; private set; }
+
+	public event Action OnRescue;
 
 	private void OnEnable()
 	{
