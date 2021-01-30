@@ -19,11 +19,21 @@ public class ParticleController : MonoBehaviour
             ps.Play();
         }
     }
+    public void PlayAllParicle(Vector3 poistion)
+    {
+        foreach (ParticleSystem ps in _particlesToHandle)
+        {
+            ps.transform.position = poistion;
+            ps.Play();
+        }
+    }
+
 
     public void StopAllParticles()
     {
         foreach (ParticleSystem ps in _particlesToHandle)
         {
+            
             ps.Stop();
         }
     }
@@ -39,4 +49,18 @@ public class ParticleController : MonoBehaviour
             StopAllParticles();
         }
     }
+
+    public void ToggleAllParticles(bool toggle, Vector3 position)
+    {
+        if (toggle)
+        {
+            PlayAllParicle(position);
+        }
+        else
+        {
+            StopAllParticles();
+        }
+    }
+
+
 }
