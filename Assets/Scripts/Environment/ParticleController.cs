@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticleController : MonoBehaviour
-{
+{ 
     [SerializeField]
     private ParticleSystem[] _particlesToHandle;
+
+    private void Awake()
+    {
+        _particlesToHandle = GetComponentsInChildren<ParticleSystem>();
+    }
 
     public void PlayAllParicle()
     {
