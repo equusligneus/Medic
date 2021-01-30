@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   largeRoomSize: 0
-  m_connectionPoints: []
+  m_connectionPoints:
+  - {fileID: 2585310398799241662}
 --- !u!1 &2437103985161535191
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +116,7 @@ GameObject:
   - component: {fileID: 6623935407444292202}
   - component: {fileID: 2585310398799241662}
   m_Layer: 0
-  m_Name: DoorPoint
+  m_Name: DoorConnection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
