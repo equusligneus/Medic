@@ -60,6 +60,7 @@ public class MedicController : MonoBehaviour
 
         currentSpeed.Set(speed * input.magnitude);
 
-        characterController.Move((input * speed * Time.smoothDeltaTime).To3D());
+        //characterController.Move((input * speed * Time.smoothDeltaTime).To3D());
+        characterController.SimpleMove((input * speed).To3D());
     }
 }
