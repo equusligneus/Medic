@@ -39,7 +39,7 @@ public class Enemy_Attack_Ability : MonoBehaviour
     /// <param name="player"></param>
     public void AttackPlayer(Transform player)
     {
-        MedicHealth mh = player.GetComponent<MedicHealth>();
+        MedicHealth mh = player.GetComponentInParent<MedicHealth>();
 
         if(mh == null)
         {
