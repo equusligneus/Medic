@@ -1,43 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Random = UnityEngine.Random;
-
-[Serializable]
-public struct minMaxMap
-{
-    public int maxX;
-    public int minX;
-    public int maxZ;
-    public int minZ;
-
-    public minMaxMap(Vector3 _position)
-    {
-        maxX = (int) _position.x + 5;
-        minX = (int) _position.x - 5;
-        maxZ = (int) _position.z + 5;
-        minZ = (int) _position.z - 5;
-    }
-
-    public void SetMinMax(Vector3 _position)
-    {
-        if (_position.x < minX) minX = (int) _position.x - 5;
-        if (_position.x > maxX) maxX = (int) _position.x + 5;
-        if (_position.z < minZ) minZ = (int) _position.z - 5;
-        if (_position.z > maxZ) maxZ = (int) _position.z + 5;
-    }
-
-    public Vector3 GetCenter
-    {
-        get
-        {
-            return new Vector3(minX + maxX, 0, minZ + maxZ) / 2;
-        }
-    }
-}
 
 public class DungeonMapGenerator : MonoBehaviour
 {
@@ -50,20 +15,14 @@ public class DungeonMapGenerator : MonoBehaviour
     [Header("Debug")]
     [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms;
 
-    [HideInInspector] public Vector3 Center;
-
-    /*[HideInInspector] */public minMaxMap MapSize;
-
     //debug
     public DungeonRoom currentRoom;
 
-    public void Awake()
-    {
-        MapSize = new minMaxMap(m_startingRoom.transform.position);
-        MapSize.SetMinMax(m_startingRoom.transform.position);
-
-        GenerateDungeon();
-    }
+    // Disabled for better control
+    //public void Awake()
+    //{
+    //    GenerateDungeon();
+    //}
 
     //Will only search if rooms got default scale
     public bool RoomAlreadySetHere(Vector3 _here)
@@ -94,6 +53,12 @@ public class DungeonMapGenerator : MonoBehaviour
         m_placedRooms.Clear();
     }
 
+    public void SetStartRoom(DungeonRoom startRoom)
+	{
+        m_startingRoom = startRoom;
+	}
+
+    [ContextMenu("Generate Dungeon")]
     public void GenerateDungeon()
     {
         currentRoom = m_startingRoom;
@@ -276,8 +241,6 @@ public class DungeonMapGenerator : MonoBehaviour
                 newRoomConnection.Connected = true;
                 existingRoomConnection.ConnectedDungeonRoom = _newRoom;
                 newRoomConnection.ConnectedDungeonRoom = _existingRoom;
-
-                MapSize.SetMinMax(_newRoom.transform.position);
                 return false;
             }
         }

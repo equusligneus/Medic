@@ -17,15 +17,30 @@ VisualElement {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     margin-top: 0;
+    background-image: url('/Assets/Art/Textures/UI/panel_background.png');
+    -unity-slice-left: 10;
+    -unity-slice-top: 30;
+    -unity-slice-right: 10;
+    -unity-slice-bottom: 30;
 }
 
 .main_menu_button {
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin-bottom: 6px;
+    margin-top: 6px;
     padding-top: 6px;
     padding-bottom: 6px;
     font-size: 24px;
     -unity-font-style: bold;
+    background-image: url('/Assets/Art/Textures/UI/button_normal.png');
+    -unity-slice-left: 9;
+    -unity-slice-top: 9;
+    -unity-slice-right: 9;
+    -unity-slice-bottom: 9;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-left: 6px;
+    margin-right: 6px;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .main_menu_header {
