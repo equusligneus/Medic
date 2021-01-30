@@ -12,6 +12,7 @@ public class KIController : MonoBehaviour
 
     private Animator animator;
     private CharacterController charContr;
+    private PathfinderAgent agent;
     public Enemy_Attack_Ability AttackAbility { get; private set; }
 
     private Vector3 currentTargetPosition;
@@ -45,10 +46,11 @@ public class KIController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         charContr = GetComponent<CharacterController>();
+        agent = GetComponent<PathfinderAgent>();
         AttackAbility = GetComponent<Enemy_Attack_Ability>();
         currentTargetPosition = Waypoints[index].position;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
