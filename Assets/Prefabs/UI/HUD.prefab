@@ -63,8 +63,8 @@ MonoBehaviour:
   currentLives: {fileID: 11400000, guid: 588e4296d28cf1d46b35d59fdd2afa89, type: 2}
   maxLives: {fileID: 11400000, guid: 5270c2309f31d6a419915a6182f411ef, type: 2}
   lifeIcon: {fileID: 9197481963319205126, guid: 7a367b8535b7c8e4c9fb75f2866850f1, type: 3}
-  lifeEmpty: {fileID: 21300000, guid: 81bbff09deb3e884e94adcb3f5c2ffcf, type: 3}
-  lifeFull: {fileID: 21300000, guid: 750e179b6f009434eafc26d52a849dce, type: 3}
+  lifeEmpty: {fileID: 21300000, guid: f62e21533f4b542439a135ba478da0f9, type: 3}
+  lifeFull: {fileID: 21300000, guid: df1b8691dc536374a8862657e7e7119c, type: 3}
 --- !u!114 &2979556235533994979
 MonoBehaviour:
   m_ObjectHideFlags: 0
