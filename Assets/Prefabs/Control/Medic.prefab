@@ -208,6 +208,8 @@ MonoBehaviour:
   loadModifier: 0.5
   isLoaded: {fileID: 11400000, guid: e7f3300c3286e32419b6d217d4306671, type: 2}
   isAwake: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
+  isStanding: {fileID: 11400000, guid: 524f802232fce934a8ef3049a033110c, type: 2}
+  currentSpeed: {fileID: 11400000, guid: e1d257645d5a34449aba4f650d3b5631, type: 2}
 --- !u!114 &1772831854936599205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +318,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: edf42226e7d3e2e4cb124ba349ac2fd9, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 5e40e047a47351a45b08f9f4a6b283b6, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e40e047a47351a45b08f9f4a6b283b6, type: 3}
 --- !u!4 &9105038327602223028 stripped

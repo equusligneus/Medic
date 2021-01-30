@@ -22,6 +22,12 @@ public class MedicController : MonoBehaviour
     [SerializeField]
     private Ref<bool> isAwake = default;
 
+    [SerializeField]
+    private Ref<bool> isStanding = default;
+
+    [SerializeField]
+    private Ref_Float currentSpeed = default;
+
     void Awake()
 	{
         camTarget = GetComponent<CameraTarget>();
@@ -39,8 +45,11 @@ public class MedicController : MonoBehaviour
     void Update()
     {
         // fainted, abort
-        if (!isAwake.Get())
+        if (!isStanding.Get())
+        {
+            currentSpeed.Set(0f);
             return;
+        }
 
         var input = move.ReadValue<Vector2>();
 
@@ -48,6 +57,8 @@ public class MedicController : MonoBehaviour
 
         if (input.sqrMagnitude > 0f)
             transform.rotation = Quaternion.LookRotation(input.normalized.To3D(), Vector3.up);
+
+        currentSpeed.Set(speed * input.magnitude);
 
         characterController.Move((input * speed * Time.smoothDeltaTime).To3D());
     }
