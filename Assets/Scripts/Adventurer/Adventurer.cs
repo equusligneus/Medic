@@ -17,6 +17,9 @@ public class Adventurer : MonoBehaviour
 
 	public event Action OnRescue;
 
+	[SerializeField]
+	private GameObject _modle;
+
 	private void OnEnable()
 	{
         adventurers.Add(this);
@@ -30,6 +33,7 @@ public class Adventurer : MonoBehaviour
 	public void GotRescued()
     {
 		IsRescued = true;
-		OnRescue.Invoke();
+        OnRescue.Invoke();
+		_modle.SetActive(false);
     }
 }
