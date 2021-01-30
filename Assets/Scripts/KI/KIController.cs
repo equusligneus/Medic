@@ -28,6 +28,7 @@ public class KIController : MonoBehaviour
     public float TargetRange = 1.0f;
     public LayerMask BlockedLayer;
 
+    public bool PlayerInView = false;
 
     private int index = 0;
     private bool followPlayer = false;
@@ -42,23 +43,19 @@ public class KIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerInViewSpace())
-        {
-
-        }
+        PlayerInView = PlayerInViewSpace();
+        
 
         if (AtGoal(currentTargetPosition))
         {
             NextWaypoint();
         }
-
-        Move(currentTargetPosition);
     }
 
-    public void Move(Vector3 _goal)
+    public void Move()
     {
-        Vector3 dir = MoveDirection(_goal);
-        Quaternion toRotation = Quaternion.LookRotation(-(transform.position - _goal));
+        Vector3 dir = MoveDirection(currentTargetPosition);
+        Quaternion toRotation = Quaternion.LookRotation(-(transform.position - currentTargetPosition));
         transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, RotationSpeed * Time.deltaTime);
         dir *= MovementSpeed * Time.deltaTime;
         dir = transform.TransformDirection(dir);
@@ -110,8 +107,7 @@ public class KIController : MonoBehaviour
                     return true;
                 }
             }
-        }
-        
+        }    
         return false;
     }
 }
