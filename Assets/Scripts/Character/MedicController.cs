@@ -44,7 +44,10 @@ public class MedicController : MonoBehaviour
 
         var input = move.ReadValue<Vector2>();
 
-        var speed = this.speed * (isLoaded.Get() ? loadModifier : 1f); 
+        var speed = this.speed * (isLoaded.Get() ? loadModifier : 1f);
+
+        if (input.sqrMagnitude > 0f)
+            transform.rotation = Quaternion.LookRotation(input.normalized.To3D(), Vector3.up);
 
         characterController.Move((input * speed * Time.smoothDeltaTime).To3D());
     }
