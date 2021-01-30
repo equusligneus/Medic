@@ -11,6 +11,7 @@ public class EnemyWalkTo : StateMachineBehaviour
     {
         contr = animator.GetComponent<KIController>();
         animationBreak = false;
+        contr.Agent.MoveTo(contr.currentTargetPosition);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -26,8 +27,7 @@ public class EnemyWalkTo : StateMachineBehaviour
             }
             else
             {
-                contr.Move();
-
+                //contr.Move();
                 if (contr.PlayerInViewSpace())
                 {
                     animator.SetBool("PlayerInView", true);
