@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFollowTarget : StateMachineBehaviour
+public class EnemyBreakTime : StateMachineBehaviour
 {
-    KIController contr;
+    private KIController contr;
+    private float internalBreakTime = 0.0f;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         contr = animator.GetComponent<KIController>();
+        contr.NextWaypoint();
+        internalBreakTime = 0.0f;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -16,8 +19,22 @@ public class EnemyFollowTarget : StateMachineBehaviour
     {
         if(contr != null)
         {
-            contr.Move();
-            animator.SetBool("PlayerInView", contr.PlayerInViewSpace());
+            if (contr.PlayerInViewSpace())
+            {
+                animator.SetBool("BreakTime", false);
+                animator.SetBool("PlayerInView", true);
+            }
+            else
+            {
+                if (internalBreakTime < contr.BreakTime)
+                {
+                    internalBreakTime += Time.deltaTime;
+                }
+                else
+                {
+                    animator.SetBool("BreakTime", false);
+                }
+            }
         }
     }
 

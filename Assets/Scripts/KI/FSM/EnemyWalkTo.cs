@@ -5,21 +5,35 @@ using UnityEngine;
 public class EnemyWalkTo : StateMachineBehaviour
 {
     KIController contr;
+    bool animationBreak = false;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("EnterWalkToState");
         contr = animator.GetComponent<KIController>();
+        animationBreak = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(contr != null)
+        if(contr != null && !animationBreak)
         {
-            contr.Move();
+            //Debug.Log(contr.currentTargetPosition);
+            if (contr.AtGoal())
+            {
+                animator.SetBool("BreakTime", true);
+                animationBreak = true;
+            }
+            else
+            {
+                contr.Move();
 
-            animator.SetBool("PlayerInView", contr.PlayerInViewSpace());
+                if (contr.PlayerInViewSpace())
+                {
+                    animator.SetBool("PlayerInView", true);
+                    animationBreak = true;
+                }
+            }
         }
     }
 

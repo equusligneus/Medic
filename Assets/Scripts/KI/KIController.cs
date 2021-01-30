@@ -11,8 +11,10 @@ public class KIController : MonoBehaviour
     [Header("Waypoints")]
     public List<Transform> Waypoints = new List<Transform>();
 
+    private Animator animator;
     private CharacterController charContr;
-    private Vector3 currentTargetPosition;
+
+    public Vector3 currentTargetPosition;
 
     [Space(10)]
     [Header("KI Settings")]
@@ -28,14 +30,15 @@ public class KIController : MonoBehaviour
     public float TargetRange = 1.0f;
     public LayerMask BlockedLayer;
 
-    public bool PlayerInView = false;
-
-    private int index = 0;
+    public int index = 0;
     private bool followPlayer = false;
+
+    public float BreakTime = 6.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         charContr = GetComponent<CharacterController>();
         currentTargetPosition = Waypoints[index].position;
     }
@@ -43,13 +46,7 @@ public class KIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerInView = PlayerInViewSpace();
-        
 
-        if (AtGoal(currentTargetPosition))
-        {
-            NextWaypoint();
-        }
     }
 
     public void Move()
@@ -68,13 +65,14 @@ public class KIController : MonoBehaviour
         return transform.InverseTransformDirection(-(transform.position - _goal).normalized);
     }
 
-    public bool AtGoal(Vector3 _goal)
+    public bool AtGoal()
     {
-        return Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(_goal.x, 0, _goal.z)) < TargetRange;
+        return Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(currentTargetPosition.x, 0, currentTargetPosition.z)) < TargetRange;
     }
 
     public void NextWaypoint()
     {
+        //Debug.Log("NextWaypoint");
         if (followPlayer)
         {
             currentTargetPosition = Waypoints[index].position;
