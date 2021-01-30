@@ -62,7 +62,7 @@ public class EndGame_Controller : MonoBehaviour
 
             adv.OnRescue -= OnAdventurerResuced;
             adv.OnRescue += OnAdventurerResuced;
-            Debug.Log($"Added to {adv.name}"); 
+            //Debug.Log($"Added to {adv.name}"); 
        }
     }
 
