@@ -7,8 +7,8 @@ public class DungeonRoomConnection : MonoBehaviour
 {
     [Header("For debugging, don't change")]
     [SerializeField, Tooltip("Change only if not on the same axis as center, which will not work right now")] private Vector3 m_roomConnectionVector;
-    [HideInInspector] public bool Connected = false;
-    [HideInInspector] public DungeonRoom ConnectedDungeonRoom; // Not used right now but might be useful
+    public bool Connected = false;
+    public DungeonRoom ConnectedDungeonRoom; // Not used right now but might be useful
 
     // debug
     [HideInInspector] public DungeonRoomConnection temp;
@@ -35,6 +35,14 @@ public class DungeonRoomConnection : MonoBehaviour
 
         transform.parent.position = _sourceConnection.transform.parent.position + sourceDir +
                                     sourceDir.normalized * ownDir.magnitude;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.parent.position, 2);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.transform.position == this.transform.parent.position)
+            {
+                Debug.LogWarning(this.transform.parent, this.transform.parent);
+            }
+        }
     }
 
     /// <summary>
@@ -58,6 +66,7 @@ public class DungeonRoomConnection : MonoBehaviour
         {
             this.transform.parent.RotateAround(this.transform.parent.position, Vector3.up, 90);
         }
+        //Additions.To3D(Additions.To2D(this.transform.position)) != Additions.To3D(Additions.To2D(_sourceConnection.transform.position)) // in case of y not matching for if
     }
 
     private void Awake()
