@@ -5,7 +5,7 @@ using UnityEngine;
 public class DungeonMapGenerator : MonoBehaviour
 {
     [Header("Options")]
-    [SerializeField] private int m_targetRoomAmount;
+    [SerializeField, Tooltip("Amount of rooms to generate (excluding starting room)")] private int m_targetRoomAmount; // favors building rooms in one direction (when there are no intersections), if only 1 connection left it will add more rooms until target reached
     [SerializeField] private DungeonRoom m_startingRoom;
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
     [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms = new List<DungeonRoom>();
@@ -15,6 +15,7 @@ public class DungeonMapGenerator : MonoBehaviour
 
     private void Start()
     {
+        //m_targetRoomAmount--; // I don't really know why, but it works
         GenerateDungeon();
     }
 
@@ -37,7 +38,22 @@ public class DungeonMapGenerator : MonoBehaviour
             // use any room, sequence doesn't matter
             currentRoom = roomsWithOpenConnection[0];
             // create a new room
-            DungeonRoom nextRoom = AddRoom(currentRoom, m_roomPrefabs[Random.Range(0, m_roomPrefabs.Count)]);
+            DungeonRoom nextRoom;
+            // if placedRooms + doors that aren't connected yet == targetRoomAmount, close all remaining doors, which will add the remaining rooms so placedRooms.Count == targetRoomAmount
+            if (m_placedRooms.Count + roomsWithOpenConnection.Count >= m_targetRoomAmount) // Close off all remaining doors with dead end rooms
+            {
+                nextRoom = AddRoom(currentRoom, GetRoomPrefabWithDeadEnd());
+            }
+            // if only one open connection left and targetRoomAmount not reached add another notDeadEnd room
+            else if (roomsWithOpenConnection.Count == 1 && m_placedRooms.Count - 1 < m_targetRoomAmount)
+            {
+                nextRoom = AddRoom(currentRoom, GetRoomPrefabWithConnections());
+            }
+            else
+            {
+                nextRoom = AddRoom(currentRoom, m_roomPrefabs);
+            }
+
             // when nextRoom got connections add it to list of open connections
             if (nextRoom != null && !nextRoom.AllConnected && !roomsWithOpenConnection.Contains(nextRoom)) // second might be useless
             {
@@ -54,10 +70,10 @@ public class DungeonMapGenerator : MonoBehaviour
         }
     }
 
-    public DungeonRoom AddRoom(DungeonRoom _startingRoom, GameObject _roomPrefab)
+    public DungeonRoom AddRoom(DungeonRoom _startingRoom, List<GameObject> _roomPrefabs)
     {
         // Get random room of the prefabs
-        DungeonRoom nextRoom = Instantiate(_roomPrefab).GetComponent<DungeonRoom>();
+        DungeonRoom nextRoom = Instantiate(_roomPrefabs[Random.Range(0, _roomPrefabs.Count)]).GetComponent<DungeonRoom>();
         m_placedRooms.Add(nextRoom);
         bool stopGeneration = ConnectRooms(_startingRoom, nextRoom);
         return stopGeneration ? null : nextRoom;
@@ -65,6 +81,7 @@ public class DungeonMapGenerator : MonoBehaviour
 
     private List<GameObject> GetRoomPrefabWithConnections()
     {
+        // All rooms with at least 2 connections, where one of it will be connected immediately, leaving 1 free connection
         List<GameObject> prefabRoomsWithConnections = new List<GameObject>();
         foreach (GameObject roomPrefab in m_roomPrefabs)
         {
@@ -79,6 +96,7 @@ public class DungeonMapGenerator : MonoBehaviour
 
     private List<GameObject> GetRoomPrefabWithDeadEnd()
     {
+        // All rooms with at least 1 connection, where there is no connection unoccupied after the room has been connected
         List<GameObject> prefabRoomsWithConnections = new List<GameObject>();
         foreach (GameObject roomPrefab in m_roomPrefabs)
         {
