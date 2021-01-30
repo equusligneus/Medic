@@ -72,15 +72,11 @@ public class DungeonMapGenerator : MonoBehaviour
                 Debug.Log(newRoomConnection, newRoomConnection);
                 // Rotate room to match connections (doors)
 
-                //if (existingRoomConnection.GetRoomConnectionDir == newRoomConnection.GetRoomConnectionDir * -1) // Just to be safe
+                //if (existingRoomConnection.GetRoomConnectionVector == newRoomConnection.GetRoomConnectionVector * -1) // Just to be safe
                 {
                     // Set new room so both connections are on top of each other
-                    Debug.Log(existingRoomConnection.transform.position);
-                    Debug.Log(newRoomConnection.transform.position);
-                    newRoomConnection.RotateRoomToMatch(existingRoomConnection);
-                    newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnection.transform.position);
-                    Debug.Log(existingRoomConnection.transform.position);
-                    Debug.Log(newRoomConnection.transform.position);
+                    newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnection);
+                    //newRoomConnection.RotateRoomToMatch(existingRoomConnection);
                     // Give the rooms some information
                     existingRoomConnection.Connected = true;
                     newRoomConnection.Connected = true;
