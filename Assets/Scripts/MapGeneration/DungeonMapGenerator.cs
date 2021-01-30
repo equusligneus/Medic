@@ -99,6 +99,12 @@ public class DungeonMapGenerator : MonoBehaviour
         }
     }
 
+    private void PlaceDoor(DungeonRoomConnection _connectionToPlace)
+    {
+        _connectionToPlace.Connected = true;
+        //TODO: place door here
+    }
+
     public DungeonRoom AddRoom(DungeonRoom _startingRoom, List<GameObject> _roomPrefabs)
     {
         bool allowedToPlaceHere = true;
@@ -111,13 +117,13 @@ public class DungeonMapGenerator : MonoBehaviour
                 2; // 2 times distance from center to connection = nextRoom normal size center
             foreach (DungeonRoom placedRoom in m_placedRooms)
             {
+                // Check for overlap at nextRoomPos
                 if (placedRoom.transform.position == nextRoomPos)
                 {
                     // Overlap detected here; placedRoom was there first; GetActiveConnections(_startingRoom)[0] is where the door needs to be placed
-                    Debug.LogWarning("Overlapping", placedRoom);
-                    Debug.LogWarning("Overlapping2", GetActiveConnections(_startingRoom)[0]);
-                    GetActiveConnections(_startingRoom)[0].Connected =
-                        true; //TODO: not true, but close this door permanently
+                    //Debug.LogWarning("Overlapping", placedRoom);
+                    //Debug.LogWarning("Overlapping2", GetActiveConnections(_startingRoom)[0]);
+                    PlaceDoor(GetActiveConnections(_startingRoom)[0]);
                     allowedToPlaceHere = false;
                     //return null;
                 }
