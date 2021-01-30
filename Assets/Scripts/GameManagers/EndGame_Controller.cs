@@ -23,16 +23,20 @@ public class EndGame_Controller : MonoBehaviour
     private void OnEnable()
     {
         _isPlayerAlive.OnChanged += OnPlayerDied;
-        _SetAdventurers.OnCountChanged += OnAdnventurerRescuded;
+        _SetAdventurers.OnCountChanged += OnAdnventurerAdded;
 
     }
 
     private void OnDisable()
     {
         _isPlayerAlive.OnChanged -= OnPlayerDied;
-        _SetAdventurers.OnCountChanged -= OnAdnventurerRescuded;
+        _SetAdventurers.OnCountChanged -= OnAdnventurerAdded;
     }
 
+    private void Start()
+    {
+        OnAdnventurerAdded();
+    }
 
     /// <summary>
     /// Checks if the player died and calls the lose condition
@@ -50,7 +54,19 @@ public class EndGame_Controller : MonoBehaviour
     /// <summary>
     /// Checks if all the Advenurers got rescued and if so calls the win condition
     /// </summary>
-    private void OnAdnventurerRescuded()
+    private void OnAdnventurerAdded()
+    {
+       for(int i = 0; i < _SetAdventurers.Count; i++)
+       {
+            Adventurer adv = _SetAdventurers[i];
+
+            adv.OnRescue -= OnAdventurerResuced;
+            adv.OnRescue += OnAdventurerResuced;
+            Debug.Log($"Added to {adv.name}"); 
+       }
+    }
+
+    private void OnAdventurerResuced()
     {
         for (int i = 0; i < _SetAdventurers.Count; i++)
         {
