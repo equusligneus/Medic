@@ -98,6 +98,13 @@ public class DungeonMapGenerator : MonoBehaviour
 
     public DungeonRoom AddRoom(DungeonRoom _startingRoom, List<GameObject> _roomPrefabs)
     {
+        bool largeRoomAllowed;
+        // See if no collision - expensive but works (hopefully) and is only called once on generation
+        //foreach (DungeonRoom placedRoom in m_placedRooms)
+        //{
+        //    if (placedRoom.transform.position.x)
+        //}
+
         // Get random room of the prefabs
         DungeonRoom nextRoom = Instantiate(_roomPrefabs[Random.Range(0, _roomPrefabs.Count)]).GetComponent<DungeonRoom>();
         m_placedRooms.Add(nextRoom);
@@ -135,25 +142,33 @@ public class DungeonMapGenerator : MonoBehaviour
         return prefabRoomsWithConnections;
     }
 
+    private List<DungeonRoomConnection> GetActiveConnections(DungeonRoom _room)
+    {
+        List<DungeonRoomConnection> activeConnections = new List<DungeonRoomConnection>();
+        foreach (DungeonRoomConnection roomConnection in _room.m_connectionPoints)
+        {
+            if (roomConnection.gameObject.activeSelf && !roomConnection.Connected)
+                activeConnections.Add(roomConnection);
+        }
+
+        return activeConnections;
+    }
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="_existingRoom"></param>
     /// <param name="_newRoom"></param>
     /// <returns>True if all connection got connected</returns>
-    private bool ConnectRooms(DungeonRoom _existingRoom, DungeonRoom _newRoom)
+    private bool ConnectRooms(DungeonRoom _existingRoom, DungeonRoom _newRoom, bool _largeRoomAllowed = false)
     {
-        // Get random active connection
-        List<DungeonRoomConnection> activeConnections = new List<DungeonRoomConnection>();
-        foreach (DungeonRoomConnection roomConnection in _existingRoom.m_connectionPoints)
-        {
-            if (roomConnection.gameObject.activeSelf && !roomConnection.Connected)
-                activeConnections.Add(roomConnection);
-        }
+        // Get first active connection
+        List<DungeonRoomConnection> activeConnections = GetActiveConnections(_existingRoom);
 
         if (activeConnections.Count == 0)
             return true;
-        DungeonRoomConnection existingRoomConnection = activeConnections[Random.Range(0, activeConnections.Count)];
+        //DungeonRoomConnection existingRoomConnection = activeConnections[Random.Range(0, activeConnections.Count)];
+        DungeonRoomConnection existingRoomConnection = activeConnections[0];
         Debug.Log(existingRoomConnection, existingRoomConnection);
 
         // New room connection point that is available
