@@ -34,7 +34,7 @@ public class IntervallTrigger : TriggerPlate
             return;
         }
 
-        if (other.CompareTag("Player"))
+        if (other.GetComponent<MedicHealth>() != null)
         {
             _active = true;
         }
@@ -47,7 +47,7 @@ public class IntervallTrigger : TriggerPlate
             return;
         }
 
-        if (other.CompareTag("Player"))
+        if (other.GetComponent<MedicHealth>() != null)
         {
             _active = false;
         }
