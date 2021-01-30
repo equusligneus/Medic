@@ -26,4 +26,10 @@ public class Adventurer : MonoBehaviour
 	{
         adventurers.Remove(this);
 	}
+
+	public void GotRescued()
+    {
+		IsRescued = true;
+		OnRescue.Invoke();
+    }
 }
