@@ -30,9 +30,17 @@ public class MedicHealth : MonoBehaviour
     }
 
     /// <summary>
-    /// Hit sets the medic onto fainting condition and if still alife then in invulnarble condition
+    /// To test he demage in the scene
     /// </summary>
     [ContextMenu("Hit")]
+    public void TesHit()
+    {
+        Hit(1);
+    }
+
+    /// <summary>
+    /// Hit sets the medic onto fainting condition and if still alife then in invulnarble condition
+    /// </summary>
     public void Hit(int damage)
     {
         Hit(damage, _faintedTime);

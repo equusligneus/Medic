@@ -11,8 +11,10 @@ public class KIController : MonoBehaviour
     [Header("Waypoints")]
     public List<Transform> Waypoints = new List<Transform>();
 
+    private Animator animator;
     private CharacterController charContr;
-    private Vector3 currentTargetPosition;
+
+    public Vector3 currentTargetPosition;
 
     [Space(10)]
     [Header("KI Settings")]
@@ -28,13 +30,15 @@ public class KIController : MonoBehaviour
     public float TargetRange = 1.0f;
     public LayerMask BlockedLayer;
 
-
-    private int index = 0;
+    public int index = 0;
     private bool followPlayer = false;
+
+    public float BreakTime = 6.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         charContr = GetComponent<CharacterController>();
         currentTargetPosition = Waypoints[index].position;
     }
@@ -42,23 +46,13 @@ public class KIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerInViewSpace())
-        {
 
-        }
-
-        if (AtGoal(currentTargetPosition))
-        {
-            NextWaypoint();
-        }
-
-        Move(currentTargetPosition);
     }
 
-    public void Move(Vector3 _goal)
+    public void Move()
     {
-        Vector3 dir = MoveDirection(_goal);
-        Quaternion toRotation = Quaternion.LookRotation(-(transform.position - _goal));
+        Vector3 dir = MoveDirection(currentTargetPosition);
+        Quaternion toRotation = Quaternion.LookRotation(-(transform.position - currentTargetPosition));
         transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, RotationSpeed * Time.deltaTime);
         dir *= MovementSpeed * Time.deltaTime;
         dir = transform.TransformDirection(dir);
@@ -71,13 +65,14 @@ public class KIController : MonoBehaviour
         return transform.InverseTransformDirection(-(transform.position - _goal).normalized);
     }
 
-    public bool AtGoal(Vector3 _goal)
+    public bool AtGoal()
     {
-        return Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(_goal.x, 0, _goal.z)) < TargetRange;
+        return Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(currentTargetPosition.x, 0, currentTargetPosition.z)) < TargetRange;
     }
 
     public void NextWaypoint()
     {
+        //Debug.Log("NextWaypoint");
         if (followPlayer)
         {
             currentTargetPosition = Waypoints[index].position;
@@ -110,8 +105,7 @@ public class KIController : MonoBehaviour
                     return true;
                 }
             }
-        }
-        
+        }    
         return false;
     }
 }
