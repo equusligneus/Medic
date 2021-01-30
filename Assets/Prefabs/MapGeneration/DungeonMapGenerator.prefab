@@ -58,6 +58,6 @@ MonoBehaviour:
   - {fileID: 5976591014718516762, guid: 009c0718fa6846a49989c91c25dfc1a6, type: 3}
   - {fileID: 9008384979891142304, guid: d587de2ec6ec16b4d90ee40e95c873e6, type: 3}
   - {fileID: 5267689099409796547, guid: c9adcbde1d02a7d4daec232d2a1f9031, type: 3}
-  - {fileID: 3083399745511206283, guid: 25b6d93ac6342854db908ed87a2a3b9c, type: 3}
+  - {fileID: 5024803446659917178, guid: 25b6d93ac6342854db908ed87a2a3b9c, type: 3}
   m_placedRooms: []
   currentRoom: {fileID: 0}

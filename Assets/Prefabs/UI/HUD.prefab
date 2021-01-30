@@ -79,4 +79,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adventurerSet: {fileID: 11400000, guid: 6715761edb36bbf4b821d35a81d89797, type: 2}
   adventurerIcon: {fileID: 9197481963319205126, guid: 7a367b8535b7c8e4c9fb75f2866850f1, type: 3}
-  lostAdventurer: {fileID: 21300000, guid: 81bbff09deb3e884e94adcb3f5c2ffcf, type: 3}
+  lostAdventurer: {fileID: 21300000, guid: 2fe12768632b40049b1b39b5de803b9b, type: 3}
