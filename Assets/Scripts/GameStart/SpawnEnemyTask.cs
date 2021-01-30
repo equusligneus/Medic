@@ -16,7 +16,7 @@ public class SpawnEnemyTask : StartGameTask
 	{
 		List<int> indices = new List<int>(spawnPoints.Count);
 		for (int i = 0; i < spawnPoints.Count; ++i)
-			indices[i] = i;
+			indices.Add(i);
 
 		if (indices.Count < enemiesToSpawn.Length)
 		{
