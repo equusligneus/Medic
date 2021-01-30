@@ -8,6 +8,9 @@ public class TriggerPlate : MonoBehaviour
     [SerializeField]
     protected List<ATriggerable> _Triggerables = new List<ATriggerable>();
 
+    [SerializeField]
+    protected bool _callUnTriggerOnTargets = true;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -34,6 +37,11 @@ public class TriggerPlate : MonoBehaviour
 
     protected virtual void UnTriggerAllTriggers()
     {
+        if (!_callUnTriggerOnTargets)
+        {
+            return;
+        }
+
         foreach(ATriggerable trigger in _Triggerables)
         {
             trigger.GotUnTriggered(this);

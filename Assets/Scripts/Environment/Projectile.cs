@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             MedicHealth mh = other.GetComponentInParent<MedicHealth>();
-            Debug.Log("Hit Player");
+            //Debug.Log("Hit Player");
             mh.Hit(Damage);
         }
 
