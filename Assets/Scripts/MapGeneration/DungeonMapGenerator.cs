@@ -10,6 +10,9 @@ public class DungeonMapGenerator : MonoBehaviour
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
     [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms = new List<DungeonRoom>();
 
+    //debug
+    public DungeonRoom currentRoom;
+
     private void Start()
     {
         GenerateRooms();
@@ -26,18 +29,21 @@ public class DungeonMapGenerator : MonoBehaviour
         m_placedRooms.Clear();
 
         // Create new Dungeon
-        DungeonRoom currentRoom = m_startingRoom;
+        currentRoom = m_startingRoom;
 
-        DungeonRoom nextRoom;
         for (int i = 0; i < m_amountOfRooms; i++)
         {
-            // Get random room of the prefabs
-            nextRoom = Instantiate(m_roomPrefabs[Random.Range(0, m_roomPrefabs.Count)].GetComponent<DungeonRoom>());
-            m_placedRooms.Add(nextRoom);
-            if (ConnectRooms(currentRoom, nextRoom))
-                return;
-            currentRoom = nextRoom;
+            currentRoom = AddRoom(currentRoom);
         }
+    }
+
+    public DungeonRoom AddRoom(DungeonRoom _startingRoom)
+    {
+        // Get random room of the prefabs
+        DungeonRoom nextRoom = Instantiate(m_roomPrefabs[Random.Range(0, m_roomPrefabs.Count)].GetComponent<DungeonRoom>());
+        m_placedRooms.Add(nextRoom);
+        ConnectRooms(_startingRoom, nextRoom);
+        return nextRoom;
     }
 
     //TODO: Rotate Rooms to connect them
@@ -76,7 +82,7 @@ public class DungeonMapGenerator : MonoBehaviour
                 {
                     // Set new room so both connections are on top of each other
                     newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnection);
-                    //newRoomConnection.RotateRoomToMatch(existingRoomConnection);
+                    newRoomConnection.RotateRoomToMatch(existingRoomConnection);
                     // Give the rooms some information
                     existingRoomConnection.Connected = true;
                     newRoomConnection.Connected = true;
