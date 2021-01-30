@@ -2,36 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFollowTarget : StateMachineBehaviour
+public class EnemyAttack : StateMachineBehaviour
 {
     KIController contr;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         contr = animator.GetComponent<KIController>();
+        contr.AttackAbility.AttackPlayer(contr.Player);
+
+        animator.SetBool("Attack", false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(contr != null)
-        {
-            contr.Move();
-
-            if (contr.PlayerInViewSpace())
-            {
-                if (contr.AttackAbility.IsPlayerInRange(contr.Player) && contr.PlayerAwake.Get())
-                {
-                    animator.SetBool("Attack", true);   
-                    //contr.AttackAbility.AttackPlayer(contr.Player);
-                }
-                animator.SetBool("PlayerInView", true);
-            }
-            else
-            {
-                animator.SetBool("PlayerInView", false);
-            }
-        }
+        animator.SetBool("PlayerInView", contr.PlayerInViewSpace());
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
