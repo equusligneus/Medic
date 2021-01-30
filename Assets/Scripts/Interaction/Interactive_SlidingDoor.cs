@@ -15,7 +15,8 @@ public class Interactive_SlidingDoor : Interactive_Door
 
 	private float current = 0f;
 
-	private new Collider collider;
+	[SerializeField]
+	private Collider doorCollider;
 
 	private void Start()
 	{
@@ -24,7 +25,6 @@ public class Interactive_SlidingDoor : Interactive_Door
 			enabled = false;
 			return;
 		}
-		collider = doorObject.GetComponent<Collider>();
 		closedPos = doorObject.transform.position;
 	}
 
@@ -46,7 +46,7 @@ public class Interactive_SlidingDoor : Interactive_Door
 		{
 			isMoving = false;
 			isOpen = !isOpen;
-			collider.enabled = !isOpen;
+			doorCollider.enabled = !isOpen;
 		}
 	}
 
@@ -54,7 +54,7 @@ public class Interactive_SlidingDoor : Interactive_Door
 	{
 		isMoving = true;
 		current = 0f;
-		collider.enabled = true;
+		doorCollider.enabled = true;
 	}
 
 	protected override void Open()

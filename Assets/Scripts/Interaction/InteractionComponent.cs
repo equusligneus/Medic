@@ -91,7 +91,7 @@ public class InteractionComponent : MonoBehaviour
 
 		if (temp != selected.Get())
 		{
-			if (selected)
+			if (selected.Get())
 				selected.Get().Deselect();
 
 			selected.Set(temp);
