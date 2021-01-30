@@ -50,22 +50,30 @@ public class DungeonMapGenerator : MonoBehaviour
             if (roomConnection.gameObject.activeSelf && !roomConnection.Connected)
                 activeConnections.Add(roomConnection);
         }
-        DungeonRoomConnection existingRoomConnectionPoint = activeConnections[Random.Range(0, activeConnections.Count)];
+        DungeonRoomConnection existingRoomConnection = activeConnections[Random.Range(0, activeConnections.Count)];
+        Debug.Log(existingRoomConnection, existingRoomConnection);
 
         // New room connection point that is available
         foreach (DungeonRoomConnection newRoomConnection in _newRoom.m_connectionPoints)
         {
-            if (existingRoomConnectionPoint.gameObject.activeSelf && newRoomConnection.gameObject.activeSelf && !newRoomConnection.Connected &&
-                !existingRoomConnectionPoint.Connected && existingRoomConnectionPoint.GetRoomConnectionDir == newRoomConnection.GetRoomConnectionDir * -1)
+            if (existingRoomConnection.gameObject.activeSelf && newRoomConnection.gameObject.activeSelf &&
+                !newRoomConnection.Connected && !existingRoomConnection.Connected)
             {
-                // Set new room so both connections are on top of each other
-                newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnectionPoint.transform.position);
-                // Give the rooms some information
-                existingRoomConnectionPoint.Connected = true;
-                newRoomConnection.Connected = true;
-                existingRoomConnectionPoint.ConnectedDungeonRoom = _newRoom;
-                newRoomConnection.ConnectedDungeonRoom = _existingRoom;
-                break;
+                Debug.Log(newRoomConnection, newRoomConnection);
+                // Rotate room to match connections (doors)
+                newRoomConnection.RotateRoomToMatch(existingRoomConnection.transform);
+
+                if (existingRoomConnection.GetRoomConnectionDir == newRoomConnection.GetRoomConnectionDir * -1) // Just to be safe
+                {
+                    // Set new room so both connections are on top of each other
+                    newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnection.transform.position);
+                    // Give the rooms some information
+                    existingRoomConnection.Connected = true;
+                    newRoomConnection.Connected = true;
+                    existingRoomConnection.ConnectedDungeonRoom = _newRoom;
+                    newRoomConnection.ConnectedDungeonRoom = _existingRoom;
+                    break;
+                }
             }
         }
     }
