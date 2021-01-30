@@ -169,27 +169,27 @@ public class Pathfinder : MonoBehaviour
             }
         }
 
-        if(OpenList != null)
-        {
-            foreach(GridNode node in OpenList)
-            {
-                Gizmos.color = Color.yellow;
-                Gizmos.DrawCube(node.Position, new Vector3(0.18f, 0.18f, 0.18f));
-            }
-        }
+        //if(OpenList != null)
+        //{
+        //    foreach(GridNode node in OpenList)
+        //    {
+        //        Gizmos.color = Color.yellow;
+        //        Gizmos.DrawCube(node.Position, new Vector3(0.18f, 0.18f, 0.18f));
+        //    }
+        //}
 
-        if(GridManager.Instance.grid != null)
-        {
-            grid = GridManager.Instance.grid;
-            Gizmos.color = Color.black;
-            foreach (GridNode node in GridManager.Instance.grid)
-            {
-                foreach (GridNode node2 in GetNodeNeigbours(node))
-                {
+        //if(GridManager.Instance.grid != null)
+        //{
+        //    grid = GridManager.Instance.grid;
+        //    Gizmos.color = Color.black;
+        //    foreach (GridNode node in GridManager.Instance.grid)
+        //    {
+        //        foreach (GridNode node2 in GetNodeNeigbours(node))
+        //        {
                     
-                    Gizmos.DrawLine(node.Position, node2.Position);
-                }
-            }
-        }
+        //            Gizmos.DrawLine(node.Position, node2.Position);
+        //        }
+        //    }
+        //}
     }
 }
