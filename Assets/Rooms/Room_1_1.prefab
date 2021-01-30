@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 8078700177580319115}
 --- !u!1 &5780858516193550261
@@ -152,7 +153,7 @@ GameObject:
   - component: {fileID: 4475301013041991085}
   - component: {fileID: 8078700177580319115}
   m_Layer: 0
-  m_Name: DoorConection
+  m_Name: DoorConnection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
