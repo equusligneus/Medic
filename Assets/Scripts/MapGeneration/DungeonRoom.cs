@@ -17,5 +17,20 @@ public class DungeonRoom : MonoBehaviour
             return m_connectionPoints.All(connection => connection.Connected);
         }
     }
+
+    public int OpenConnections
+    {
+        get
+        {
+            int openConnections = 0;
+            foreach (DungeonRoomConnection connection in m_connectionPoints)
+            {
+                if (!connection.Connected)
+                    openConnections++;
+            }
+
+            return openConnections;
+        }
+    }
     
 }

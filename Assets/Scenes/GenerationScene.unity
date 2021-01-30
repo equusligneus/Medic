@@ -597,5 +597,9 @@ PrefabInstance:
       propertyPath: m_placedRooms.Array.data[2]
       value: 
       objectReference: {fileID: 4728530165679588620, guid: ea3b72bceb1956e47bd0d260ab58b2fb, type: 3}
+    - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
+      propertyPath: m_targetRoomAmount
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
