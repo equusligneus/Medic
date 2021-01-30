@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 1423981347}
   - component: {fileID: 1423981348}
   - component: {fileID: 1423981346}
+  - component: {fileID: 1423981349}
   m_Layer: 0
   m_Name: KI
   m_TagString: Untagged
@@ -381,6 +382,7 @@ MonoBehaviour:
   - {fileID: 1411370055}
   - {fileID: 1860593575}
   - {fileID: 1683641236}
+  currentTargetPosition: {x: 0, y: 0, z: 0}
   MovementSpeed: 3
   RotationSpeed: 2.5
   ViewRange: 10
@@ -389,6 +391,8 @@ MonoBehaviour:
   BlockedLayer:
     serializedVersion: 2
     m_Bits: 16
+  index: 0
+  BreakTime: 2
 --- !u!4 &1423981347
 Transform:
   m_ObjectHideFlags: 0
@@ -422,6 +426,25 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!95 &1423981349
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423981345}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a5b7e2d4b9fb66444958a42597b7e5e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1578164111
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062955048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 0, z: 0.25}
+  m_LocalPosition: {x: 28.5, y: 0, z: 42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 644140552}
