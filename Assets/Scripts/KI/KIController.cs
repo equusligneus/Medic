@@ -7,14 +7,14 @@ using UnityEngine;
 /// </summary>
 public class KIController : MonoBehaviour
 {
-    public Transform Player;
     [Header("Waypoints")]
     public List<Transform> Waypoints = new List<Transform>();
 
     private Animator animator;
     private CharacterController charContr;
+    public Enemy_Attack_Ability AttackAbility { get; private set; }
 
-    public Vector3 currentTargetPosition;
+    private Vector3 currentTargetPosition;
 
     [Space(10)]
     [Header("KI Settings")]
@@ -30,16 +30,22 @@ public class KIController : MonoBehaviour
     public float TargetRange = 1.0f;
     public LayerMask BlockedLayer;
 
-    public int index = 0;
+    private int index = 0;
     private bool followPlayer = false;
 
     public float BreakTime = 6.0f;
+
+
+    public Transform Player;
+    public Ref<bool> PlayerIsAlive;
+    public Ref<bool> PlayerAwake;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         charContr = GetComponent<CharacterController>();
+        AttackAbility = GetComponent<Enemy_Attack_Ability>();
         currentTargetPosition = Waypoints[index].position;
     }
 
@@ -94,7 +100,7 @@ public class KIController : MonoBehaviour
 
     public bool PlayerInViewSpace()
     {
-        if (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(Player.position.x, 0, Player.position.z)) < ViewRange)
+        if ((Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(Player.position.x, 0, Player.position.z)) < ViewRange) && PlayerAwake.Get() && PlayerIsAlive.Get())
         {
             if (Vector3.Angle(MoveDirection(Player.position), Vector3.forward) < ViewAngle)
             {
