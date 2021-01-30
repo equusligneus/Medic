@@ -14,6 +14,10 @@ public class RuntimeSet<T> : ScriptableObject
 
 	public T this[int index]
 		=> set[index];
+
+	public int IndexOf(T item)
+		=> set.IndexOf(item);
+
 	public void Add(T item)
 	{
 		set.Add(item);

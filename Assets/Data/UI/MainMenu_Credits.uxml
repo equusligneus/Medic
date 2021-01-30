@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="Styles/Medic_Style.uss" />
+    <ui:VisualElement class="menu_background" style="width: 500px; position: absolute;">
+        <ui:Label text="Credits" display-tooltip-when-elided="True" class="main_menu_header" />
+        <ui:Label text="Label" display-tooltip-when-elided="True" name="Credits" class="main_menu_credits_list" />
+        <ui:Button text="Exit to Main" display-tooltip-when-elided="True" name="Btn_To_Main" class="main_menu_button" style="margin-bottom: 5px; margin-top: 5px;" />
+    </ui:VisualElement>
+</ui:UXML>
