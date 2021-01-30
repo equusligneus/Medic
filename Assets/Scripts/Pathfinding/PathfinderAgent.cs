@@ -26,6 +26,11 @@ public class PathfinderAgent : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Move the Agent to the Position if he find a Path
+    /// </summary>
+    /// <param name="_target"></param>
+    /// <returns>Did the Agent find a path</returns>
     public bool MoveTo(Vector3 _target)
     {
         bool returnError = false;
@@ -72,7 +77,11 @@ public class PathfinderAgent : MonoBehaviour
         return returnError;
     }
 
-    public void MoveAgent()
+    /// <summary>
+    /// Move the Agent to the next Node in the Path
+    /// If the Agent on this node it will be switcht
+    /// </summary>
+    private void MoveAgent()
     {
         if(nextNode != null)
         {
@@ -103,6 +112,5 @@ public class PathfinderAgent : MonoBehaviour
                 transform.position += (nextNode.Position - transform.position).normalized * MovementSpeed * Time.deltaTime;
             }
         }
-        
     }
 }
