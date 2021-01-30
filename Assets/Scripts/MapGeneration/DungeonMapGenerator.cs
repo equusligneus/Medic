@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DungeonMapGenerator : MonoBehaviour
 {
-    [Header("Options"), SerializeField] private int m_amountOfRooms;
-
+    [Header("Options")]
     [SerializeField] private DungeonRoom m_startingRoom;
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
     [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms = new List<DungeonRoom>();
@@ -29,11 +28,27 @@ public class DungeonMapGenerator : MonoBehaviour
         m_placedRooms.Clear();
 
         // Create new Dungeon
-        currentRoom = m_startingRoom;
-
-        for (int i = 0; i < m_amountOfRooms; i++)
+        List<DungeonRoom> roomsWithOpenConnection = new List<DungeonRoom> { m_startingRoom };
+        //for (int i = 0; i < m_amountOfRooms; i++)
+        while (roomsWithOpenConnection.Count > 0)
         {
-            currentRoom = AddRoom(currentRoom);
+            // use any room, sequence doesn't matter
+            currentRoom = roomsWithOpenConnection[0];
+            // create a new room
+            DungeonRoom nextRoom = AddRoom(currentRoom);
+            // when nextRoom got connections add it to list of open connections
+            if (nextRoom != null && !nextRoom.AllConnected && !roomsWithOpenConnection.Contains(nextRoom)) // second might be useless
+            {
+                roomsWithOpenConnection.Add(nextRoom);
+            }
+            // when all connections occupied remove from list
+            if (currentRoom.AllConnected && roomsWithOpenConnection.Contains(currentRoom))
+            {
+                roomsWithOpenConnection.Remove(currentRoom);
+            }
+
+            // no room with unconnected door left -> break
+            if (roomsWithOpenConnection.Count == 0) break;
         }
     }
 
@@ -42,8 +57,8 @@ public class DungeonMapGenerator : MonoBehaviour
         // Get random room of the prefabs
         DungeonRoom nextRoom = Instantiate(m_roomPrefabs[Random.Range(0, m_roomPrefabs.Count)].GetComponent<DungeonRoom>());
         m_placedRooms.Add(nextRoom);
-        ConnectRooms(_startingRoom, nextRoom);
-        return nextRoom;
+        bool stopGeneration = ConnectRooms(_startingRoom, nextRoom);
+        return stopGeneration ? null : nextRoom;
     }
 
     //TODO: Rotate Rooms to connect them

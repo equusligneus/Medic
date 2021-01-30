@@ -5,21 +5,19 @@ using UnityEngine;
 
 public class DungeonRoomConnection : MonoBehaviour
 {
-    [SerializeField, Tooltip("Change only if not on the same axis as center")] private Vector3 m_roomConnectionVector;
+    [SerializeField, Tooltip("Change only if not on the same axis as center, which will not work right now")] private Vector3 m_roomConnectionVector;
     [Header("For debugging, don't change")]
     public bool Connected = false;
 
     public DungeonRoom ConnectedDungeonRoom; // Not used right now but might be useful
 
     // debug
-    public DungeonRoomConnection temp;
+    [HideInInspector] public DungeonRoomConnection temp;
 
     public static Vector3 VecFromToPoint(Vector3 _start, Vector3 _end)
     {
         return _end - _start;
     }
-
-    public Vector3 GetRoomConnectionVector => m_roomConnectionVector;
 
     /// <summary>
     /// Sets the parents world position so that this world position is matching the one of the parameter
