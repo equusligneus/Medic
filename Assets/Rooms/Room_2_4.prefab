@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &397104195846497037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2428498300478940116}
+  - component: {fileID: 1997096686107456314}
+  m_Layer: 0
+  m_Name: DoorConnection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2428498300478940116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397104195846497037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4626728981331427886}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1997096686107456314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397104195846497037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_roomConnectionVector: {x: 0, y: 0, z: 0}
+  Connected: 0
+  ConnectedDungeonRoom: {fileID: 0}
+  temp: {fileID: 0}
 --- !u!1 &5103986237325857024
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,6 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4626728981331427886}
+  - component: {fileID: 7666262408742973117}
   m_Layer: 0
   m_Name: Room_2_4
   m_TagString: Untagged
@@ -89,9 +137,25 @@ Transform:
   - {fileID: 8111695900561925033}
   - {fileID: 1988304804717663955}
   - {fileID: 6345856410670718638}
+  - {fileID: 2428498300478940116}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7666262408742973117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008384979891142304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  largeRoomSize: 0
+  m_connectionPoints:
+  - {fileID: 1997096686107456314}
 --- !u!1001 &26319264272882283
 PrefabInstance:
   m_ObjectHideFlags: 0
