@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// Base class for referenced values. Read-only
@@ -7,6 +8,8 @@
 public abstract class Ref<T> : ScriptableObject
 {
     public abstract T Get();
+
+	public abstract event System.Action OnChanged;
 }
 
 /// <summary>
@@ -16,12 +19,20 @@ public abstract class Ref<T> : ScriptableObject
 public class WritableRef<T> : Ref<T>
 {
 	public void Set(T value)
-		=> this.value = value;
+	{
+		if (typeof(T).IsValueType ? !this.value.Equals(value) : !ReferenceEquals(this.value, value))
+		{
+			this.value = value;
+			OnChanged?.Invoke();
+		}
+	}
 
 	public override T Get()
 		=> value;
 
-	[System.NonSerialized]
+	public override event Action OnChanged;
+
+	[NonSerialized]
 	protected T value;
 }
 
