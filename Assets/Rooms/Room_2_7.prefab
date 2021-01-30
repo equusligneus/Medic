@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2539702014593478989}
+  - component: {fileID: 7591345340499658446}
   m_Layer: 0
   m_Name: Room_2_7
   m_TagString: Untagged
@@ -39,6 +40,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7591345340499658446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2166111097878465987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_connectionPoints:
+  - {fileID: 4396864838746468289}
+  - {fileID: 610276358885330382}
 --- !u!1 &2196034544018764259
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5779598587466727505}
+  - component: {fileID: 610276358885330382}
   m_Layer: 0
   m_Name: DoorConction (1)
   m_TagString: Untagged
@@ -164,6 +181,22 @@ Transform:
   m_Father: {fileID: 2539702014593478989}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &610276358885330382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2215664924411173922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_roomConnectionVector: {x: 0, y: 0, z: 0}
+  Connected: 0
+  ConnectedDungeonRoom: {fileID: 0}
+  temp: {fileID: 0}
 --- !u!1 &3472674108030888781
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,6 +491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8202626319892124693}
+  - component: {fileID: 4396864838746468289}
   m_Layer: 0
   m_Name: DoorConction (0)
   m_TagString: Untagged
@@ -479,6 +513,22 @@ Transform:
   m_Father: {fileID: 2539702014593478989}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4396864838746468289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795680608272889476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_roomConnectionVector: {x: 0, y: 0, z: 0}
+  Connected: 0
+  ConnectedDungeonRoom: {fileID: 0}
+  temp: {fileID: 0}
 --- !u!1 &7828150403313613571
 GameObject:
   m_ObjectHideFlags: 0

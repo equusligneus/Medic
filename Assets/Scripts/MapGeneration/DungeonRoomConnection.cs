@@ -30,11 +30,11 @@ public class DungeonRoomConnection : MonoBehaviour
     /// <param name="_sourceConnection"></param>
     public void SetRoomPositionFromConnectionPosition(DungeonRoomConnection _sourceConnection)
     {
-        Vector3 sourceDir = VecFromToPoint(_sourceConnection.transform.parent.position,
-            _sourceConnection.transform.position);
-        //TODO: Scale
+        Vector3 sourceDir = VecFromToPoint(_sourceConnection.transform.parent.position, _sourceConnection.transform.position);
+        Vector3 ownDir = VecFromToPoint(this.transform.parent.position, this.transform.position);
+
         transform.parent.position = _sourceConnection.transform.parent.position + sourceDir +
-            sourceDir.normalized * sourceDir.magnitude;
+                                    sourceDir.normalized * ownDir.magnitude;
     }
 
     /// <summary>
