@@ -36,17 +36,17 @@ public class GridManager : MonoBehaviour
         grid = new GridNode[gridSize.x, gridSize.y];
         Size2 = gridSize;
 
-        float startX = -(((gridSize.x * NodeSize) / 2) + (NodeSize / 2));
-        float startZ = -(((gridSize.y * NodeSize) / 2) + (NodeSize / 2));
+        float startX = transform.position.x -(((gridSize.x * NodeSize) / 2) + (NodeSize / 2));
+        float startZ = transform.position.z -(((gridSize.y * NodeSize) / 2) + (NodeSize / 2));
 
-        for(int x = 0; x < gridSize.y; x++)
+        for(int x = 0; x < gridSize.x; x++)
         {
             startX += NodeSize;
             for(int z = 0; z < gridSize.y; z++)
             {
                 startZ += NodeSize;
 
-                Vector3 worldPos = new Vector3(startX, transform.position.y + 50, startZ);
+                Vector3 worldPos = new Vector3(startX,transform.position.y + 50, startZ);
 
                 grid[x, z] = new GridNode(x, z);
 
@@ -105,16 +105,17 @@ public class GridManager : MonoBehaviour
         {
             foreach(GridNode node in grid)
             {
+                if (node == null) continue;
                 if (node.Walkable)
                 {
                     Gizmos.color = Color.green;
                     Gizmos.DrawWireCube(node.Position, new Vector3(NodeSize - 0.1f, 0.2f, NodeSize - 0.1f));
                 }
-                //else
-                //{
-                //    Gizmos.color = Color.red;
-                //}
-
+                else
+                {
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawWireCube(node.Position, new Vector3(NodeSize - 0.1f, 0.2f, NodeSize - 0.1f));
+                }
             }
         }
     }
