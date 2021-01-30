@@ -26,7 +26,7 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         Instance = this;
-        GenerateGrid();
+        //GenerateGrid();
     }
 
     [ContextMenu("Generate Grid")]
@@ -108,13 +108,13 @@ public class GridManager : MonoBehaviour
                 if (node.Walkable)
                 {
                     Gizmos.color = Color.green;
+                    Gizmos.DrawWireCube(node.Position, new Vector3(NodeSize - 0.1f, 0.2f, NodeSize - 0.1f));
                 }
-                else
-                {
-                    Gizmos.color = Color.red;
-                }
+                //else
+                //{
+                //    Gizmos.color = Color.red;
+                //}
 
-                Gizmos.DrawWireCube(node.Position, new Vector3(NodeSize - 0.1f, 0.2f, NodeSize - 0.1f));
             }
         }
     }
