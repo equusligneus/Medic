@@ -10,7 +10,7 @@ public abstract class Interactive_Door : Interactive
 
 	public override bool IsInteractive => !isMoving;
 
-	public override void Interact(InteractionComponent trigger)
+	protected override void Interact_Internal(InteractionComponent trigger)
 	{
 		if(!isOpen)
 		{

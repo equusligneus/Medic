@@ -14,11 +14,19 @@ public abstract class Interactive : MonoBehaviour
 
 	public event Action<bool> OnSelected = default;
 
+	public event Action OnInteracted = default;
+
 	public void Select()
 		=> OnSelected?.Invoke(true);
 
 	public void Deselect()
 		=> OnSelected?.Invoke(false);
 
-	public abstract void Interact(InteractionComponent trigger);
+	public void Interact(InteractionComponent trigger)
+	{
+		Interact_Internal(trigger);
+		OnInteracted?.Invoke();
+	}
+
+	protected abstract void Interact_Internal(InteractionComponent trigger);
 }
