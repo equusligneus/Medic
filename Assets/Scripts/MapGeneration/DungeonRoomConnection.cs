@@ -7,8 +7,8 @@ public class DungeonRoomConnection : MonoBehaviour
 {
     [Header("For debugging, don't change")]
     [SerializeField, Tooltip("Change only if not on the same axis as center, which will not work right now")] private Vector3 m_roomConnectionVector;
-    [HideInInspector] public bool Connected = false;
-    [HideInInspector] public DungeonRoom ConnectedDungeonRoom; // Not used right now but might be useful
+    public bool Connected = false;
+    public DungeonRoom ConnectedDungeonRoom; // Not used right now but might be useful
 
     // debug
     [HideInInspector] public DungeonRoomConnection temp;

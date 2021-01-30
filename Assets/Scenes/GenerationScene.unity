@@ -206,7 +206,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1128659394 stripped
+--- !u!114 &900579167 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5545137996500043461, guid: 7887d437339cfcc47860eb84cc3be296, type: 3}
   m_PrefabInstance: {fileID: 2098504978}
@@ -320,6 +320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartingRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 2985394137651894578, guid: 7887d437339cfcc47860eb84cc3be296, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4295201994886370318, guid: 7887d437339cfcc47860eb84cc3be296, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50
@@ -427,7 +431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
       propertyPath: m_roomPrefabs.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
       propertyPath: m_roomPrefabs.Array.data[0]
@@ -436,7 +440,7 @@ PrefabInstance:
     - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
       propertyPath: m_startingRoom
       value: 
-      objectReference: {fileID: 1128659394}
+      objectReference: {fileID: 900579167}
     - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
       propertyPath: m_amountOfRooms
       value: 10
@@ -468,7 +472,7 @@ PrefabInstance:
     - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
       propertyPath: m_roomPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 2236050606265616738, guid: ea3b72bceb1956e47bd0d260ab58b2fb, type: 3}
+      objectReference: {fileID: 8636471456454037459, guid: ea3b72bceb1956e47bd0d260ab58b2fb, type: 3}
     - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
       propertyPath: m_roomPrefabs.Array.data[6]
       value: 
@@ -476,7 +480,7 @@ PrefabInstance:
     - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
       propertyPath: m_roomPrefabs.Array.data[7]
       value: 
-      objectReference: {fileID: 4945933259645912168, guid: a2a93f5b7d46b5641b5cdd1f3e21cc1c, type: 3}
+      objectReference: {fileID: 2985394137651894578, guid: 7887d437339cfcc47860eb84cc3be296, type: 3}
     - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
       propertyPath: m_roomPrefabs.Array.data[8]
       value: 
@@ -599,7 +603,7 @@ PrefabInstance:
       objectReference: {fileID: 4728530165679588620, guid: ea3b72bceb1956e47bd0d260ab58b2fb, type: 3}
     - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
       propertyPath: m_targetRoomAmount
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}

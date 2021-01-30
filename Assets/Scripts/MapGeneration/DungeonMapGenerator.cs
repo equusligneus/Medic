@@ -7,6 +7,8 @@ public class DungeonMapGenerator : MonoBehaviour
     [Header("Options")]
     [SerializeField, Tooltip("Amount of rooms to generate (excluding starting room)")] private int m_targetRoomAmount; // favors building rooms in one direction (when there are no intersections), if only 1 connection left it will add more rooms until target reached
     [SerializeField] private DungeonRoom m_startingRoom;
+
+    [Header("Debug")]
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
     [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms = new List<DungeonRoom>();
 
