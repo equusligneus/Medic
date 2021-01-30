@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3290875447836117121}
+  - component: {fileID: 6771288651709685676}
   m_Layer: 0
   m_Name: Adventurer_Base
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6771288651709685676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3290875447836117126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4774ab452fb58549814707e0b66d8cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adventurers: {fileID: 11400000, guid: 6715761edb36bbf4b821d35a81d89797, type: 2}
+  icon: {fileID: 21300000, guid: 750e179b6f009434eafc26d52a849dce, type: 3}
 --- !u!1 &3290875448875918349
 GameObject:
   m_ObjectHideFlags: 0

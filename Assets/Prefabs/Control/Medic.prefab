@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 1772831854936599204}
   - component: {fileID: 1772831854936599205}
   - component: {fileID: 1772831854936599202}
+  - component: {fileID: 5262432324184594357}
   m_Layer: 0
   m_Name: Medic
   m_TagString: Untagged
@@ -238,6 +239,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5262432324184594357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772831854936599206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee995558b2ffb9b40965856cca024931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isAwake: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
+  _isAlive: {fileID: 11400000, guid: cbecef23febb1b8429429c01824c46c7, type: 2}
+  _maxHealth: {fileID: 11400000, guid: 5270c2309f31d6a419915a6182f411ef, type: 2}
+  _currentHealth: {fileID: 11400000, guid: 588e4296d28cf1d46b35d59fdd2afa89, type: 2}
+  _faintedTime: 2
+  _invulnerabilityTime: 2
 --- !u!1001 &771933916502723248
 PrefabInstance:
   m_ObjectHideFlags: 0

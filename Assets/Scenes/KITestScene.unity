@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 1423981347}
   - component: {fileID: 1423981348}
   - component: {fileID: 1423981346}
+  - component: {fileID: 1423981350}
   - component: {fileID: 1423981349}
   m_Layer: 0
   m_Name: KI
@@ -376,13 +377,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291b2bb1af9a3a8418e0454cd0d736af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 2062955049}
   Waypoints:
   - {fileID: 616071370}
   - {fileID: 1411370055}
   - {fileID: 1860593575}
   - {fileID: 1683641236}
-  currentTargetPosition: {x: 0, y: 0, z: 0}
   MovementSpeed: 3
   RotationSpeed: 2.5
   ViewRange: 10
@@ -391,8 +390,10 @@ MonoBehaviour:
   BlockedLayer:
     serializedVersion: 2
     m_Bits: 16
-  index: 0
   BreakTime: 2
+  Player: {fileID: 2062955049}
+  PlayerIsAlive: {fileID: 11400000, guid: cbecef23febb1b8429429c01824c46c7, type: 2}
+  PlayerAwake: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
 --- !u!4 &1423981347
 Transform:
   m_ObjectHideFlags: 0
@@ -445,6 +446,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1423981350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423981345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3bb186787ba502479e3ef6dfb3d10b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AttackRange: 2.01
+  _AttackCooldDown: 0.51
+  _AttackDamage: 1
+  _lastHit: -3.4028235e+38
 --- !u!1 &1578164111
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +917,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2062955049}
+  - component: {fileID: 2062955052}
+  - component: {fileID: 2062955051}
+  - component: {fileID: 2062955050}
   m_Layer: 0
   m_Name: PlayerDummy
   m_TagString: Untagged
@@ -922,6 +942,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2062955050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062955048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee995558b2ffb9b40965856cca024931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isAwake: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
+  _isAlive: {fileID: 11400000, guid: cbecef23febb1b8429429c01824c46c7, type: 2}
+  _maxHealth: {fileID: 11400000, guid: 5270c2309f31d6a419915a6182f411ef, type: 2}
+  _currentHealth: {fileID: 11400000, guid: 588e4296d28cf1d46b35d59fdd2afa89, type: 2}
+  _faintedTime: 5.65
+  _invulnerabilityTime: 5.85
+--- !u!143 &2062955051
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062955048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2062955052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062955048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa2f28238a25bd4282891644760bb73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeTarget: {fileID: 0}
 --- !u!1 &2079446566
 GameObject:
   m_ObjectHideFlags: 0
