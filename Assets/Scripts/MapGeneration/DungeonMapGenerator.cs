@@ -49,13 +49,12 @@ public class DungeonMapGenerator : MonoBehaviour
             connection.Connected = false;
         }
 
-        currentRoom = m_startingRoom;
-
         m_placedRooms.Clear();
     }
 
     public void GenerateDungeon()
     {
+        currentRoom = m_startingRoom;
         RemoveAllExistingRooms();
         // Create new Dungeon
         List<DungeonRoom> roomsWithOpenConnection = new List<DungeonRoom> { m_startingRoom };
@@ -106,7 +105,7 @@ public class DungeonMapGenerator : MonoBehaviour
         //TODO: place door here
         GameObject door = Instantiate(m_doorPrefab, _connectionToPlace.transform.parent);
 
-        Debug.Log(door, door);
+        //Debug.Log(door, door);
     }
 
     public DungeonRoom AddRoom(DungeonRoom _startingRoom, List<GameObject> _roomPrefabs)
@@ -125,8 +124,6 @@ public class DungeonMapGenerator : MonoBehaviour
                 if (placedRoom.transform.position == nextRoomPos)
                 {
                     // Overlap detected here; placedRoom was there first; GetActiveConnections(_startingRoom)[0] is where the door needs to be placed
-                    //Debug.LogWarning("Overlapping", placedRoom);
-                    //Debug.LogWarning("Overlapping2", GetActiveConnections(_startingRoom)[0]);
                     PlaceDoor(GetActiveConnections(_startingRoom)[0]);
                     allowedToPlaceHere = false;
                     //return null;
