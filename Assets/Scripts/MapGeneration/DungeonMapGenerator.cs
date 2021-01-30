@@ -37,7 +37,7 @@ public class DungeonMapGenerator : MonoBehaviour
             // use any room, sequence doesn't matter
             currentRoom = roomsWithOpenConnection[0];
             // create a new room
-            DungeonRoom nextRoom = AddRoom(currentRoom);
+            DungeonRoom nextRoom = AddRoom(currentRoom, m_roomPrefabs[Random.Range(0, m_roomPrefabs.Count)]);
             // when nextRoom got connections add it to list of open connections
             if (nextRoom != null && !nextRoom.AllConnected && !roomsWithOpenConnection.Contains(nextRoom)) // second might be useless
             {
@@ -54,17 +54,43 @@ public class DungeonMapGenerator : MonoBehaviour
         }
     }
 
-    public DungeonRoom AddRoom(DungeonRoom _startingRoom)
+    public DungeonRoom AddRoom(DungeonRoom _startingRoom, GameObject _roomPrefab)
     {
         // Get random room of the prefabs
-        DungeonRoom nextRoom = Instantiate(m_roomPrefabs[Random.Range(0, m_roomPrefabs.Count)].GetComponent<DungeonRoom>());
+        DungeonRoom nextRoom = Instantiate(_roomPrefab).GetComponent<DungeonRoom>();
         m_placedRooms.Add(nextRoom);
         bool stopGeneration = ConnectRooms(_startingRoom, nextRoom);
         return stopGeneration ? null : nextRoom;
     }
 
-    //TODO: Rotate Rooms to connect them
-    // For now they will only connect connections pointing into the same direction
+    private List<GameObject> GetRoomPrefabWithConnections()
+    {
+        List<GameObject> prefabRoomsWithConnections = new List<GameObject>();
+        foreach (GameObject roomPrefab in m_roomPrefabs)
+        {
+            if (roomPrefab.GetComponent<DungeonRoom>().m_connectionPoints.Count > 1)
+            {
+                prefabRoomsWithConnections.Add(roomPrefab);
+            }
+        }
+
+        return prefabRoomsWithConnections;
+    }
+
+    private List<GameObject> GetRoomPrefabWithDeadEnd()
+    {
+        List<GameObject> prefabRoomsWithConnections = new List<GameObject>();
+        foreach (GameObject roomPrefab in m_roomPrefabs)
+        {
+            if (roomPrefab.GetComponent<DungeonRoom>().m_connectionPoints.Count == 1)
+            {
+                prefabRoomsWithConnections.Add(roomPrefab);
+            }
+        }
+
+        return prefabRoomsWithConnections;
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -93,20 +119,16 @@ public class DungeonMapGenerator : MonoBehaviour
                 !newRoomConnection.Connected && !existingRoomConnection.Connected)
             {
                 Debug.Log(newRoomConnection, newRoomConnection);
+                // Set new room so both connections are on top of each other
+                newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnection);
                 // Rotate room to match connections (doors)
-
-                //if (existingRoomConnection.GetRoomConnectionVector == newRoomConnection.GetRoomConnectionVector * -1) // Just to be safe
-                {
-                    // Set new room so both connections are on top of each other
-                    newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnection);
-                    newRoomConnection.RotateRoomToMatch(existingRoomConnection);
-                    // Give the rooms some information
-                    existingRoomConnection.Connected = true;
-                    newRoomConnection.Connected = true;
-                    existingRoomConnection.ConnectedDungeonRoom = _newRoom;
-                    newRoomConnection.ConnectedDungeonRoom = _existingRoom;
-                    return false;
-                }
+                newRoomConnection.RotateRoomToMatch(existingRoomConnection);
+                // Give the rooms some information
+                existingRoomConnection.Connected = true;
+                newRoomConnection.Connected = true;
+                existingRoomConnection.ConnectedDungeonRoom = _newRoom;
+                newRoomConnection.ConnectedDungeonRoom = _existingRoom;
+                return false;
             }
         }
 
