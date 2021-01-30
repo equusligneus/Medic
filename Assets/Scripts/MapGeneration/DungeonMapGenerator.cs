@@ -5,6 +5,7 @@ using UnityEngine;
 public class DungeonMapGenerator : MonoBehaviour
 {
     [Header("Options")]
+    [SerializeField] private int m_targetRoomAmount;
     [SerializeField] private DungeonRoom m_startingRoom;
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
     [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms = new List<DungeonRoom>();
@@ -14,22 +15,23 @@ public class DungeonMapGenerator : MonoBehaviour
 
     private void Start()
     {
-        GenerateRooms();
+        GenerateDungeon();
     }
 
-    public void GenerateRooms()
+    public void GenerateDungeon()
     {
-        // Remove existing rooms
-        foreach (DungeonRoom room in m_placedRooms)
-        {
-            if (room != null)
-                GameObject.DestroyImmediate(room.gameObject);
-        }
-        m_placedRooms.Clear();
+        // Remove existing rooms - for debug
+        //foreach (DungeonRoom room in m_placedRooms)
+        //{
+        //    if (room != null)
+        //        GameObject.Destroy(room.gameObject);
+        //}
+        //m_placedRooms.Clear();
 
         // Create new Dungeon
         List<DungeonRoom> roomsWithOpenConnection = new List<DungeonRoom> { m_startingRoom };
         //for (int i = 0; i < m_amountOfRooms; i++)
+        //DungeonRoom currentRoom;
         while (roomsWithOpenConnection.Count > 0)
         {
             // use any room, sequence doesn't matter

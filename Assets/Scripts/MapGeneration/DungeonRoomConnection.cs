@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class DungeonRoomConnection : MonoBehaviour
 {
-    [SerializeField, Tooltip("Change only if not on the same axis as center, which will not work right now")] private Vector3 m_roomConnectionVector;
     [Header("For debugging, don't change")]
-    public bool Connected = false;
-
-    public DungeonRoom ConnectedDungeonRoom; // Not used right now but might be useful
+    [SerializeField, Tooltip("Change only if not on the same axis as center, which will not work right now")] private Vector3 m_roomConnectionVector;
+    [HideInInspector] public bool Connected = false;
+    [HideInInspector] public DungeonRoom ConnectedDungeonRoom; // Not used right now but might be useful
 
     // debug
     [HideInInspector] public DungeonRoomConnection temp;
 
+    /// <summary>
+    /// Finds the Vector3 from one point to another
+    /// </summary>
+    /// <param name="_start">Starting point</param>
+    /// <param name="_end">End point</param>
+    /// <returns>Vector3 from start to end</returns>
     public static Vector3 VecFromToPoint(Vector3 _start, Vector3 _end)
     {
         return _end - _start;
@@ -40,6 +45,7 @@ public class DungeonRoomConnection : MonoBehaviour
     {
         temp = _sourceConnection;
         Vector3 dirSource = _sourceConnection.transform.position - _sourceConnection.transform.parent.position;
+        // Rotate until it fits
         if (this.transform.position != _sourceConnection.transform.position)
         {
             this.transform.parent.RotateAround(this.transform.parent.position, Vector3.up, 90);
@@ -52,32 +58,6 @@ public class DungeonRoomConnection : MonoBehaviour
         {
             this.transform.parent.RotateAround(this.transform.parent.position, Vector3.up, 90);
         }
-
-
-        //int i = 0;
-
-        //Vector3 thisDir = this.m_roomConnectionVector;
-        //Vector3 otherDir = _sourceConnection.m_roomConnectionVector;
-        //// in 90 degree
-        //while (otherDir != (thisDir * -1) && i < 10)
-        //{
-        //    thisDir = (transform.position - this.transform.parent.position);
-        //    otherDir = ((_sourceConnection.transform.position - _sourceConnection.transform.parent.position));
-        //    this.transform.parent.RotateAround(this.transform.parent.position, Vector3.up, 90);
-        //    i++;
-        //}
-        //if (i == 10)
-        //    Debug.LogWarning("This TBH");
-
-
-        //Vector3 thisDir = (transform.position - this.transform.parent.position);
-        //Vector3 otherDir = ((_sourceConnection.transform.position - _sourceConnection.transform.parent.position));
-
-        //float sourceAngle = Vector3.Angle(otherDir, thisDir);
-        //Debug.Log(sourceAngle);
-        //this.transform.parent.eulerAngles = new Vector3(0, sourceAngle, 0);
-        //if (this.transform.position != _sourceConnection.transform.position)
-        //    this.transform.parent.eulerAngles = new Vector3(0, sourceAngle - 180, 0);
     }
 
     private void Awake()
