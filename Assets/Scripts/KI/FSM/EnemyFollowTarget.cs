@@ -16,7 +16,8 @@ public class EnemyFollowTarget : StateMachineBehaviour
     {
         if(contr != null)
         {
-            contr.Move();
+            //contr.Move();
+            contr.Agent.MoveTo(contr.currentTargetPosition);
 
             if (contr.PlayerInViewSpace())
             {

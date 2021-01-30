@@ -21,12 +21,17 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private LayerMask SphercastMask;
 
+    public bool StartInAwake = false;
+    public bool GridIsGenerate = false;
     public bool ShowGizmo = false;
 
     private void Start()
     {
         Instance = this;
-        //GenerateGrid();
+        if (StartInAwake)
+        {
+            GenerateGrid();
+        }
     }
 
     [ContextMenu("Generate Grid")]
@@ -64,6 +69,8 @@ public class GridManager : MonoBehaviour
             }
             startZ = -(((gridSize.y * NodeSize) / 2) + (NodeSize / 2));
         }
+
+        GridIsGenerate = true;
     }
 
     public GridNode GetGridNode(Vector3 _pos)
