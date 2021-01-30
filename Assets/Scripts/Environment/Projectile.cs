@@ -51,9 +51,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        MedicHealth mh = other.GetComponentInParent<MedicHealth>();
+
+        if (mh != null)
         {
-            MedicHealth mh = other.GetComponentInParent<MedicHealth>();
             //Debug.Log("Hit Player");
             mh.Hit(Damage);
         }

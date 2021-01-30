@@ -13,7 +13,7 @@ public class TriggerPlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.GetComponent<MedicHealth>() != null)
         {
             TriggerAllTriggers();
         }
@@ -21,7 +21,7 @@ public class TriggerPlate : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.GetComponent<MedicHealth>() != null)
         {
             UnTriggerAllTriggers();
         }
