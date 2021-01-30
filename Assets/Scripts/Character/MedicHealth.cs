@@ -82,6 +82,7 @@ public class MedicHealth : MonoBehaviour
     private void PlayerDied()
     {
         //_notFainted.Set(false);
+        _isAwake.Set(false);
         _isAlive.Set(false);
     }
 
