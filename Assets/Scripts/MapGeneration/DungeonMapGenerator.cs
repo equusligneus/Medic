@@ -104,6 +104,9 @@ public class DungeonMapGenerator : MonoBehaviour
     {
         _connectionToPlace.Connected = true;
         //TODO: place door here
+        GameObject door = Instantiate(m_doorPrefab, _connectionToPlace.transform.parent);
+
+        Debug.Log(door, door);
     }
 
     public DungeonRoom AddRoom(DungeonRoom _startingRoom, List<GameObject> _roomPrefabs)
@@ -148,7 +151,7 @@ public class DungeonMapGenerator : MonoBehaviour
             }
             else
             {
-                Debug.Log(_startingRoom);
+                //Debug.Log(_startingRoom);
             }
         }
         else
@@ -216,7 +219,7 @@ public class DungeonMapGenerator : MonoBehaviour
             return true;
         //DungeonRoomConnection existingRoomConnection = activeConnections[Random.Range(0, activeConnections.Count)];
         DungeonRoomConnection existingRoomConnection = activeConnections[0];
-        Debug.Log(existingRoomConnection, existingRoomConnection);
+        //Debug.Log(existingRoomConnection, existingRoomConnection);
 
         // New room connection point that is available
         foreach (DungeonRoomConnection newRoomConnection in _newRoom.m_connectionPoints)
@@ -224,7 +227,7 @@ public class DungeonMapGenerator : MonoBehaviour
             if (existingRoomConnection.gameObject.activeSelf && newRoomConnection.gameObject.activeSelf &&
                 !newRoomConnection.Connected && !existingRoomConnection.Connected)
             {
-                Debug.Log(newRoomConnection, newRoomConnection);
+                //Debug.Log(newRoomConnection, newRoomConnection);
                 // Set new room so both connections are on top of each other
                 newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnection);
                 // Rotate room to match connections (doors)
