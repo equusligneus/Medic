@@ -9,9 +9,10 @@ public class DungeonMapGenerator : MonoBehaviour
     [Header("Options")]
     [SerializeField, Tooltip("Amount of rooms to generate (excluding starting room)")] private int m_targetRoomAmount; // favors building rooms in one direction (when there are no intersections), if only 1 connection left it will add more rooms until target reached
     [SerializeField] private DungeonRoom m_startingRoom;
+    [SerializeField] private GameObject m_doorPrefab;
 
-    [Header("Debug")]
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
+    [Header("Debug")]
     [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms;
 
     //debug
@@ -19,7 +20,7 @@ public class DungeonMapGenerator : MonoBehaviour
 
     public void Awake()
     {
-        GenerateDungeon();  
+        GenerateDungeon();
     }
 
     //Will only search if rooms got default scale
@@ -48,13 +49,12 @@ public class DungeonMapGenerator : MonoBehaviour
             connection.Connected = false;
         }
 
-        currentRoom = m_startingRoom;
-
         m_placedRooms.Clear();
     }
 
     public void GenerateDungeon()
     {
+        currentRoom = m_startingRoom;
         RemoveAllExistingRooms();
         // Create new Dungeon
         List<DungeonRoom> roomsWithOpenConnection = new List<DungeonRoom> { m_startingRoom };
@@ -64,7 +64,7 @@ public class DungeonMapGenerator : MonoBehaviour
             // use any room, sequence doesn't matter
             currentRoom = roomsWithOpenConnection[0];
             // create a new room
-            DungeonRoom nextRoom;
+            DungeonRoom nextRoom = null;
             // if placedRooms + doors that aren't connected yet == targetRoomAmount, close all remaining doors, which will add the remaining rooms so placedRooms.Count == targetRoomAmount
             if (m_placedRooms.Count + roomsWithOpenConnection.Count >= m_targetRoomAmount) // Close off all remaining doors with dead end rooms
             {
@@ -86,23 +86,77 @@ public class DungeonMapGenerator : MonoBehaviour
                 roomsWithOpenConnection.Add(nextRoom);
             }
             // when all connections occupied remove from list
-            if (currentRoom.AllConnected && roomsWithOpenConnection.Contains(currentRoom))
+            if (nextRoom != null && currentRoom.AllConnected)
             {
                 roomsWithOpenConnection.Remove(currentRoom);
             }
-             
+
+            if (currentRoom.AllConnected)
+                roomsWithOpenConnection.Remove(currentRoom);
+
             // no room with unconnected door left -> break
             if (roomsWithOpenConnection.Count == 0) break;
         }
     }
 
+    private void PlaceDoor(DungeonRoomConnection _connectionToPlace)
+    {
+        _connectionToPlace.Connected = true;
+        //TODO: place door here
+        GameObject door = Instantiate(m_doorPrefab, _connectionToPlace.transform.parent);
+
+        //Debug.Log(door, door);
+    }
+
     public DungeonRoom AddRoom(DungeonRoom _startingRoom, List<GameObject> _roomPrefabs)
     {
-        // Get random room of the prefabs
-        DungeonRoom nextRoom = Instantiate(_roomPrefabs[Random.Range(0, _roomPrefabs.Count)]).GetComponent<DungeonRoom>();
-        m_placedRooms.Add(nextRoom);
-        bool stopGeneration = ConnectRooms(_startingRoom, nextRoom);
-        return stopGeneration ? null : nextRoom;
+        bool allowedToPlaceHere = true;
+        // See if no collision - expensive but works (hopefully) and is only called once on generation
+        if (GetActiveConnections(_startingRoom).Count > 0)
+        {
+            Vector3 nextRoomPos = _startingRoom.transform.position + DungeonRoomConnection.VecFromToPoint(
+                    _startingRoom.transform.position,
+                    GetActiveConnections(_startingRoom)[0].transform.position) *
+                2; // 2 times distance from center to connection = nextRoom normal size center
+            foreach (DungeonRoom placedRoom in m_placedRooms)
+            {
+                // Check for overlap at nextRoomPos
+                if (placedRoom.transform.position == nextRoomPos)
+                {
+                    // Overlap detected here; placedRoom was there first; GetActiveConnections(_startingRoom)[0] is where the door needs to be placed
+                    PlaceDoor(GetActiveConnections(_startingRoom)[0]);
+                    allowedToPlaceHere = false;
+                    //return null;
+                }
+
+                //if (Vector3.Distance(placedRoom.transform.position, _startingRoom.transform.position) <= 10)
+                //{
+                //    //
+                //    Debug.Log("Don't place here");
+                //}
+            }
+
+            // Get random room of the prefabs
+
+            if (allowedToPlaceHere)
+            {
+                DungeonRoom nextRoom = Instantiate(_roomPrefabs[Random.Range(0, _roomPrefabs.Count)])
+                    .GetComponent<DungeonRoom>();
+                m_placedRooms.Add(nextRoom);
+                bool stopGeneration = ConnectRooms(_startingRoom, nextRoom);
+                return stopGeneration ? null : nextRoom;
+            }
+            else
+            {
+                //Debug.Log(_startingRoom);
+            }
+        }
+        else
+        {
+            Debug.Log(_startingRoom.m_connectionPoints);
+        }
+
+        return null;
     }
 
     private List<GameObject> GetRoomPrefabWithConnections()
@@ -135,26 +189,34 @@ public class DungeonMapGenerator : MonoBehaviour
         return prefabRoomsWithConnections;
     }
 
+    private List<DungeonRoomConnection> GetActiveConnections(DungeonRoom _room)
+    {
+        List<DungeonRoomConnection> activeConnections = new List<DungeonRoomConnection>();
+        foreach (DungeonRoomConnection roomConnection in _room.m_connectionPoints)
+        {
+            if (roomConnection.gameObject.activeSelf && !roomConnection.Connected)
+                activeConnections.Add(roomConnection);
+        }
+
+        return activeConnections;
+    }
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="_existingRoom"></param>
     /// <param name="_newRoom"></param>
     /// <returns>True if all connection got connected</returns>
-    private bool ConnectRooms(DungeonRoom _existingRoom, DungeonRoom _newRoom)
+    private bool ConnectRooms(DungeonRoom _existingRoom, DungeonRoom _newRoom, bool _largeRoomAllowed = false)
     {
-        // Get random active connection
-        List<DungeonRoomConnection> activeConnections = new List<DungeonRoomConnection>();
-        foreach (DungeonRoomConnection roomConnection in _existingRoom.m_connectionPoints)
-        {
-            if (roomConnection.gameObject.activeSelf && !roomConnection.Connected)
-                activeConnections.Add(roomConnection);
-        }
+        // Get first active connection
+        List<DungeonRoomConnection> activeConnections = GetActiveConnections(_existingRoom);
 
         if (activeConnections.Count == 0)
             return true;
-        DungeonRoomConnection existingRoomConnection = activeConnections[Random.Range(0, activeConnections.Count)];
-        Debug.Log(existingRoomConnection, existingRoomConnection);
+        //DungeonRoomConnection existingRoomConnection = activeConnections[Random.Range(0, activeConnections.Count)];
+        DungeonRoomConnection existingRoomConnection = activeConnections[0];
+        //Debug.Log(existingRoomConnection, existingRoomConnection);
 
         // New room connection point that is available
         foreach (DungeonRoomConnection newRoomConnection in _newRoom.m_connectionPoints)
@@ -162,7 +224,7 @@ public class DungeonMapGenerator : MonoBehaviour
             if (existingRoomConnection.gameObject.activeSelf && newRoomConnection.gameObject.activeSelf &&
                 !newRoomConnection.Connected && !existingRoomConnection.Connected)
             {
-                Debug.Log(newRoomConnection, newRoomConnection);
+                //Debug.Log(newRoomConnection, newRoomConnection);
                 // Set new room so both connections are on top of each other
                 newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnection);
                 // Rotate room to match connections (doors)
