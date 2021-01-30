@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 5149242571265476063}
 --- !u!1001 &87710487940416589
