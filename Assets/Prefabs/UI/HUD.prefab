@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2064133146728131851}
   - component: {fileID: 2064133146728131852}
   - component: {fileID: 2064133146728131850}
+  - component: {fileID: 2979556235533994979}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -61,6 +62,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLives: {fileID: 11400000, guid: 588e4296d28cf1d46b35d59fdd2afa89, type: 2}
   maxLives: {fileID: 11400000, guid: 5270c2309f31d6a419915a6182f411ef, type: 2}
-  lifeIcon: {fileID: 9197481963319205126, guid: dcba6be478ad53448a7d8966e7f41de5, type: 3}
+  lifeIcon: {fileID: 9197481963319205126, guid: 7a367b8535b7c8e4c9fb75f2866850f1, type: 3}
   lifeEmpty: {fileID: 21300000, guid: 81bbff09deb3e884e94adcb3f5c2ffcf, type: 3}
   lifeFull: {fileID: 21300000, guid: 750e179b6f009434eafc26d52a849dce, type: 3}
+--- !u!114 &2979556235533994979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064133146728131853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8dce92720a297e428b5b8baa97a5f00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adventurerSet: {fileID: 11400000, guid: 6715761edb36bbf4b821d35a81d89797, type: 2}
+  adventurerIcon: {fileID: 9197481963319205126, guid: 7a367b8535b7c8e4c9fb75f2866850f1, type: 3}
+  lostAdventurer: {fileID: 21300000, guid: 81bbff09deb3e884e94adcb3f5c2ffcf, type: 3}

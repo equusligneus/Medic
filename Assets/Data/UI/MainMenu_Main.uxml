@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="Styles/Medic_Style.uss" />
+    <ui:VisualElement class="menu_background" style="height: auto; width: 500px; position: absolute;">
+        <ui:Label text="Main Menu" display-tooltip-when-elided="True" class="main_menu_header" />
+        <ui:Button text="Start Game" display-tooltip-when-elided="True" name="Btn_Start" class="main_menu_button" />
+        <ui:Button text="Credits" display-tooltip-when-elided="True" name="Btn_Credits" class="main_menu_button" />
+        <ui:Button text="Exit" display-tooltip-when-elided="True" name="Btn_Exit" class="main_menu_button" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -9,4 +9,13 @@ public static class Additions
 
     public static Vector2 To2D(this Vector3 value)
         => new Vector2(value.x, value.z);
+
+    public static void SetSprite(this UnityEngine.UIElements.VisualElement element, Sprite sprite)
+	{
+        var bg = element.style.backgroundImage;
+        var image = bg.value;
+        image.sprite = sprite;
+        bg.value = image;
+        element.style.backgroundImage = bg;
+    }
 }
