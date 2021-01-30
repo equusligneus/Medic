@@ -28,9 +28,10 @@ public class Triggerable_DamageArea : ATriggerable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        MedicHealth mh = other.GetComponent<MedicHealth>();
+        if (mh != null)
         {
-            other.GetComponentInParent<MedicHealth>().Hit(_damage);
+            mh.Hit(_damage);
         }
     }
 
