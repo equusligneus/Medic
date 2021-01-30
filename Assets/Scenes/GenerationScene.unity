@@ -605,5 +605,13 @@ PrefabInstance:
       propertyPath: m_targetRoomAmount
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
+      propertyPath: debugThing
+      value: 
+      objectReference: {fileID: 1742905490902095349, guid: dd925b116f196ee4e866ff0c2d344b75, type: 3}
+    - target: {fileID: 9165796670576119474, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}
+      propertyPath: currentRoom
+      value: 
+      objectReference: {fileID: 900579167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fa20c8025e11d1488a5d5897825e3bc, type: 3}

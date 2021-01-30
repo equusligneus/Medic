@@ -35,6 +35,14 @@ public class DungeonRoomConnection : MonoBehaviour
 
         transform.parent.position = _sourceConnection.transform.parent.position + sourceDir +
                                     sourceDir.normalized * ownDir.magnitude;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.parent.position, 2);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.transform.position == this.transform.parent.position)
+            {
+                Debug.LogWarning(this.transform.parent, this.transform.parent);
+            }
+        }
     }
 
     /// <summary>

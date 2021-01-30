@@ -11,9 +11,14 @@
 
 //        DungeonMapGenerator myTarget = (DungeonMapGenerator)target;
 
-//        if (Application.isPlaying && GUILayout.Button("Create Room"))
+//        if (GUILayout.Button("Create Dungeon"))
 //        {
-//            myTarget.currentRoom = myTarget.AddRoom(myTarget.currentRoom);
+//            myTarget.Start();
+//        }
+
+//        if (GUILayout.Button("Remove All Rooms"))
+//        {
+//            myTarget.RemoveAllExistingRooms();
 //        }
 //    }
 //}

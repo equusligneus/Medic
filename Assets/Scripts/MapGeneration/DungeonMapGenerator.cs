@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class DungeonMapGenerator : MonoBehaviour
@@ -10,27 +12,50 @@ public class DungeonMapGenerator : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
-    [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms = new List<DungeonRoom>();
+    [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms;
 
     //debug
     public DungeonRoom currentRoom;
 
-    private void Start()
+    public void Start()
     {
-        //m_targetRoomAmount--; // I don't really know why, but it works
-        GenerateDungeon();
+        GenerateDungeon();  
+    }
+
+    //Will only search if rooms got default scale
+    public bool RoomAlreadySetHere(Vector3 _here)
+    {
+        foreach (DungeonRoom dungeonRoom in m_placedRooms)
+        {
+            if (dungeonRoom.transform.position == _here)
+                return true;
+        }
+
+        return false;
+    }
+
+    public void RemoveAllExistingRooms()
+    {
+        List<DungeonRoom> allRooms = FindObjectsOfType<DungeonRoom>().ToList();
+        foreach (DungeonRoom room in allRooms)
+        {
+            if (room != m_startingRoom)
+                GameObject.DestroyImmediate(room.gameObject);
+        }
+
+        foreach (DungeonRoomConnection connection in m_startingRoom.m_connectionPoints)
+        {
+            connection.Connected = false;
+        }
+
+        currentRoom = m_startingRoom;
+
+        m_placedRooms.Clear();
     }
 
     public void GenerateDungeon()
     {
-        // Remove existing rooms - for debug
-        //foreach (DungeonRoom room in m_placedRooms)
-        //{
-        //    if (room != null)
-        //        GameObject.Destroy(room.gameObject);
-        //}
-        //m_placedRooms.Clear();
-
+        RemoveAllExistingRooms();
         // Create new Dungeon
         List<DungeonRoom> roomsWithOpenConnection = new List<DungeonRoom> { m_startingRoom };
         //for (int i = 0; i < m_amountOfRooms; i++)
@@ -66,7 +91,7 @@ public class DungeonMapGenerator : MonoBehaviour
             {
                 roomsWithOpenConnection.Remove(currentRoom);
             }
-
+             
             // no room with unconnected door left -> break
             if (roomsWithOpenConnection.Count == 0) break;
         }
