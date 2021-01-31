@@ -69,19 +69,25 @@ public class PathfinderAgent : MonoBehaviour
                 else
                 {
                     stop = true;
+#if UNITY_EDITOR
                     Debug.Log("Can't Find a Path");
+#endif
                 }
 
                 GridManager.Instance.ClearTempNodedata();
             }
             else
             {
+#if UNITY_EDITOR
                 Debug.Log("Start or endnode not found");
+#endif
             }
         }
         else
         {
+#if UNITY_EDITOR
             Debug.Log("No Grid to move");
+#endif
         }
         return returnError;
     }

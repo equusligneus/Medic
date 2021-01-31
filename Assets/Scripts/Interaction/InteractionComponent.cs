@@ -12,6 +12,9 @@ public class InteractionComponent : MonoBehaviour
 	private Ref_Interactive selected = default;
 
 	[SerializeField]
+	private Ref_Bool isPunching = default;
+
+	[SerializeField]
 	private InputAction interact = default;
 
 	[SerializeField]
@@ -115,7 +118,13 @@ public class InteractionComponent : MonoBehaviour
 			return;
 
 		if (!isInteracting.Get())
+		{
+			if(selected.Get().type == InteractionType.Punch)
+				isPunching.Set(true);
+
 			selected.Get().Interact(this);
+			
+		}
 	}
 
 	private bool CanInteract(Interactive interactive)
