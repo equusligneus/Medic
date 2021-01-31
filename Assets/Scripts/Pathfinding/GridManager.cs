@@ -67,7 +67,7 @@ public class GridManager : MonoBehaviour
                 }
                 grid[x, z].Position = worldPos;
             }
-            startZ = -(((gridSize.y * NodeSize) / 2) + (NodeSize / 2));
+            startZ = transform.position.z + -(((gridSize.y * NodeSize) / 2) + (NodeSize / 2));
         }
 
         GridIsGenerate = true;
