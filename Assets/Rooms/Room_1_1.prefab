@@ -206,9 +206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 8078700177580319115}
+  LargeRoomX: 0
+  LargeRoomZ: 0
 --- !u!1 &5780858516193550261
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,6 +998,14 @@ PrefabInstance:
     - target: {fileID: 76426643122724704, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 972925771487663880, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
+      propertyPath: _Triggerables.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 972925771487663880, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
+      propertyPath: _Triggerables.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4410098564130273052, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
       propertyPath: m_Name
