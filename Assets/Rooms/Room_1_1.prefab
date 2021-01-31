@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionVector: {x: 0, y: 0, z: 0}
+  m_roomConnectionRotation: {x: -1, y: 0, z: 0}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
   temp: {fileID: 0}
@@ -1045,6 +1045,10 @@ PrefabInstance:
     - target: {fileID: 4683147459638691608, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6433937312842207023, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3298840032418045364, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
