@@ -4484,7 +4484,7 @@ Transform:
   - {fileID: 728660485866374436}
   - {fileID: 7957929305085104633}
   m_Father: {fileID: 6585429889748212901}
-  m_RootOrder: 11
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1812303810727974043
 GameObject:
@@ -8740,7 +8740,7 @@ MonoBehaviour:
   m_roomConnectionRotation: {x: -1, y: 0, z: 0}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
-  temp: {fileID: 0}
+  doorTrigger: {fileID: 0}
 --- !u!1 &3727607874516527134
 GameObject:
   m_ObjectHideFlags: 0
@@ -12794,7 +12794,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6585429889748212901}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3325905461549965937
 MonoBehaviour:
@@ -12811,7 +12811,7 @@ MonoBehaviour:
   m_roomConnectionRotation: {x: 1, y: 0, z: 0}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
-  temp: {fileID: 0}
+  doorTrigger: {fileID: 0}
 --- !u!1 &5701646165697846528
 GameObject:
   m_ObjectHideFlags: 0
@@ -13311,7 +13311,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6585429889748212901}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6124841213030027272
 MonoBehaviour:
@@ -13328,7 +13328,7 @@ MonoBehaviour:
   m_roomConnectionRotation: {x: 0, y: 0, z: 1}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
-  temp: {fileID: 0}
+  doorTrigger: {fileID: 0}
 --- !u!1 &5764887531905397590
 GameObject:
   m_ObjectHideFlags: 0
@@ -15595,10 +15595,10 @@ Transform:
   - {fileID: 2861803676679085972}
   - {fileID: 3094274450185148654}
   - {fileID: 3890598741643863512}
+  - {fileID: 1254763289148923101}
   - {fileID: 332056350505093693}
   - {fileID: 8881023204286722651}
   - {fileID: 6047463087121779372}
-  - {fileID: 1254763289148923101}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
