@@ -41,8 +41,8 @@ public class GridManager : MonoBehaviour
         grid = new GridNode[gridSize.x, gridSize.y];
         Size2 = gridSize;
 
-        float startX = transform.position.x -(((gridSize.x * NodeSize) / 2) + (NodeSize / 2));
-        float startZ = transform.position.z -(((gridSize.y * NodeSize) / 2) + (NodeSize / 2));
+        float startX = transform.position.x + -(((gridSize.x * NodeSize) / 2) + (NodeSize / 2));
+        float startZ = transform.position.z + -(((gridSize.y * NodeSize) / 2) + (NodeSize / 2));
 
         for(int x = 0; x < gridSize.x; x++)
         {
