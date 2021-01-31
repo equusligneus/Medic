@@ -31,6 +31,8 @@ MonoBehaviour:
   settables:
   - reference: {fileID: 11400000, guid: 524f802232fce934a8ef3049a033110c, type: 2}
     value: 1
+  - reference: {fileID: 11400000, guid: cbecef23febb1b8429429c01824c46c7, type: 2}
+    value: 1
 --- !u!114 &-7982477857725130118
 MonoBehaviour:
   m_ObjectHideFlags: 1
