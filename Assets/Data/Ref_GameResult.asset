@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa44b57ad186237438b979c46e91b0f8, type: 3}
   m_Name: Ref_GameResult
   m_EditorClassIdentifier: 
-  _value: 0
+  _value: -1
