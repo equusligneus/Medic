@@ -217,7 +217,7 @@ public class DungeonGenerator : MonoBehaviour
         // Collision check
         foreach (DungeonRoom placedRoom in m_placedRooms)
         {
-            if (Vector3.Distance(_nextRoom.transform.position, placedRoom.transform.position) < 9.5f &&
+            if (Vector3.Distance(_nextRoom.transform.position, placedRoom.transform.position) < 9.9f &&
                 _nextRoom != placedRoom)
                 // TODO: Collision
                 isCollision = true;
@@ -236,6 +236,7 @@ public class DungeonGenerator : MonoBehaviour
         else
         {
             PlaceDoor(startRoomConnection);
+            m_placedRooms.Remove(_nextRoom);
             Debug.Log("Overlap avoided here", _startRoom);
             DestroyImmediate(_nextRoom.gameObject);
         }
