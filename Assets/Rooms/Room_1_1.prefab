@@ -1006,7 +1006,7 @@ PrefabInstance:
     - target: {fileID: 972925771487663880, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
       propertyPath: _Triggerables.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6936113858392287047}
     - target: {fileID: 4410098564130273052, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
       propertyPath: m_Name
       value: Wall TIles Room1 single door
@@ -1062,6 +1062,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3298840032418045364, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
+--- !u!114 &6936113858392287047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1000677883273560984, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
+  m_PrefabInstance: {fileID: 7899623764600464607}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6598144c5de384c4e9e5e18b437d73b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &3812567635215379440 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 6433937312842207023, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
