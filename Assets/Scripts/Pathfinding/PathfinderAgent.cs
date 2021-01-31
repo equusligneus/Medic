@@ -17,6 +17,14 @@ public class PathfinderAgent : MonoBehaviour
 
     public bool stop = true;
 
+    public bool ValidPath
+    {
+        get
+        {
+            return path != null;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -89,7 +97,6 @@ public class PathfinderAgent : MonoBehaviour
             if (0.1f > Vector3.Distance(nextNode.Position, transform.position))
             {
                 index++;
-                Debug.Log(path != null);
                 if (index == path.Count)
                 {
                     stop = true;

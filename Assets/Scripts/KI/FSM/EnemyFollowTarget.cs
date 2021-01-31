@@ -31,11 +31,14 @@ public class EnemyFollowTarget : StateMachineBehaviour
                 else
                 {
                     animator.SetBool("PlayerInView", false);
+                    animator.SetBool("NoValidPath", false);
                 }
             }
             else
             {
+                contr.CantReach = true;
                 animator.SetBool("PlayerInView", false);
+                animator.SetBool("NoValidPath", true);
             }
         }
     }
