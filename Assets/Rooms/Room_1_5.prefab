@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44062809706574898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6608970573182026287}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_roomConnectionRotation: {x: 1, y: 0, z: 0}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
-  temp: {fileID: 0}
+  doorTrigger: {fileID: 8107337164013746888}
 --- !u!1 &189090126334162821
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6187586223793755747}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -5, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6608970573182026287}
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_roomConnectionRotation: {x: -1, y: 0, z: 0}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
-  temp: {fileID: 0}
+  doorTrigger: {fileID: 8612523474746850852}
 --- !u!1 &8861093498915131001
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,10 +243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 1064305304484451939}
   - {fileID: 511677466265240819}
+  LargeRoomX: 0
+  LargeRoomZ: 0
 --- !u!1001 &332590423986545905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -750,6 +751,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b7ea7d6db488444b4525f50385c91a, type: 3}
+--- !u!135 &8612523474746850852 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 2722460876807591174, guid: 08b7ea7d6db488444b4525f50385c91a, type: 3}
+  m_PrefabInstance: {fileID: 5930620337174375202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &8107337164013746888 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 2508161895050039786, guid: 08b7ea7d6db488444b4525f50385c91a, type: 3}
+  m_PrefabInstance: {fileID: 5930620337174375202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5421899124890778541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1834019760470347919, guid: 08b7ea7d6db488444b4525f50385c91a, type: 3}

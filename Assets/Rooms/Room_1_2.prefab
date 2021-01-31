@@ -46,7 +46,7 @@ MonoBehaviour:
   m_roomConnectionRotation: {x: -1, y: 0, z: 0}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
-  temp: {fileID: 0}
+  doorTrigger: {fileID: 7809786969365150515}
 --- !u!1 &5036846428232243921
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,9 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 1033162745868540293}
+  LargeRoomX: 0
+  LargeRoomZ: 0
 --- !u!1 &6498588521474736052
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +517,11 @@ PrefabInstance:
 --- !u!4 &8490941121267315460 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4683147459638691608, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
+  m_PrefabInstance: {fileID: 3830311737143112732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &7809786969365150515 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 6433937312842207023, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
   m_PrefabInstance: {fileID: 3830311737143112732}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3954830047014553937
