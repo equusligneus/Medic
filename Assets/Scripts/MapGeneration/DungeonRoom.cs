@@ -35,9 +35,9 @@ public class DungeonRoom : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        // Shows Physics.OverlapBox
-        Gizmos.DrawSphere(this.transform.position, 4.5f);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    // Shows Physics.OverlapBox
+    //    Gizmos.DrawSphere(this.transform.position, 4.5f);
+    //}
 }

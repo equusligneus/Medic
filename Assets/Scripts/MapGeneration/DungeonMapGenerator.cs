@@ -259,7 +259,12 @@ public class DungeonMapGenerator : MonoBehaviour
 
     private void PlaceDoor(DungeonRoomConnection _connectionToPlace)
     {
+        //Debug.Log(_connectionToPlace.m_roomConnectionRotation);
         _connectionToPlace.Connected = true;
         GameObject door = Instantiate(m_doorPrefab, _connectionToPlace.transform.parent);
+
+        door.transform.position = _connectionToPlace.transform.position;
+
+        // TODO: Rotate door
     }
 }
