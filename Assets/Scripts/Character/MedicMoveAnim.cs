@@ -12,6 +12,9 @@ public class MedicMoveAnim : StateMachineBehaviour
 
 	[SerializeField]
 	private Ref<float> speed = default;
+
+	[SerializeField]
+	private Ref<bool> isPunching = default;
  
 	// OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -25,6 +28,7 @@ public class MedicMoveAnim : StateMachineBehaviour
 		animator.SetBool("IsAlive", isAlive.Get());
 		animator.SetBool("IsAwake", isAwake.Get());
 		animator.SetFloat("Speed", speed.Get());
+		animator.SetBool("Attack", isPunching.Get());
 	}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
