@@ -4941,6 +4941,7 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Interact
       m_Flags: 0
+  isAwake: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
   draggedObject: {fileID: 11400000, guid: 7c65fdc4fdfc86b478ed153e763572ad, type: 2}
 --- !u!65 &1771255175
 BoxCollider:

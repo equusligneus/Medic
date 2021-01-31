@@ -5045,6 +5045,7 @@ MonoBehaviour:
   minDistance: 0.1
   maxDistance: 0.15
   draggedAdventurer: {fileID: 11400000, guid: 7c65fdc4fdfc86b478ed153e763572ad, type: 2}
+  isMedicAwake: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
 --- !u!1001 &5811613563830478736
 PrefabInstance:
   m_ObjectHideFlags: 0
