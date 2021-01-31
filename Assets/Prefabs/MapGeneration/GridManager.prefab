@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d8e7c7c76f81f4c9bb4452de2eefd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Size: {x: 80, y: 10}
+  Size: {x: 1000, y: 1000}
   Size2: {x: 0, y: 0}
   NodeSize: 0.5
   RaycastMask:
@@ -55,7 +55,7 @@ MonoBehaviour:
     m_Bits: 32823
   StartInAwake: 0
   GridIsGenerate: 0
-  ShowGizmo: 1
+  ShowGizmo: 0
 --- !u!114 &5507725188873019536
 MonoBehaviour:
   m_ObjectHideFlags: 0
