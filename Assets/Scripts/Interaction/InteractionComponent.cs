@@ -14,10 +14,10 @@ public class InteractionComponent : MonoBehaviour
 	[SerializeField]
 	private InputAction interact = default;
 
+	[SerializeField]
+	private Ref<Interactive> draggedObject = default; 
 
 	private List<Interactive> interactives = new List<Interactive>();
-
-	private bool canInteract = true;
 
 	void Awake()
 	{
@@ -72,22 +72,19 @@ public class InteractionComponent : MonoBehaviour
 	private void UpdateSelection()
 	{
 		Interactive temp = selected.Get();
-		if (!canInteract || (temp && !temp.IsInteractive))
+		if (!CanInteract(temp))
 			temp = default;
 
 		int prio = temp ? temp.Priority : -1;
 
-		if (canInteract)
-		{
 			foreach (var selectable in interactives)
 			{
-				if (selectable.IsInteractive && selectable.Priority > prio)
+				if (CanInteract(selectable) && selectable.Priority > prio)
 				{
 					temp = selectable;
 					prio = selectable.Priority;
 				}
 			} 
-		}
 
 		if (temp != selected.Get())
 		{
@@ -114,6 +111,15 @@ public class InteractionComponent : MonoBehaviour
 			selected.Get().Interact(this);
 	}
 
+	private bool CanInteract(Interactive interactive)
+	{
+		if (!interactive || !interactive.IsInteractive)
+			return false;
 
+		if (draggedObject.Get() && draggedObject.Get() != interactive)
+			return false;
+
+		return true;
+	}
 
 }

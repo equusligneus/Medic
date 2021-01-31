@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 
 public class DungeonMapGenerator : MonoBehaviour
@@ -29,9 +27,6 @@ public class DungeonMapGenerator : MonoBehaviour
     {
         MapSize = new MinMaxMap(m_startingRoom.transform.position);
         MapSize.SetMinMax(m_startingRoom.transform.position);
-
-        GenerateDungeon();
-    }
 
     //Will only search if rooms got default scale
     public bool RoomAlreadySetHere(Vector3 _here)
@@ -62,6 +57,12 @@ public class DungeonMapGenerator : MonoBehaviour
         m_placedRooms.Clear();
     }
 
+    public void SetStartRoom(DungeonRoom startRoom)
+	{
+        m_startingRoom = startRoom;
+	}
+
+    [ContextMenu("Generate Dungeon")]
     public void GenerateDungeon()
     {
         currentRoom = m_startingRoom;
@@ -248,8 +249,6 @@ public class DungeonMapGenerator : MonoBehaviour
                 newRoomConnection.Connected = true;
                 existingRoomConnection.ConnectedDungeonRoom = _newRoom;
                 newRoomConnection.ConnectedDungeonRoom = _existingRoom;
-
-                MapSize.SetMinMax(_newRoom.transform.position);
                 return false;
             }
         }

@@ -5,24 +5,17 @@ using UnityEngine;
 public class PathfinderAgent : MonoBehaviour
 {
     public float MovementSpeed = 8.0f;
+    public float RotationSpeed = 2.0f;
+    public Vector3 MoveDir { get; private set; }
 
     private List<GridNode> path = null;
 
     private int index = 0;
-    private GridNode nextNode;
-
-    [SerializeField]
-    private Vector3 targetPosition;
+    private GridNode nextNode = null;
+    
     private GridNode targetGridNode;
 
-    public Transform debugGoal;
-
     public bool stop;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -33,62 +26,91 @@ public class PathfinderAgent : MonoBehaviour
         }
     }
 
-    [ContextMenu("Move to Position")]
-    public void MoveTooTargetPosition()
+    /// <summary>
+    /// Move the Agent to the Position if he find a Path
+    /// </summary>
+    /// <param name="_target"></param>
+    /// <returns>Did the Agent find a path</returns>
+    public bool MoveTo(Vector3 _target)
     {
-        MoveTo(debugGoal.position);
-    }
-
-    public void MoveTo(Vector3 _target)
-    {
-        nextNode = GridManager.Instance.GetGridNode(transform.position);
-        targetGridNode = GridManager.Instance.GetGridNode(_target);
-
-        if (nextNode != null && targetGridNode != null)
+        bool returnError = false;
+        if (GridManager.Instance.GridIsGenerate)
         {
-            path = Pathfinder.Instance.FindPath(nextNode, targetGridNode);
+            nextNode = GridManager.Instance.GetGridNode(transform.position);
+            targetGridNode = GridManager.Instance.GetGridNode(_target);
 
-            if (path != null && path.Count > 0)
+            if (nextNode != null && targetGridNode != null)
             {
-                index = 0;
-                nextNode = path[index];
+                path = Pathfinder.Instance.FindPath(nextNode, targetGridNode);
 
-                stop = false;
+                if (path != null && path.Count > 0)
+                {
+                    if(path.Count > 1)
+                    {
+                        index = 1;
+                    }
+                    else
+                    {
+                        index = 0;
+                    }
+                    nextNode = path[index];
+
+                    stop = false;
+                    returnError = true;
+                }
+                else
+                {
+                    Debug.Log("Can't Find a Path");
+                }
+
+                GridManager.Instance.ClearTempNodedata();
             }
             else
             {
-                Debug.Log("Can't Find a Path");
+                Debug.Log("Start or endnode not found");
             }
-
-            GridManager.Instance.ClearTempNodedata();
         }
         else
         {
-            Debug.Log("Start or endnode not found");
+            Debug.Log("No Grid to move");
         }
+        return returnError;
     }
 
-    public void MoveAgent()
+    /// <summary>
+    /// Move the Agent to the next Node in the Path
+    /// If the Agent on this node it will be switcht
+    /// </summary>
+    private void MoveAgent()
     {
-        if(0.1f > Vector3.Distance(nextNode.Position, transform.position))
+        if(nextNode != null)
         {
-            index++;
-            if(index == path.Count)
+            if (0.1f > Vector3.Distance(nextNode.Position, transform.position))
             {
-                stop = true;
-                path = null;
-            }
-            else
-            {
-                if(index < path.Count)
+                index++;
+                if (index == path.Count)
                 {
-                    nextNode = path[index];
+                    stop = true;
+                    path = null;
+                }
+                else
+                {
+                    if (index < path.Count)
+                    {
+                        nextNode = path[index];
+                    }
                 }
             }
-        }
-        else
-        {
-            transform.position += (nextNode.Position - transform.position).normalized * MovementSpeed * Time.deltaTime;
+
+            if (!stop)
+            {
+                //Rotate the Agent to move Direction
+                MoveDir = -(transform.position - nextNode.Position);
+                Quaternion toRotation = Quaternion.LookRotation(MoveDir);
+                transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, RotationSpeed * Time.deltaTime);
+                //Move Agent
+                transform.position += (nextNode.Position - transform.position).normalized * MovementSpeed * Time.deltaTime;
+            }
         }
     }
 }

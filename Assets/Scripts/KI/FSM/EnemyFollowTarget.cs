@@ -16,11 +16,12 @@ public class EnemyFollowTarget : StateMachineBehaviour
     {
         if(contr != null)
         {
-            contr.Move();
+            //contr.Move();
+            contr.Agent.MoveTo(contr.currentTargetPosition);
 
             if (contr.PlayerInViewSpace())
             {
-                if (contr.AttackAbility.IsPlayerInRange(contr.Player) && contr.PlayerAwake.Get())
+                if (contr.AttackAbility.IsPlayerInRange(contr.Player.Get()) && contr.PlayerAwake.Get())
                 {
                     animator.SetBool("Attack", true);   
                     //contr.AttackAbility.AttackPlayer(contr.Player);
