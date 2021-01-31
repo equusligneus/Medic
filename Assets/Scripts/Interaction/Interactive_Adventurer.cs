@@ -24,19 +24,39 @@ public class Interactive_Adventurer : Interactive
 	[SerializeField]
 	private Ref_Interactive draggedAdventurer = default;
 
-	public override bool IsInteractive => true;
+	[SerializeField]
+	private Ref<bool> isMedicAwake = default;
+
+	private bool canBeRescued = true;
+
+	public override bool IsInteractive => canBeRescued;
 
 
 	protected override void Interact_Internal(InteractionComponent trigger)
 	{
 		isDragging.Set(!isDragging.Get());
-		draggedAdventurer.Set(isDragging.Get() ? this : default);
+		if(isDragging.Get())
+		{
+		draggedAdventurer.Set(this);
+			isMedicAwake.OnChanged += OnMedicDown;
+		}
+		else
+		{
+			draggedAdventurer.Set(default);
+			isMedicAwake.OnChanged -= OnMedicDown;
+		}
 		anchor = trigger.transform.parent;
 	}
 
-	private void Start()
+	private void OnMedicDown()
 	{
-		GetComponentInParent<Adventurer>().OnRescue += OnRescue;
+		if(isMedicAwake.Get())
+		{
+			return;
+		}
+		draggedAdventurer.Set(default);
+		isDragging.Set(false);
+		isMedicAwake.OnChanged -= OnMedicDown;
 	}
 
 	private void OnRescue()
@@ -44,6 +64,12 @@ public class Interactive_Adventurer : Interactive
 		// force drop
 		draggedAdventurer.Set(default);
 		isDragging.Set(false);
+		canBeRescued = false;
+	}
+
+	private void Start()
+	{
+		GetComponentInParent<Adventurer>().OnRescue += OnRescue;
 	}
 
 	private void Update()
@@ -67,5 +93,10 @@ public class Interactive_Adventurer : Interactive
 
 		var dragDelta = (targetDragPoint - pivToDragDistance * pivToNewDragDir) - pivot.position.To2D();
 		pivot.position += dragDelta.To3D();
+	}
+
+	private void OnDisable()
+	{
+		isMedicAwake.OnChanged -= OnMedicDown;
 	}
 }
