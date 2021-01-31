@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Interactive_Enemy : Interactive
 {
-	public override bool IsInteractive => throw new System.NotImplementedException();
+	private KIController controller;
+
+	public override bool IsInteractive => controller.CanBeStunned;
 
 	public override InteractionType type => InteractionType.Punch;
 
 	protected override void Interact_Internal(InteractionComponent trigger)
 	{
-		throw new System.NotImplementedException();
+		if (controller.CanBeStunned)
+			controller.Stun();
 	}
 }
