@@ -29,6 +29,16 @@ public struct MinMaxMap
         if (_position.z > maxZ) maxZ = (int)_position.z + 5;
     }
 
+    public int GetWidth()
+    {
+        return (int)Mathf.Abs(minX + maxX) + 40;
+    }
+
+    public int GetHeight()
+    {
+        return (int)Mathf.Abs(minZ + maxZ) + 40;
+    }
+
     public Vector3 GetCenter
     {
         get
@@ -42,7 +52,7 @@ public class DungeonMapGenerator : MonoBehaviour
 {
     [SerializeField, Tooltip("Amount of rooms to generate (excluding starting room)")] private int m_targetRoomAmount;
 
-    public MinMaxMap MapSize;
+    public static MinMaxMap MapSize;
     [SerializeField] private DungeonRoom m_startDungeonRoom;
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
 
