@@ -23,7 +23,7 @@ public class EnemyWalkTo : StateMachineBehaviour
             if (contr.AtGoal())
             {
                 animator.SetBool("BreakTime", true);
-                animationBreak = true;
+                //animationBreak = true;
             }
             else
             {
@@ -31,7 +31,7 @@ public class EnemyWalkTo : StateMachineBehaviour
                 if (contr.PlayerInViewSpace())
                 {
                     animator.SetBool("PlayerInView", true);
-                    animationBreak = true;
+                    //animationBreak = true;
                 }
             }
         }
@@ -40,18 +40,18 @@ public class EnemyWalkTo : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animationBreak = true;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
-    override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // Implement code that processes and affects root motion
-    }
+    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that processes and affects root motion
+    //}
 
     // OnStateIK is called right after Animator.OnAnimatorIK()
-    override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // Implement code that sets up animation IK (inverse kinematics)
-    }
+    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    Implement code that sets up animation IK(inverse kinematics)
+    //}
 }

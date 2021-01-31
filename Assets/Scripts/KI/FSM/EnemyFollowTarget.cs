@@ -22,13 +22,13 @@ public class EnemyFollowTarget : StateMachineBehaviour
             {
                 if (contr.PlayerInViewSpace())
                 {
+                    animator.SetBool("PlayerInView", true);
                     if (contr.AttackAbility.IsPlayerInRange(contr.Player.Get()) && contr.PlayerAwake.Get())
                     {
                         animator.SetBool("Attack", true);
-                        animationBreak = true;
+                        //animationBreak = true;
                         //contr.AttackAbility.AttackPlayer(contr.Player);
                     }
-                    animator.SetBool("PlayerInView", true);
                 }
                 else
                 {
@@ -46,10 +46,10 @@ public class EnemyFollowTarget : StateMachineBehaviour
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animationBreak = true;
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
