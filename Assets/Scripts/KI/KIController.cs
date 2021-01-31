@@ -36,7 +36,7 @@ public class KIController : MonoBehaviour
     private bool followPlayer = false;
 
     public float BreakTime = 6.0f;
-
+    public bool CantReach = false;
 
     //public Transform Player;
     public Ref<bool> PlayerIsAlive;
@@ -68,6 +68,11 @@ public class KIController : MonoBehaviour
     public void AddWaypoints(List<Transform> _waypoints)
     {
         waypoints = _waypoints;
+        animator = GetComponent<Animator>();
+        charContr = GetComponent<CharacterController>();
+        Agent = GetComponent<PathfinderAgent>();
+        AttackAbility = GetComponent<Enemy_Attack_Ability>();
+        index = 0;
         currentTargetPosition = waypoints[index].position;
     }
 
@@ -120,10 +125,10 @@ public class KIController : MonoBehaviour
         {
             if (Vector3.Angle(MoveDirection(Player.Get().position), Vector3.forward) < ViewAngle)
             {
-                if(!Physics.Linecast(transform.position, Player.Get().position, BlockedLayer))
+                if(!Physics.Linecast(transform.position, Player.Get().position, BlockedLayer) && !CantReach)
                 {
-                    followPlayer = true;
                     currentTargetPosition = Player.Get().position;
+                    followPlayer = true;
                     return true;
                 }
             }

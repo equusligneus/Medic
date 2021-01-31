@@ -15,7 +15,15 @@ public class PathfinderAgent : MonoBehaviour
     
     private GridNode targetGridNode;
 
-    public bool stop;
+    public bool stop = true;
+
+    public bool ValidPath
+    {
+        get
+        {
+            return path != null;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -60,6 +68,7 @@ public class PathfinderAgent : MonoBehaviour
                 }
                 else
                 {
+                    stop = true;
                     Debug.Log("Can't Find a Path");
                 }
 

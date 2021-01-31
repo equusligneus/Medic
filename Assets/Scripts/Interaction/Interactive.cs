@@ -3,12 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum InteractionType
+{
+	None,
+	Punch
+}
+
 public abstract class Interactive : MonoBehaviour
 {
 	[SerializeField]
 	private int priority = 0;
 
 	public abstract bool IsInteractive { get; }
+
+	public virtual InteractionType type => InteractionType.None;
 
 	public int Priority => priority;
 

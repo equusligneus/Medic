@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteracting: {fileID: 11400000, guid: 3162d41ce4637f04f9eb4aee06d2522a, type: 2}
   selected: {fileID: 11400000, guid: ab5fdd8cb5444f74ab177283c6e91cbc, type: 2}
+  isPunching: {fileID: 11400000, guid: c1c3954e056aab843847599a861a44e8, type: 2}
   interact:
     m_Name: Interact
     m_Type: 1
@@ -245,7 +246,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Center: {x: 0, y: 2.3, z: 0}
 --- !u!114 &5262432324184594357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +319,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 90fbac4e837597f4398400624c89a0cd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bae5540042076f641a72ce0bdf319905, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -598,7 +599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5e40e047a47351a45b08f9f4a6b283b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5e40e047a47351a45b08f9f4a6b283b6, type: 3}
       propertyPath: m_LocalPosition.z
