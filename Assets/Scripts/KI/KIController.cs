@@ -32,6 +32,8 @@ public class KIController : MonoBehaviour
     public float TargetRange = 1.0f;
     public LayerMask BlockedLayer;
 
+    public float InvincibilityTime = 5f;
+
     private int index = 0;
     private bool followPlayer = false;
 
@@ -43,6 +45,11 @@ public class KIController : MonoBehaviour
     public Ref<bool> PlayerAwake;
 
     public Ref<Transform> Player;
+
+    public bool IsStunned { get; private set; }
+
+    public bool CanBeStunned
+        => !IsStunned && !PlayerInViewSpace();
 
     // Start is called before the first frame update
     void Start()
@@ -135,4 +142,20 @@ public class KIController : MonoBehaviour
         }    
         return false;
     }
+
+    public void Stun()
+	{
+        IsStunned = true;
+	}
+
+    public void EndStun()
+	{
+        StartCoroutine(InvincibilityTimer());
+	}
+
+    private IEnumerator InvincibilityTimer()
+	{
+        yield return new WaitForSeconds(InvincibilityTime);
+        IsStunned = false;
+	}
 }
