@@ -6,38 +6,6 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[Serializable]
-public struct minMaxMap
-{
-    public int maxX;
-    public int minX;
-    public int maxZ;
-    public int minZ;
-
-    public minMaxMap(Vector3 _position)
-    {
-        maxX = (int) _position.x + 5;
-        minX = (int) _position.x - 5;
-        maxZ = (int) _position.z + 5;
-        minZ = (int) _position.z - 5;
-    }
-
-    public void SetMinMax(Vector3 _position)
-    {
-        if (_position.x < minX) minX = (int) _position.x - 5;
-        if (_position.x > maxX) maxX = (int) _position.x + 5;
-        if (_position.z < minZ) minZ = (int) _position.z - 5;
-        if (_position.z > maxZ) maxZ = (int) _position.z + 5;
-    }
-
-    public Vector3 GetCenter
-    {
-        get
-        {
-            return new Vector3(minX + maxX, 0, minZ + maxZ) / 2;
-        }
-    }
-}
 
 public class DungeonMapGenerator : MonoBehaviour
 {
@@ -52,14 +20,14 @@ public class DungeonMapGenerator : MonoBehaviour
 
     [HideInInspector] public Vector3 Center;
 
-    /*[HideInInspector] */public minMaxMap MapSize;
+    /*[HideInInspector] */public MinMaxMap MapSize;
 
     //debug
     public DungeonRoom currentRoom;
 
     public void Awake()
     {
-        MapSize = new minMaxMap(m_startingRoom.transform.position);
+        MapSize = new MinMaxMap(m_startingRoom.transform.position);
         MapSize.SetMinMax(m_startingRoom.transform.position);
 
         GenerateDungeon();
@@ -268,9 +236,13 @@ public class DungeonMapGenerator : MonoBehaviour
             {
                 //Debug.Log(newRoomConnection, newRoomConnection);
                 // Set new room so both connections are on top of each other
-                newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnection);
+                //newRoomConnection.SetRoomPositionFromConnectionPosition(existingRoomConnection);
+                MoveParentsByChildren(existingRoomConnection.transform, newRoomConnection.transform);
+                //MoveParentsByChildren(existingRoomConnection.transform, newRoomConnection.transform);
                 // Rotate room to match connections (doors)
-                newRoomConnection.RotateRoomToMatch(existingRoomConnection);
+                //newRoomConnection.RotateRoomToMatch(existingRoomConnection);
+                RotateParentToMatchDirOfConnections(existingRoomConnection, newRoomConnection);
+                
                 // Give the rooms some information
                 existingRoomConnection.Connected = true;
                 newRoomConnection.Connected = true;
@@ -283,5 +255,34 @@ public class DungeonMapGenerator : MonoBehaviour
         }
 
         return true;
+    }
+
+    /// <summary>
+    /// Moves parent of child2 so child1 and child2 position match
+    /// </summary>
+    /// <param name="_child1">child to stay</param>
+    /// <param name="_child2">child being moved</param>
+    private void MoveParentsByChildren(Transform _child1, Transform _child2)
+    {
+        Vector3 finalPos = _child1.position;
+
+        Vector3 parent2Offset = _child2.parent.position - _child2.position;
+
+        _child2.parent.position = finalPos + parent2Offset;
+    }
+
+    /// <summary>
+    /// Rotate connection2 parent so connection2 is the inverse to connection1 in world space
+    /// </summary>
+    /// <param name="_connection1">Connection to stay</param>
+    /// <param name="_connection2">Connection which s parent will be rotated</param>
+    private void RotateParentToMatchDirOfConnections(DungeonRoomConnection _connection1, DungeonRoomConnection _connection2)
+    {
+        Vector3 dir1 = _connection1.transform.TransformDirection(_connection1.m_roomConnectionRotation);
+        Vector3 dir2 = _connection2.transform.TransformDirection(_connection2.m_roomConnectionRotation);
+        float angle = Vector3.SignedAngle(dir1, dir2, Vector3.up);
+        Debug.Log(angle);
+
+        _connection2.transform.parent.RotateAround(_connection1.transform.position, Vector3.up, angle);
     }
 }

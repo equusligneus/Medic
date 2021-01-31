@@ -92,6 +92,53 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &7007720510868518346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1498528248881639968}
+  - component: {fileID: 6502428781561929006}
+  m_Layer: 0
+  m_Name: DoorConection (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1498528248881639968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007720510868518346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6802934224739380364}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6502428781561929006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007720510868518346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_roomConnectionRotation: {x: 0, y: 0, z: 1}
+  Connected: 0
+  ConnectedDungeonRoom: {fileID: 0}
+  temp: {fileID: 0}
 --- !u!1 &7444797514753276897
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +150,7 @@ GameObject:
   - component: {fileID: 681153343422605817}
   - component: {fileID: 5149242571265476063}
   m_Layer: 0
-  m_Name: DoorConection
+  m_Name: DoorConection (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionVector: {x: 0, y: 0, z: 0}
+  m_roomConnectionRotation: {x: -1, y: 0, z: 0}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
   temp: {fileID: 0}
@@ -257,6 +304,7 @@ Transform:
   - {fileID: 689973973274387084}
   - {fileID: 7144131137278695337}
   - {fileID: 9083311658127291911}
+  - {fileID: 1498528248881639968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -275,6 +323,7 @@ MonoBehaviour:
   largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 5149242571265476063}
+  - {fileID: 6502428781561929006}
 --- !u!1001 &87710487940416589
 PrefabInstance:
   m_ObjectHideFlags: 0

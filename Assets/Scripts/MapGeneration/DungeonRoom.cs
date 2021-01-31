@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class DungeonRoom : MonoBehaviour
 {
-    [SerializeField] public bool largeRoomSize = false;
     [SerializeField] public List<DungeonRoomConnection> m_connectionPoints;
 
     /// <summary>
