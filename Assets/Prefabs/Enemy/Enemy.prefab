@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ad842e64f74f14ab63ff50deedf919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 4.81
+  MovementSpeed: 1.57
   RotationSpeed: 2
   stop: 0
 --- !u!114 &2806851449737569264
@@ -648,10 +648,10 @@ MonoBehaviour:
   - {fileID: 0}
   Agent: {fileID: 0}
   currentTargetPosition: {x: 0, y: 0, z: 0}
-  MovementSpeed: 3
+  MovementSpeed: 1
   RotationSpeed: 2.5
-  ViewRange: 10
-  ViewAngle: 75
+  ViewRange: 4
+  ViewAngle: 45
   TargetRange: 1
   BlockedLayer:
     serializedVersion: 2
