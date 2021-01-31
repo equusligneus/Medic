@@ -3,6 +3,6 @@
     <ui:VisualElement class="menu_background" style="width: 500px; position: absolute;">
         <ui:Label text="Credits" display-tooltip-when-elided="True" class="main_menu_header" />
         <ui:Label text="Label" display-tooltip-when-elided="True" name="Credits" class="main_menu_credits_list" />
-        <ui:Button text="Exit to Main" display-tooltip-when-elided="True" name="Btn_To_Main" class="main_menu_button" style="margin-bottom: 5px; margin-top: 5px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; margin-left: 5px; margin-right: 5px; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
+        <ui:Button text="Exit to Main" display-tooltip-when-elided="True" name="Btn_To_Main" class="main_menu_button" />
     </ui:VisualElement>
 </ui:UXML>

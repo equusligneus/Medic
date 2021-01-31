@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 30
+  controller: {fileID: 2806851449737569265}
 --- !u!114 &2520612830827585478
 MonoBehaviour:
   m_ObjectHideFlags: 0

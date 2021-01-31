@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class EndGameScript : MonoBehaviour
 {
+	const string END_SCREEN = "GameEndScreen";
+
     [SerializeField]
     private Condition winCondition = default;
 
@@ -30,13 +32,13 @@ public class EndGameScript : MonoBehaviour
 	private void LoseCondition_OnConditionRaised()
 	{
 		gameResult.Set(-1);
-		SceneManager.LoadScene("GameOverScene");
+		SceneManager.LoadScene(END_SCREEN);
 	}
 
 	private void WinCondition_OnConditionRaised()
 	{
 		gameResult.Set(1);
-		SceneManager.LoadScene("GameOverScene");
+		SceneManager.LoadScene(END_SCREEN);
 	}
 
 }
