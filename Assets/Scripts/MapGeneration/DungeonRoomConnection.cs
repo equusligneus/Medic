@@ -7,11 +7,9 @@ public class DungeonRoomConnection : MonoBehaviour
 {
     [Header("Set connection room direction:")]
     [SerializeField] public Vector3 m_roomConnectionRotation;
-    public bool Connected = false;
-    public DungeonRoom ConnectedDungeonRoom; // Not used right now but might be useful
-
-    // debug
-    [HideInInspector] public DungeonRoomConnection temp;
+    [HideInInspector] public bool Connected = false;
+    [HideInInspector] public DungeonRoom ConnectedDungeonRoom; // Not used right now but might be useful
+    [SerializeField, Tooltip("Technically don't need to be in single door rooms")] private Collider doorTrigger;
 
     /// <summary>
     /// Finds the Vector3 from one point to another
@@ -24,58 +22,25 @@ public class DungeonRoomConnection : MonoBehaviour
         return _end - _start;
     }
 
-    ///// <summary>
-    ///// Sets the parents world position so that this world position is matching the one of the parameter
-    ///// </summary>
-    ///// <param name="_sourceConnection"></param>
-    //public void SetRoomPositionFromConnectionPosition(DungeonRoomConnection _sourceConnection)
-    //{
-    //    Vector3 sourceDir = VecFromToPoint(_sourceConnection.transform.parent.position, _sourceConnection.transform.position);
-    //    Vector3 ownDir = VecFromToPoint(this.transform.parent.position, this.transform.position);
-
-    //    transform.parent.position = _sourceConnection.transform.parent.position + sourceDir +
-    //                                sourceDir.normalized * ownDir.magnitude;
-    //    Collider[] hitColliders = Physics.OverlapSphere(transform.parent.position, 2);
-    //    foreach (var hitCollider in hitColliders)
-    //    {
-    //        if (hitCollider.transform.position == this.transform.parent.position)
-    //        {
-    //            Debug.LogWarning(this.transform.parent, this.transform.parent);
-    //        }
-    //    }
-    //}
-
-    ///// <summary>
-    ///// Rotates the room so that both connections are looking into opposite direction so they match each other
-    ///// </summary>
-    ///// <param name="_sourceConnection">The rotation to match</param>
-    //public void RotateRoomToMatch(DungeonRoomConnection _sourceConnection)
-    //{
-    //    temp = _sourceConnection;
-    //    Vector3 dirSource = _sourceConnection.transform.position - _sourceConnection.transform.parent.position;
-    //    // Rotate until it fits
-    //    if (this.transform.position != _sourceConnection.transform.position)
-    //    {
-    //        this.transform.parent.RotateAround(this.transform.parent.position, Vector3.up, 90);
-    //    }
-    //    if (this.transform.position != _sourceConnection.transform.position)
-    //    {
-    //        this.transform.parent.RotateAround(this.transform.parent.position, Vector3.up, 90);
-    //    }
-    //    if (this.transform.position != _sourceConnection.transform.position)
-    //    {
-    //        this.transform.parent.RotateAround(this.transform.parent.position, Vector3.up, 90);
-    //    }
-    //    //Additions.To3D(Additions.To2D(this.transform.position)) != Additions.To3D(Additions.To2D(_sourceConnection.transform.position)) // in case of y not matching for if
-    //}
-
-
-
-
-
     private void Awake()
     {
         if (m_roomConnectionRotation == Vector3.zero)
             m_roomConnectionRotation = transform.localPosition;
+    }
+
+    public bool DoorMayOpen
+    {
+        get
+        {
+            if (doorTrigger == null)
+                return false;
+            return doorTrigger.enabled;
+        }
+        set
+        {
+            if (doorTrigger == null)
+                return;
+            doorTrigger.enabled = value;
+        }
     }
 }

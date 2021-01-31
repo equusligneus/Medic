@@ -206,9 +206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 8078700177580319115}
+  LargeRoomX: 0
+  LargeRoomZ: 0
 --- !u!1 &5780858516193550261
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +256,7 @@ MonoBehaviour:
   m_roomConnectionRotation: {x: -1, y: 0, z: 0}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
-  temp: {fileID: 0}
+  doorTrigger: {fileID: 3812567635215379440}
 --- !u!1 &6011082527558525760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +1054,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3298840032418045364, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
+--- !u!135 &3812567635215379440 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 6433937312842207023, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
+  m_PrefabInstance: {fileID: 7899623764600464607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3268760352836756423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4683147459638691608, guid: 443a8767877831e48aefc14e4cd51ab4, type: 3}
