@@ -105,9 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 4874805899080313261}
+  LargeRoomX: 1
+  LargeRoomZ: 0
 --- !u!1 &7720086052397103336
 GameObject:
   m_ObjectHideFlags: 0

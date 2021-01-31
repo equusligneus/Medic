@@ -412,9 +412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 2706939435203015112}
+  LargeRoomX: 1
+  LargeRoomZ: 0
 --- !u!64 &645463471928918958
 MeshCollider:
   m_ObjectHideFlags: 0

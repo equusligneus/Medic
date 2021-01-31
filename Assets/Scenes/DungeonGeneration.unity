@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be311a20d9883844abfceed39cca67c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_targetRoomAmount: 10
+  m_targetRoomAmount: 5
   MapSize:
     maxX: 0
     minX: 0

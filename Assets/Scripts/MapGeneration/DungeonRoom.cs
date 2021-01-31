@@ -6,6 +6,8 @@ using UnityEngine;
 public class DungeonRoom : MonoBehaviour
 {
     [SerializeField] public List<DungeonRoomConnection> m_connectionPoints;
+    [SerializeField] public bool LargeRoomX;
+    [SerializeField] public bool LargeRoomZ;
 
     /// <summary>
     /// True if all connections got rooms connected, otherwise false
@@ -32,5 +34,10 @@ public class DungeonRoom : MonoBehaviour
             return openConnections;
         }
     }
-    
+
+    private void OnDrawGizmos()
+    {
+        // Shows Physics.OverlapBox
+        Gizmos.DrawSphere(this.transform.position, 4.5f);
+    }
 }

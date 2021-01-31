@@ -82,10 +82,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         Vector3 dir1 = _connection1.transform.TransformDirection(_connection1.m_roomConnectionRotation);
         Vector3 dir2 = _connection2.transform.TransformDirection(_connection2.m_roomConnectionRotation);
-        Debug.Log(dir1, _connection1);
-        Debug.Log(dir2, _connection2);
         float angle = Vector3.SignedAngle(dir1, dir2, Vector3.up);
-        Debug.Log(angle);
 
         _connection2.transform.parent.RotateAround(_connection1.transform.position, Vector3.up, -angle + 180);
     }
@@ -207,6 +204,8 @@ public class DungeonGenerator : MonoBehaviour
 
     private void ConnectRooms(DungeonRoom _startRoom, DungeonRoom _nextRoom)
     {
+        bool isCollision = false;
+
         DungeonRoomConnection startRoomConnection = GetActiveConnections(_startRoom)[0];
 
         DungeonRoomConnection nextRoomConnection = GetActiveConnections(_nextRoom)[Random.Range(0, GetActiveConnections(_nextRoom).Count)];
@@ -215,13 +214,31 @@ public class DungeonGenerator : MonoBehaviour
 
         RotateParentToMatchDirOfConnections(startRoomConnection, nextRoomConnection);
 
-        // infos
-        startRoomConnection.Connected = true;
-        nextRoomConnection.Connected = true;
-        startRoomConnection.ConnectedDungeonRoom = _nextRoom;
-        nextRoomConnection.ConnectedDungeonRoom = _startRoom;
+        // Collision check
+        foreach (DungeonRoom placedRoom in m_placedRooms)
+        {
+            if (Vector3.Distance(_nextRoom.transform.position, placedRoom.transform.position) < 9.5f &&
+                _nextRoom != placedRoom)
+                // TODO: Collision
+                isCollision = true;
+        }
 
-        MapSize.SetMinMax(_nextRoom.transform.position);
+        // infos
+        if (!isCollision)
+        {
+            startRoomConnection.Connected = true;
+            nextRoomConnection.Connected = true;
+            startRoomConnection.ConnectedDungeonRoom = _nextRoom;
+            nextRoomConnection.ConnectedDungeonRoom = _startRoom;
+
+            MapSize.SetMinMax(_nextRoom.transform.position);
+        }
+        else
+        {
+            PlaceDoor(startRoomConnection);
+            Debug.Log("Overlap avoided here", _startRoom);
+            DestroyImmediate(_nextRoom.gameObject);
+        }
     }
 
     private void PlaceDoor(DungeonRoomConnection _connectionToPlace)
