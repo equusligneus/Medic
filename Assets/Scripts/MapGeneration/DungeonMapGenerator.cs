@@ -31,12 +31,12 @@ public struct MinMaxMap
 
     public int GetWidth()
     {
-        return (int)Mathf.Abs(minX + maxX) + 10;
+        return (int)Mathf.Abs(minX + maxX) + 40;
     }
 
     public int GetHeight()
     {
-        return (int)Mathf.Abs(minZ + maxZ) + 10;
+        return (int)Mathf.Abs(minZ + maxZ) + 40;
     }
 
     public Vector3 GetCenter
