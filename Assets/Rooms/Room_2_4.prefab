@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c4142043f9f144b1eb3d2fc426983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roomConnectionVector: {x: 0, y: 0, z: 0}
+  m_roomConnectionRotation: {x: -1, y: 0, z: 0}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
   temp: {fileID: 0}
@@ -157,9 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 1997096686107456314}
+  LargeRoomX: 1
+  LargeRoomZ: 0
 --- !u!1001 &26319264272882283
 PrefabInstance:
   m_ObjectHideFlags: 0
