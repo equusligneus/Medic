@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Interactive_Enemy : Interactive
 {
-	private KIController controller;
+	[SerializeField]
+	private KIController controller = default;
 
 	public override bool IsInteractive => controller.CanBeStunned;
 

@@ -6,7 +6,7 @@ VisualElement {
     align-items: stretch;
     padding-left: 15px;
     padding-right: 15px;
-    padding-top: 15px;
+    padding-top: 25px;
     padding-bottom: 15px;
     border-left-width: 2px;
     border-right-width: 2px;
@@ -27,8 +27,8 @@ VisualElement {
 .main_menu_button {
     margin-bottom: 6px;
     margin-top: 6px;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     font-size: 24px;
     -unity-font-style: bold;
     background-image: url('/Assets/Art/Textures/UI/button_normal.png');
@@ -41,6 +41,14 @@ VisualElement {
     margin-left: 6px;
     margin-right: 6px;
     background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .main_menu_header {
@@ -51,6 +59,7 @@ VisualElement {
     margin-right: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
+    color: rgba(255, 255, 255, 255);
 }
 
 .main_menu_credits_list {
@@ -59,4 +68,5 @@ VisualElement {
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 16px;
+    color: rgba(255, 255, 255, 255);
 }
