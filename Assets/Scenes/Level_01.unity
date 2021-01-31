@@ -372,6 +372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medic
       objectReference: {fileID: 0}
+    - target: {fileID: 9105038327602223028, guid: 85c26328dba118749b4f24bda7e07bac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1940914989257840258, guid: 85c26328dba118749b4f24bda7e07bac, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.5494139

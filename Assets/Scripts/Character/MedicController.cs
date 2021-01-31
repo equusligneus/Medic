@@ -49,16 +49,7 @@ public class MedicController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        // fainted, abort
-        if (!isStanding.Get())
-        {
-            currentSpeed.Set(0f);
-            return;
-        }
-
-        var input = move.ReadValue<Vector2>();
+        var input = isStanding.Get() ? move.ReadValue<Vector2>() : Vector2.zero;
 
         var speed = this.speed * (isLoaded.Get() ? loadModifier : 1f);
 
@@ -67,7 +58,6 @@ public class MedicController : MonoBehaviour
 
         currentSpeed.Set(speed * input.magnitude);
 
-        //characterController.Move((input * speed * Time.smoothDeltaTime).To3D());
         characterController.SimpleMove((input * speed).To3D());
     }
 }
