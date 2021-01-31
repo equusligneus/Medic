@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33000011060200364}
   - component: {fileID: 23000010578576492}
   - component: {fileID: 64164294253617032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bridge-medieval-stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
