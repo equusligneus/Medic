@@ -146,16 +146,20 @@ public class KIController : MonoBehaviour
     public void Stun()
 	{
         IsStunned = true;
+        Agent.stop = !Agent.stop;
+        animator.SetBool("Stunned", true);
 	}
 
     public void EndStun()
 	{
         StartCoroutine(InvincibilityTimer());
-	}
+    }
 
     private IEnumerator InvincibilityTimer()
 	{
         yield return new WaitForSeconds(InvincibilityTime);
         IsStunned = false;
+        Agent.stop = !Agent.stop;
+        animator.SetBool("Stunned", false);
 	}
 }
