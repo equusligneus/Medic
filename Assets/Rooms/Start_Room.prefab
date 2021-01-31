@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 6802934224739380364}
   - component: {fileID: 6901816411658248098}
   - component: {fileID: 1692786589665198969}
+  - component: {fileID: 5247153312872130129}
   m_Layer: 0
   m_Name: Start_Room
   m_TagString: Untagged
@@ -294,6 +295,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc0020a7367ebcc428485ecf3dd1fccf, type: 2}
   - {fileID: 11400000, guid: 898fedee84a228f4c8c9736696cc6efb, type: 2}
   - {fileID: 11400000, guid: 667d23cde27622a47aa32c73d80c1cac, type: 2}
+--- !u!114 &5247153312872130129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162514673347223770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89914537cc92545459ac69179a95d9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winCondition: {fileID: 11400000, guid: b8c1c13ad67b2b5478999cd9fe253778, type: 2}
+  loseCondition: {fileID: 11400000, guid: e967a1efad16f7a46a3d005779eceb7e, type: 2}
+  gameResult: {fileID: 11400000, guid: baf5b374621c66a42bd2bce48756f4ea, type: 2}
 --- !u!1001 &87710487940416589
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5044,6 +5044,7 @@ MonoBehaviour:
   dragPoint: {fileID: 3290875448875918348}
   minDistance: 0.1
   maxDistance: 0.15
+  draggedAdventurer: {fileID: 11400000, guid: 7c65fdc4fdfc86b478ed153e763572ad, type: 2}
 --- !u!1001 &5811613563830478736
 PrefabInstance:
   m_ObjectHideFlags: 0
