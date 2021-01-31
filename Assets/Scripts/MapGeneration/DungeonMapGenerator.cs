@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 [Serializable]
 public struct MinMaxMap
@@ -50,6 +48,7 @@ public class DungeonMapGenerator : MonoBehaviour
     [Header("Debug")]
     [SerializeField, Space(15f)] private List<DungeonRoom> m_placedRooms = new List<DungeonRoom>();
 
+    public DungeonRoom m_currentRoom;
     private DungeonRoom m_currentRoom;
 
     private void Awake()

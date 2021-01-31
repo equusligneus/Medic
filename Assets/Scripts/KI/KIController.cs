@@ -8,14 +8,15 @@ using UnityEngine;
 public class KIController : MonoBehaviour
 {
     [Header("Waypoints")]
-    public List<Transform> Waypoints = new List<Transform>();
+    [SerializeField]
+    private List<Transform> waypoints = new List<Transform>();
 
     private Animator animator;
     private CharacterController charContr;
-    private PathfinderAgent agent;
+    public PathfinderAgent Agent;
     public Enemy_Attack_Ability AttackAbility { get; private set; }
 
-    private Vector3 currentTargetPosition;
+    public Vector3 currentTargetPosition;
 
     [Space(10)]
     [Header("KI Settings")]
@@ -37,24 +38,37 @@ public class KIController : MonoBehaviour
     public float BreakTime = 6.0f;
 
 
-    public Transform Player;
+    //public Transform Player;
     public Ref<bool> PlayerIsAlive;
     public Ref<bool> PlayerAwake;
+
+    public Ref<Transform> Player;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         charContr = GetComponent<CharacterController>();
-        agent = GetComponent<PathfinderAgent>();
+        Agent = GetComponent<PathfinderAgent>();
         AttackAbility = GetComponent<Enemy_Attack_Ability>();
-        currentTargetPosition = Waypoints[index].position;
+        currentTargetPosition = waypoints[index].position;
     }
     
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void SetKiActive(bool _status)
+    {
+        animator.enabled = _status;
+    }
+
+    public void AddWaypoints(List<Transform> _waypoints)
+    {
+        waypoints = _waypoints;
+        currentTargetPosition = waypoints[index].position;
     }
 
     public void Move()
@@ -83,12 +97,12 @@ public class KIController : MonoBehaviour
         //Debug.Log("NextWaypoint");
         if (followPlayer)
         {
-            currentTargetPosition = Waypoints[index].position;
+            currentTargetPosition = waypoints[index].position;
             followPlayer = false;
         }
         else
         {
-            if (index < Waypoints.Count - 1)
+            if (index < waypoints.Count - 1)
             {
                 index++;
             }
@@ -96,20 +110,20 @@ public class KIController : MonoBehaviour
             {
                 index = 0;
             }
-            currentTargetPosition = Waypoints[index].position;
+            currentTargetPosition = waypoints[index].position;
         }
     }
 
     public bool PlayerInViewSpace()
     {
-        if ((Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(Player.position.x, 0, Player.position.z)) < ViewRange) && PlayerAwake.Get() && PlayerIsAlive.Get())
+        if ((Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(Player.Get().position.x, 0, Player.Get().position.z)) < ViewRange) && PlayerAwake.Get() && PlayerIsAlive.Get())
         {
-            if (Vector3.Angle(MoveDirection(Player.position), Vector3.forward) < ViewAngle)
+            if (Vector3.Angle(MoveDirection(Player.Get().position), Vector3.forward) < ViewAngle)
             {
-                if(!Physics.Linecast(transform.position, Player.position, BlockedLayer))
+                if(!Physics.Linecast(transform.position, Player.Get().position, BlockedLayer))
                 {
                     followPlayer = true;
-                    currentTargetPosition = Player.position;
+                    currentTargetPosition = Player.Get().position;
                     return true;
                 }
             }

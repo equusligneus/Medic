@@ -14,10 +14,13 @@ public class InteractionComponent : MonoBehaviour
 	[SerializeField]
 	private InputAction interact = default;
 
+	[SerializeField]
+	private Ref<bool> isAwake = default;
+
+	[SerializeField]
+	private Ref<Interactive> draggedObject = default; 
 
 	private List<Interactive> interactives = new List<Interactive>();
-
-	private bool canInteract = true;
 
 	void Awake()
 	{
@@ -71,28 +74,29 @@ public class InteractionComponent : MonoBehaviour
 
 	private void UpdateSelection()
 	{
-		Interactive temp = selected.Get();
-		if (!canInteract || (temp && !temp.IsInteractive))
+		Interactive selection = selected.Get();
+		Interactive temp = selection;
+		if (!isAwake.Get() || !CanInteract(temp))
 			temp = default;
 
-		int prio = temp ? temp.Priority : -1;
-
-		if (canInteract)
+		if (isAwake.Get())
 		{
+			int prio = temp ? temp.Priority : -1;
+
 			foreach (var selectable in interactives)
 			{
-				if (selectable.IsInteractive && selectable.Priority > prio)
+				if (CanInteract(selectable) && selectable.Priority > prio)
 				{
 					temp = selectable;
 					prio = selectable.Priority;
 				}
 			} 
-		}
+		} 
 
-		if (temp != selected.Get())
+		if (temp != selection)
 		{
-			if (selected.Get())
-				selected.Get().Deselect();
+			if (selection)
+				selection.Deselect();
 
 			selected.Set(temp);
 			if (temp)
@@ -114,6 +118,15 @@ public class InteractionComponent : MonoBehaviour
 			selected.Get().Interact(this);
 	}
 
+	private bool CanInteract(Interactive interactive)
+	{
+		if (!interactive || !interactive.IsInteractive)
+			return false;
 
+		if (draggedObject.Get() && draggedObject.Get() != interactive)
+			return false;
+
+		return true;
+	}
 
 }

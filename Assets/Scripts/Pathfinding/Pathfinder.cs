@@ -51,6 +51,7 @@ public class Pathfinder : MonoBehaviour
             foreach (GridNode node in GetNodeNeigbours(currentNode))
             {
                 if (closedList.Contains(node)) continue;
+                if (!node.Walkable) continue;
 
                 int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, node);
                 if(tentativeGCost < node.gCost)
