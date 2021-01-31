@@ -121,7 +121,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6802934224739380364}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6502428781561929006
 MonoBehaviour:
@@ -323,9 +323,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975e73eded9e5f744803ce44fc9497ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  largeRoomSize: 0
   m_connectionPoints:
   - {fileID: 5149242571265476063}
+  - {fileID: 6502428781561929006}
+  LargeRoomX: 0
+  LargeRoomZ: 0
 --- !u!114 &1692786589665198969
 MonoBehaviour:
   m_ObjectHideFlags: 0
