@@ -11,6 +11,7 @@ public class EnemyWalkTo : StateMachineBehaviour
     {
         contr = animator.GetComponent<KIController>();
         animationBreak = false;
+        Debug.Log(contr.Agent == null);
         contr.Agent.MoveTo(contr.currentTargetPosition);
     }
 
