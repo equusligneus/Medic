@@ -680,7 +680,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   InvincibilityTime: 5
-  BreakTime: 2
+  BreakTime: 4
   CantReach: 0
   PlayerIsAlive: {fileID: 11400000, guid: cbecef23febb1b8429429c01824c46c7, type: 2}
   PlayerAwake: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
