@@ -4941,6 +4941,7 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Interact
       m_Flags: 0
+  draggedObject: {fileID: 11400000, guid: 7c65fdc4fdfc86b478ed153e763572ad, type: 2}
 --- !u!65 &1771255175
 BoxCollider:
   m_ObjectHideFlags: 0

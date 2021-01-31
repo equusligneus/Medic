@@ -21,18 +21,35 @@ public class Interactive_Adventurer : Interactive
 	[SerializeField]
 	private float maxDistance = 1f;
 
+	[SerializeField]
+	private Ref_Interactive draggedAdventurer = default;
+
 	public override bool IsInteractive => true;
+
 
 	protected override void Interact_Internal(InteractionComponent trigger)
 	{
 		isDragging.Set(!isDragging.Get());
+		draggedAdventurer.Set(isDragging.Get() ? this : default);
 		anchor = trigger.transform.parent;
+	}
+
+	private void Start()
+	{
+		GetComponentInParent<Adventurer>().OnRescue += OnRescue;
+	}
+
+	private void OnRescue()
+	{
+		// force drop
+		draggedAdventurer.Set(default);
+		isDragging.Set(false);
 	}
 
 	private void Update()
 	{
 		// just lazing around...
-		if (!isDragging.Get())
+		if (!isDragging.Get() || draggedAdventurer.Get() != this)
 			return;
 
 		var delta = (anchor.position - dragPoint.position).To2D();
