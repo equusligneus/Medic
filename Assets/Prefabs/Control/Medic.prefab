@@ -246,7 +246,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 2.3, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &5262432324184594357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   _LeftStepEvent:
     m_PersistentCalls:
       m_Calls: []
-  _RighStepEvent:
+  _RightStepEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1537398315
