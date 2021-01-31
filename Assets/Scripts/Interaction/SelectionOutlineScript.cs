@@ -12,7 +12,6 @@ public class SelectionOutlineScript : MonoBehaviour
 	{
 		var trigger = GetComponent<Interactive>();
 		trigger.OnSelected += OnSelection;
-		OnSelection(false);
 	}
 
 	private void OnDisable()
