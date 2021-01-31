@@ -25,7 +25,7 @@ public class GridManager : MonoBehaviour
     public bool GridIsGenerate = false;
     public bool ShowGizmo = false;
 
-    private void Start()
+    private void Awake()
     {
         Instance = this;
         if (StartInAwake)

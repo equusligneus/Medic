@@ -11,6 +11,10 @@ public class EnemyBreakTime : StateMachineBehaviour
     {
         contr = animator.GetComponent<KIController>();
         contr.NextWaypoint();
+        //if (!contr.CantReach)
+        //{
+        //    Debug.Log("Next Waypoint Set");
+        //}
         internalBreakTime = 0.0f;
     }
 
@@ -21,6 +25,7 @@ public class EnemyBreakTime : StateMachineBehaviour
         {
             if (contr.PlayerInViewSpace())
             {
+                Debug.Log("Here we go again");
                 animator.SetBool("BreakTime", false);
                 animator.SetBool("PlayerInView", true);
             }
@@ -32,7 +37,9 @@ public class EnemyBreakTime : StateMachineBehaviour
                 }
                 else
                 {
+                    contr.CantReach = false;
                     animator.SetBool("BreakTime", false);
+                    animator.SetBool("NoValidPath", false);
                 }
             }
         }

@@ -11,7 +11,13 @@ public class GenerateNavMeshTask : StartGameTask
 
 	public override void Execute(StartGameScript startGameScript, Action onDone)
 	{
-		Instantiate(gridManager).GenerateGrid();
-		onDone();
+        startGameScript.StartCoroutine(GenerateGrid(onDone));
 	}
+
+    IEnumerator GenerateGrid(Action onDone)
+    {
+		Instantiate(gridManager).GenerateGrid();
+        yield return null;
+        onDone();
+    }
 }
