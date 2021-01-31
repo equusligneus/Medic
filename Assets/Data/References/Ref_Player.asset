@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4195dfd84ac36b846b4a7d267b7fac1a, type: 3}
-  m_Name: SpawnEnemies
+  m_Script: {fileID: 11500000, guid: 38c130d8dc852ab4592c94b34a899066, type: 3}
+  m_Name: Ref_Player
   m_EditorClassIdentifier: 
-  spawnPoints: {fileID: 11400000, guid: 671eed6dfbea7684588b8e490759f045, type: 2}
-  enemiesToSpawn:
-  - {fileID: 2806851449737569265, guid: 9a10c8fd2cf69354b88f756d6577e4eb, type: 3}
