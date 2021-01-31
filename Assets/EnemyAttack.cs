@@ -9,7 +9,7 @@ public class EnemyAttack : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         contr = animator.GetComponent<KIController>();
-        contr.AttackAbility.AttackPlayer(contr.Player);
+        contr.AttackAbility.AttackPlayer(contr.Player.Get());
 
         animator.SetBool("Attack", false);
     }
