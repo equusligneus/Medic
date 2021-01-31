@@ -38,9 +38,11 @@ public class KIController : MonoBehaviour
     public float BreakTime = 6.0f;
 
 
-    public Transform Player;
+    //public Transform Player;
     public Ref<bool> PlayerIsAlive;
     public Ref<bool> PlayerAwake;
+
+    public Ref<Transform> Player;
 
     // Start is called before the first frame update
     void Start()
@@ -114,14 +116,14 @@ public class KIController : MonoBehaviour
 
     public bool PlayerInViewSpace()
     {
-        if ((Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(Player.position.x, 0, Player.position.z)) < ViewRange) && PlayerAwake.Get() && PlayerIsAlive.Get())
+        if ((Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(Player.Get().position.x, 0, Player.Get().position.z)) < ViewRange) && PlayerAwake.Get() && PlayerIsAlive.Get())
         {
-            if (Vector3.Angle(MoveDirection(Player.position), Vector3.forward) < ViewAngle)
+            if (Vector3.Angle(MoveDirection(Player.Get().position), Vector3.forward) < ViewAngle)
             {
-                if(!Physics.Linecast(transform.position, Player.position, BlockedLayer))
+                if(!Physics.Linecast(transform.position, Player.Get().position, BlockedLayer))
                 {
                     followPlayer = true;
-                    currentTargetPosition = Player.position;
+                    currentTargetPosition = Player.Get().position;
                     return true;
                 }
             }
