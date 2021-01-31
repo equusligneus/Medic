@@ -54,10 +54,12 @@ public class DungeonGenerator : MonoBehaviour
 
     private void Awake()
     {
-        MapSize = new MinMaxMap(m_startDungeonRoom.transform.position);
-        MapSize.SetMinMax(m_startDungeonRoom.transform.position);
+        MapSize = new MinMaxMap(m_startDungeonRoom != null ? m_startDungeonRoom.transform.position : Vector3.zero);
+    }
 
-        GenerateDungeon();
+    public void SetStartRoom(DungeonRoom _startRoom)
+    {
+        m_startDungeonRoom = _startRoom;
     }
 
     #region Helper
@@ -145,6 +147,7 @@ public class DungeonGenerator : MonoBehaviour
     }
     #endregion
 
+    [ContextMenu("Generate Dungeon")]
     public void GenerateDungeon()
     {
         RemoveAllExistingRooms();

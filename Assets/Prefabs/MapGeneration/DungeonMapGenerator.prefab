@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5059905119387465556}
-  - component: {fileID: 9165796670576119474}
+  - component: {fileID: 1199038036073797184}
   m_Layer: 0
   m_Name: DungeonMapGenerator
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9165796670576119474
+--- !u!114 &1199038036073797184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,11 +40,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2743813183332651620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c248c892554f41a4bb3ae1dca3c95b15, type: 3}
+  m_Script: {fileID: 11500000, guid: be311a20d9883844abfceed39cca67c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_targetRoomAmount: 25
-  m_startingRoom: {fileID: 0}
+  MapSize:
+    maxX: 0
+    minX: 0
+    maxZ: 0
+    minZ: 0
+  m_startDungeonRoom: {fileID: 0}
   m_doorPrefab: {fileID: 4370235597560983702, guid: 8908cdb8ed735554eb42b3b0aa14275e, type: 3}
   m_roomPrefabs:
   - {fileID: 5210468338189993102, guid: c5dbcda874b08b94fa9e61293138a63b, type: 3}
@@ -59,5 +64,6 @@ MonoBehaviour:
   - {fileID: 9008384979891142304, guid: d587de2ec6ec16b4d90ee40e95c873e6, type: 3}
   - {fileID: 5267689099409796547, guid: c9adcbde1d02a7d4daec232d2a1f9031, type: 3}
   - {fileID: 5024803446659917178, guid: 25b6d93ac6342854db908ed87a2a3b9c, type: 3}
+  - {fileID: 6585429889748212899, guid: 0f6f1ee74984b2e4fb2709160779ac86, type: 3}
+  - {fileID: 6585429889748212899, guid: 0f6f1ee74984b2e4fb2709160779ac86, type: 3}
   m_placedRooms: []
-  currentRoom: {fileID: 0}

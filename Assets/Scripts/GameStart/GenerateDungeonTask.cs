@@ -7,7 +7,7 @@ using UnityEngine;
 public class GenerateDungeonTask : StartGameTask
 {
 	[SerializeField]
-	private DungeonMapGenerator generator;
+	private DungeonGenerator generator;
 
 	public override void Execute(StartGameScript startGameScript, Action onDone)
 	{
