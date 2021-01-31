@@ -59,6 +59,6 @@ MonoBehaviour:
   - {fileID: 5267689099409796547, guid: c9adcbde1d02a7d4daec232d2a1f9031, type: 3}
   - {fileID: 5024803446659917178, guid: 25b6d93ac6342854db908ed87a2a3b9c, type: 3}
   - {fileID: 6585429889748212899, guid: 0f6f1ee74984b2e4fb2709160779ac86, type: 3}
-  - {fileID: 6585429889748212899, guid: 0f6f1ee74984b2e4fb2709160779ac86, type: 3}
+  - {fileID: 9038708161308197101, guid: 59a149c06e3d0b540ab5feefa5c447a2, type: 3}
   m_placedRooms: []
   m_currentRoom: {fileID: 0}
