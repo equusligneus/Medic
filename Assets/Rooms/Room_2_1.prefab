@@ -2066,6 +2066,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall TIles Room1 single door
       objectReference: {fileID: 0}
+    - target: {fileID: 1454509352020925180, guid: e2f7d2ae283b70148b2c777e0908c3e6, type: 3}
+      propertyPath: m_Name
+      value: SM_door
+      objectReference: {fileID: 0}
     - target: {fileID: 9119259655478913874, guid: e2f7d2ae283b70148b2c777e0908c3e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3

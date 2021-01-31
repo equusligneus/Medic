@@ -18331,7 +18331,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8299517763530236353, guid: aca7cc271d056bb48ba52d7c7ba53a90, type: 3}
       propertyPath: m_Name
-      value: SM_door (1)
+      value: SM_door
       objectReference: {fileID: 0}
     - target: {fileID: 8675656652356320123, guid: aca7cc271d056bb48ba52d7c7ba53a90, type: 3}
       propertyPath: m_LocalPosition.x
