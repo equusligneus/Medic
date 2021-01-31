@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_connectionPoints:
   - {fileID: 2585310398799241662}
+  LargeRoomX: 1
+  LargeRoomZ: 0
 --- !u!1 &99263200592336641
 GameObject:
   m_ObjectHideFlags: 0
