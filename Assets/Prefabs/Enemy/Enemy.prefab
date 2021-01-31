@@ -647,6 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3bb186787ba502479e3ef6dfb3d10b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerTransformRef: {fileID: 11400000, guid: 6cf81dcaff751924a8929aab3af315d4, type: 2}
   _AttackRange: 2.01
   _AttackCooldDown: 0.51
   _AttackDamage: 1
@@ -679,7 +680,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   InvincibilityTime: 5
-  BreakTime: 2
+  BreakTime: 4
   CantReach: 0
   PlayerIsAlive: {fileID: 11400000, guid: cbecef23febb1b8429429c01824c46c7, type: 2}
   PlayerAwake: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
@@ -699,13 +700,25 @@ MonoBehaviour:
   _HitEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ParticleController, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 2806851449737569264}
+        m_TargetAssemblyTypeName: Enemy_Attack_Ability, Assembly-CSharp
+        m_MethodName: AttackPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4259206701476823823}
+        m_TargetAssemblyTypeName: ParticleController, Assembly-CSharp
+        m_MethodName: PlayAllParicle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
