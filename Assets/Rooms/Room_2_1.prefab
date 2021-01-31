@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 6807348037190740388}
   - component: {fileID: 7709051023463134605}
   - component: {fileID: 2729527524581655755}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GroundFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

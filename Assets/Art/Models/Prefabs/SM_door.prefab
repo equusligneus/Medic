@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 4029244449924280117}
   - component: {fileID: 593542867075867080}
   - component: {fileID: 6698498784898922991}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DoorTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
