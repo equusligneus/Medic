@@ -172,6 +172,15 @@ public class DungeonGenerator : MonoBehaviour
                 nextRoom = AddRoom(m_currentRoom, m_roomPrefabs);
             }
 
+            if (nextRoom == null)
+            {
+                if (m_currentRoom.AllConnected)
+                {
+                    roomsWithOpenConnection.Remove(m_currentRoom);
+                }
+                continue;
+            }
+
             if (!nextRoom.AllConnected && !roomsWithOpenConnection.Contains(nextRoom))
             {
                 roomsWithOpenConnection.Add(nextRoom);
@@ -191,8 +200,9 @@ public class DungeonGenerator : MonoBehaviour
             // TODO: Check if allowed to place here
             DungeonRoom nextRoom = Instantiate(_roomPrefabs[Random.Range(0, _roomPrefabs.Count)])
                 .GetComponent<DungeonRoom>();
-            m_placedRooms.Add(nextRoom);
-            ConnectRooms(_startRoom, nextRoom);
+            nextRoom = ConnectRooms(_startRoom, nextRoom);
+            if (nextRoom != null)
+                m_placedRooms.Add(nextRoom);
             return nextRoom;
         }
         else
@@ -202,7 +212,7 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
-    private void ConnectRooms(DungeonRoom _startRoom, DungeonRoom _nextRoom)
+    private DungeonRoom ConnectRooms(DungeonRoom _startRoom, DungeonRoom _nextRoom)
     {
         bool isCollision = false;
 
@@ -232,6 +242,7 @@ public class DungeonGenerator : MonoBehaviour
             nextRoomConnection.ConnectedDungeonRoom = _startRoom;
 
             MapSize.SetMinMax(_nextRoom.transform.position);
+            return _nextRoom;
         }
         else
         {
@@ -239,6 +250,7 @@ public class DungeonGenerator : MonoBehaviour
             m_placedRooms.Remove(_nextRoom);
             Debug.Log("Overlap avoided here", _startRoom);
             DestroyImmediate(_nextRoom.gameObject);
+            return null;
         }
     }
 
