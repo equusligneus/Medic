@@ -657,9 +657,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   BreakTime: 2
-  Player: {fileID: 0}
   PlayerIsAlive: {fileID: 11400000, guid: cbecef23febb1b8429429c01824c46c7, type: 2}
   PlayerAwake: {fileID: 11400000, guid: f2e39b702889cd14d97133164cfb2382, type: 2}
+  Player: {fileID: 11400000, guid: 6cf81dcaff751924a8929aab3af315d4, type: 2}
 --- !u!1 &7052331191601848844
 GameObject:
   m_ObjectHideFlags: 0
