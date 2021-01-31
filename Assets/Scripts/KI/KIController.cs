@@ -146,7 +146,6 @@ public class KIController : MonoBehaviour
     public void Stun()
 	{
         IsStunned = true;
-        Agent.stop = !Agent.stop;
         animator.SetBool("Stunned", true);
 	}
 
@@ -159,7 +158,10 @@ public class KIController : MonoBehaviour
 	{
         yield return new WaitForSeconds(InvincibilityTime);
         IsStunned = false;
-        Agent.stop = !Agent.stop;
+        if(Agent.stop && Agent.ValidPath)
+        {
+            Agent.stop = false;
+        }
         animator.SetBool("Stunned", false);
 	}
 }
