@@ -16,6 +16,9 @@ public class EndGameScript : MonoBehaviour
 	[SerializeField]
 	private Ref_Int gameResult = default;
 
+	[SerializeField]
+	private float sceneSwitchDelay = 2f;
+
 	private void OnEnable()
 	{
 		gameResult.Set(0);
@@ -32,13 +35,21 @@ public class EndGameScript : MonoBehaviour
 	private void LoseCondition_OnConditionRaised()
 	{
 		gameResult.Set(-1);
-		SceneManager.LoadScene(END_SCREEN);
+
+		StartCoroutine(LoadEndScene());
+
 	}
 
 	private void WinCondition_OnConditionRaised()
 	{
 		gameResult.Set(1);
-		SceneManager.LoadScene(END_SCREEN);
+		StartCoroutine(LoadEndScene());
 	}
 
+
+	private IEnumerator LoadEndScene()
+	{
+		yield return new WaitForSeconds(sceneSwitchDelay);
+		SceneManager.LoadScene(END_SCREEN);
+	}
 }
