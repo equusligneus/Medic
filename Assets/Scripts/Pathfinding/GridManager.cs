@@ -98,6 +98,20 @@ public class GridManager : MonoBehaviour
         return tempNode;
     }
 
+    public void SetWalkableInside(Collider _collider, bool _walkable)
+    {
+        if(grid != null)
+        {
+            foreach (GridNode node in grid)
+            {
+                if (_collider.bounds.Contains(node.Position))
+                {
+                    node.Walkable = _walkable;
+                }
+            }
+        }
+    }
+
     public void ClearTempNodedata()
     {
         foreach(GridNode node in grid)

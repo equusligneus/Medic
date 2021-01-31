@@ -44,7 +44,6 @@ public class DungeonMapGenerator : MonoBehaviour
 
     public MinMaxMap MapSize;
     [SerializeField] private DungeonRoom m_startDungeonRoom;
-    [SerializeField] private GameObject m_doorPrefab;
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
 
     [Header("Debug")]
@@ -230,10 +229,23 @@ public class DungeonMapGenerator : MonoBehaviour
         // Collision check
         foreach (DungeonRoom placedRoom in m_placedRooms)
         {
-            if (Vector3.Distance(_nextRoom.transform.position, placedRoom.transform.position) < 9.9f &&
-                _nextRoom != placedRoom)
+            if (_nextRoom != placedRoom && 
+                // Normal room size compare center to other rooms
+                (!_nextRoom.LargeRoomX && !_nextRoom.LargeRoomZ && Vector3.Distance(_nextRoom.transform.position, placedRoom.transform.position) < 9.9f) ||
+                // LargeRoomX compare center, -x, +x to other rooms
+                (Vector3.Distance(_nextRoom.transform.position, placedRoom.transform.position) < 9.9f && 
+                 (Vector3.Distance(_nextRoom.transform.position + new Vector3(3, 0, 0), placedRoom.transform.position) < 9.9f  &&
+                 Vector3.Distance(_nextRoom.transform.position + new Vector3(-3, 0, 0), placedRoom.transform.position) < 9.9f) &&
+                // LargeRoomZ compare center, -z, +z to other rooms
+                 (Vector3.Distance(_nextRoom.transform.position + new Vector3(0, 0, 3), placedRoom.transform.position) < 9.9f &&
+                 Vector3.Distance(_nextRoom.transform.position + new Vector3(0, 0, -3), placedRoom.transform.position) < 9.9f)
+                ))
                 // TODO: Collision
                 isCollision = true;
+            else
+            {
+                Debug.LogWarning("This shouldn't happen", placedRoom);
+            }
         }
 
         // infos
