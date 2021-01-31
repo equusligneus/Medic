@@ -5,6 +5,9 @@ using UnityEngine;
 public class Enemy_Attack_Ability : MonoBehaviour
 {
     [SerializeField]
+    private Ref<Transform> _playerTransformRef;
+
+    [SerializeField]
     private float _AttackRange;
 
     [SerializeField]
@@ -32,6 +35,11 @@ public class Enemy_Attack_Ability : MonoBehaviour
         return dist <= _AttackRange;
     }
 
+
+    public void AttackPlayer()
+    {
+        AttackPlayer(_playerTransformRef.Get());
+    }
 
     /// <summary>
     /// Attacks the given player throw a Log if the given player has no health
