@@ -676,6 +676,7 @@ MonoBehaviour:
   BlockedLayer:
     serializedVersion: 2
     m_Bits: 16
+  InvincibilityTime: 5
   BreakTime: 2
   CantReach: 0
   PlayerIsAlive: {fileID: 11400000, guid: cbecef23febb1b8429429c01824c46c7, type: 2}
@@ -960,7 +961,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7362533965166400176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
