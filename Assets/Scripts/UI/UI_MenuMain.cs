@@ -28,7 +28,7 @@ public class UI_MenuMain : MonoBehaviour, UI_IMenu
 	}
 
 	private void OnStartGame()
-		=> SceneManager.LoadScene("Level_01");
+		=> SceneManager.LoadScene("LoadScreen");
 
 	private void OnCredits()
 	{
