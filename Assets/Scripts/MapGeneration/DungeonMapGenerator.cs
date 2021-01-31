@@ -147,8 +147,14 @@ public class DungeonMapGenerator : MonoBehaviour
     #endregion
 
     [ContextMenu("Generate Dungeon")]
-    public void GenerateDungeon()
+    public void GenerateDungeon(int _targetAmountOfRooms = 0)
     {
+        // When no room size set, use the inspector one
+        if (_targetAmountOfRooms == 0)
+        {
+            _targetAmountOfRooms = m_targetRoomAmount;
+        }
+
         RemoveAllExistingRooms();
         m_currentRoom = m_startDungeonRoom;
 
@@ -161,11 +167,11 @@ public class DungeonMapGenerator : MonoBehaviour
             m_currentRoom = roomsWithOpenConnection[0];
             DungeonRoom nextRoom = null;
 
-            if (m_placedRooms.Count + roomsWithOpenConnection.Count >= m_targetRoomAmount)
+            if (m_placedRooms.Count + roomsWithOpenConnection.Count >= _targetAmountOfRooms)
             {
                 nextRoom = AddRoom(m_currentRoom, GetRoomPrefabWithDeadEnd());
             }
-            else if (roomsWithOpenConnection.Count == 1 && m_placedRooms.Count - 1 < m_targetRoomAmount)
+            else if (roomsWithOpenConnection.Count == 1 && m_placedRooms.Count - 1 < _targetAmountOfRooms)
             {
                 nextRoom = AddRoom(m_currentRoom, GetRoomPrefabWithConnections());
             }
@@ -229,14 +235,14 @@ public class DungeonMapGenerator : MonoBehaviour
         // Collision check
         foreach (DungeonRoom placedRoom in m_placedRooms)
         {
-            if (_nextRoom != placedRoom && 
+            if (_nextRoom != placedRoom &&
                 // Normal room size compare center to other rooms
                 (!_nextRoom.LargeRoomX && !_nextRoom.LargeRoomZ && Vector3.Distance(_nextRoom.transform.position, placedRoom.transform.position) < 9.9f) ||
                 // LargeRoomX compare center, -x, +x to other rooms
-                (Vector3.Distance(_nextRoom.transform.position, placedRoom.transform.position) < 9.9f && 
-                 (Vector3.Distance(_nextRoom.transform.position + new Vector3(3, 0, 0), placedRoom.transform.position) < 9.9f  &&
+                (Vector3.Distance(_nextRoom.transform.position, placedRoom.transform.position) < 9.9f &&
+                 (Vector3.Distance(_nextRoom.transform.position + new Vector3(3, 0, 0), placedRoom.transform.position) < 9.9f &&
                  Vector3.Distance(_nextRoom.transform.position + new Vector3(-3, 0, 0), placedRoom.transform.position) < 9.9f) &&
-                // LargeRoomZ compare center, -z, +z to other rooms
+                 // LargeRoomZ compare center, -z, +z to other rooms
                  (Vector3.Distance(_nextRoom.transform.position + new Vector3(0, 0, 3), placedRoom.transform.position) < 9.9f &&
                  Vector3.Distance(_nextRoom.transform.position + new Vector3(0, 0, -3), placedRoom.transform.position) < 9.9f)
                 ))
