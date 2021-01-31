@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyFollowTarget : StateMachineBehaviour
 {
     KIController contr;
+    bool animationBreak = false;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -14,7 +15,7 @@ public class EnemyFollowTarget : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(contr != null)
+        if(contr != null && !animationBreak)
         {
             //contr.Move();
             if (contr.Agent.MoveTo(contr.currentTargetPosition))
@@ -24,6 +25,7 @@ public class EnemyFollowTarget : StateMachineBehaviour
                     if (contr.AttackAbility.IsPlayerInRange(contr.Player.Get()) && contr.PlayerAwake.Get())
                     {
                         animator.SetBool("Attack", true);
+                        animationBreak = true;
                         //contr.AttackAbility.AttackPlayer(contr.Player);
                     }
                     animator.SetBool("PlayerInView", true);
