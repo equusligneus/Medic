@@ -16,7 +16,13 @@ public class GenerateNavMeshTask : StartGameTask
 
     IEnumerator GenerateGrid(Action onDone)
     {
-		Instantiate(gridManager).GenerateGrid();
+
+        GridManager temp = Instantiate(gridManager);
+        Debug.Log("Position: " + DungeonMapGenerator.MapSize.GetCenter + " Size: " + DungeonMapGenerator.MapSize.GetWidth() + " / " + DungeonMapGenerator.MapSize.GetHeight());
+        temp.transform.position = DungeonMapGenerator.MapSize.GetCenter;
+        temp.Size = new Vector2Int(DungeonMapGenerator.MapSize.GetWidth(), DungeonMapGenerator.MapSize.GetHeight());
+        temp.GenerateGrid();
+
         yield return null;
         onDone();
     }

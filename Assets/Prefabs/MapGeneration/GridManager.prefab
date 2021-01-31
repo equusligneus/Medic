@@ -52,10 +52,10 @@ MonoBehaviour:
     m_Bits: 256
   SphercastMask:
     serializedVersion: 2
-    m_Bits: 32823
+    m_Bits: 32819
   StartInAwake: 0
   GridIsGenerate: 0
-  ShowGizmo: 0
+  ShowGizmo: 1
 --- !u!114 &5507725188873019536
 MonoBehaviour:
   m_ObjectHideFlags: 0
