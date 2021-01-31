@@ -264,7 +264,7 @@ MonoBehaviour:
   _isAlive: {fileID: 11400000, guid: cbecef23febb1b8429429c01824c46c7, type: 2}
   _maxHealth: {fileID: 11400000, guid: 5270c2309f31d6a419915a6182f411ef, type: 2}
   _currentHealth: {fileID: 11400000, guid: 588e4296d28cf1d46b35d59fdd2afa89, type: 2}
-  _faintedTime: 2
+  _faintedTime: 7
   _invulnerabilityTime: 2
 --- !u!114 &1591875694
 MonoBehaviour:
