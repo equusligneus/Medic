@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa44b57ad186237438b979c46e91b0f8, type: 3}
-  m_Name: Ref_GameResult
+  m_Script: {fileID: 11500000, guid: 73d403d7f7ff5cc409518b6c110fd1e4, type: 3}
+  m_Name: Ref_IsMedicPunching
   m_EditorClassIdentifier: 
-  _value: 1
+  _value: 0

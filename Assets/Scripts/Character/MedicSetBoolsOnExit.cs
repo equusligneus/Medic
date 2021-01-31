@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MedicSetMovableOnExit : StateMachineBehaviour
+public class MedicSetBoolsOnExit : StateMachineBehaviour
 {
-	[SerializeField]
-	private Ref_Bool canMove = default;
+	[System.Serializable]
+	public struct Settable
+	{
+		public Ref_Bool reference;
+
+		public bool value;
+	}
 
 	[SerializeField]
-	private bool shouldMove = default;
+	private Settable[] settables;
 
 	// OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -25,7 +30,8 @@ public class MedicSetMovableOnExit : StateMachineBehaviour
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		canMove.Set(shouldMove); 
+		for(int i = 0; i < settables.Length; ++i)
+			settables[i].reference.Set(settables[i].value);
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove()
