@@ -32,9 +32,9 @@ public class SpawnEnemyTask : StartGameTask
 			var enemy = Instantiate(enemiesToSpawn[i], spawn.transform.position, spawn.transform.rotation);
 
             enemy.GetComponent<KIController>().AddWaypoints(spawn.GetComponent<WaypointList>().Waypoints);
-			//Debug.LogError("We've not given the enemy a patrol route!!!");
+            //Debug.LogError("We've not given the enemy a patrol route!!!");
 
-			indices.RemoveAt(index);
+            indices.RemoveAt(index);
 		}
 
 		onDone();

@@ -15,7 +15,7 @@ public class PathfinderAgent : MonoBehaviour
     
     private GridNode targetGridNode;
 
-    public bool stop;
+    public bool stop = true;
 
     // Update is called once per frame
     void Update()
@@ -60,6 +60,7 @@ public class PathfinderAgent : MonoBehaviour
                 }
                 else
                 {
+                    stop = true;
                     Debug.Log("Can't Find a Path");
                 }
 
@@ -88,6 +89,7 @@ public class PathfinderAgent : MonoBehaviour
             if (0.1f > Vector3.Distance(nextNode.Position, transform.position))
             {
                 index++;
+                Debug.Log(path != null);
                 if (index == path.Count)
                 {
                     stop = true;

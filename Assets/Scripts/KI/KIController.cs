@@ -67,7 +67,6 @@ public class KIController : MonoBehaviour
 
     public void AddWaypoints(List<Transform> _waypoints)
     {
-        Debug.Log("Add " + _waypoints.Count + " Waypoints to enemy");
         waypoints = _waypoints;
         animator = GetComponent<Animator>();
         charContr = GetComponent<CharacterController>();
