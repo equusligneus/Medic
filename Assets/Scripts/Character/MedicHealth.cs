@@ -27,6 +27,7 @@ public class MedicHealth : MonoBehaviour
     private void Awake()
     {
         _currentHealth.Set(_maxHealth.Get());
+        _isAlive.Set(true);
     }
 
     /// <summary>
