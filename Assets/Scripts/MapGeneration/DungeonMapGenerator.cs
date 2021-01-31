@@ -54,7 +54,6 @@ public class DungeonMapGenerator : MonoBehaviour
 
     public static MinMaxMap MapSize;
     [SerializeField] private DungeonRoom m_startDungeonRoom;
-    [SerializeField] private GameObject m_doorPrefab;
     [SerializeField] private List<GameObject> m_roomPrefabs = new List<GameObject>();
 
     [Header("Debug")]

@@ -16059,7 +16059,7 @@ MonoBehaviour:
   m_roomConnectionRotation: {x: 0, y: 0, z: 1}
   Connected: 0
   ConnectedDungeonRoom: {fileID: 0}
-  doorTrigger: {fileID: 0}
+  doorTrigger: {fileID: 1122532780836160268}
 --- !u!1 &8042746582493004389
 GameObject:
   m_ObjectHideFlags: 0
@@ -18331,7 +18331,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8299517763530236353, guid: aca7cc271d056bb48ba52d7c7ba53a90, type: 3}
       propertyPath: m_Name
-      value: SM_door (1)
+      value: SM_door
       objectReference: {fileID: 0}
     - target: {fileID: 8675656652356320123, guid: aca7cc271d056bb48ba52d7c7ba53a90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18379,6 +18379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aca7cc271d056bb48ba52d7c7ba53a90, type: 3}
+--- !u!135 &1122532780836160268 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 593542867075867080, guid: aca7cc271d056bb48ba52d7c7ba53a90, type: 3}
+  m_PrefabInstance: {fileID: 551894957338567364}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9209481117689534911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8675656652356320123, guid: aca7cc271d056bb48ba52d7c7ba53a90, type: 3}
