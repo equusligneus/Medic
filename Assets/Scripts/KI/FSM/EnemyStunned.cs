@@ -9,6 +9,10 @@ public class EnemyStunned : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         contr = animator.GetComponent<KIController>();
+        if (!contr.Agent.stop)
+        {
+            contr.Agent.stop = true;
+        }
         contr.EndStun();
     }
 

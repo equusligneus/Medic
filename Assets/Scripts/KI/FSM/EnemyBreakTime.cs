@@ -15,6 +15,10 @@ public class EnemyBreakTime : StateMachineBehaviour
         //{
         //    Debug.Log("Next Waypoint Set");
         //}
+        if (!contr.Agent.stop)
+        {
+            contr.Agent.stop = true;
+        }
         internalBreakTime = 0.0f;
     }
 
